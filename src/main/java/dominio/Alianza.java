@@ -9,7 +9,7 @@ public class Alianza {
 
 	public Alianza(String nombre) {
 		this.nombre = nombre;
-		this.aliados = new LinkedList <Personaje>();
+		this.aliados = new LinkedList<Personaje>();
 	}
 
 	public LinkedList<Personaje> getAliados() {
@@ -20,15 +20,15 @@ public class Alianza {
 		this.aliados = aliados;
 	}
 
-	public String obtenerNombre(){
+	public String obtenerNombre() {
 		return nombre;
 	}
-	
-	public void eliminarPersonaje(Personaje pj){
+
+	public void eliminarPersonaje(Personaje pj) {
 		aliados.remove(pj);
 	}
-	
-	public void aÃ±adirPersonaje(Personaje pj){
+
+	public void añadirPersonaje(Personaje pj) {
 		aliados.add(pj);
 	}
 }

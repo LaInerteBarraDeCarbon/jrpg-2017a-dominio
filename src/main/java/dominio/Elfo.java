@@ -15,10 +15,8 @@ public class Elfo extends Personaje {
 	}
 
 	public Elfo(String nombre, int salud, int energia, int fuerza, int destreza, int inteligencia, Casta casta,
-			int experiencia, int nivel,
-			int idPersonaje) {
-		super(nombre, salud, energia, fuerza, destreza, inteligencia, casta,
-				experiencia, nivel, idPersonaje);
+			int experiencia, int nivel, int idPersonaje) {
+		super(nombre, salud, energia, fuerza, destreza, inteligencia, casta, experiencia, nivel, idPersonaje);
 		nombreRaza = "Elfo";
 
 		habilidadesRaza = new String[2];

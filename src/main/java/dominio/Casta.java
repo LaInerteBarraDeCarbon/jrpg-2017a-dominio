@@ -3,23 +3,24 @@ package dominio;
 import java.io.Serializable;
 
 public abstract class Casta implements Serializable {
+	
 	protected double probabilidadGolpeCritico;
-	protected double probabilidadEvitarDaÃ±o;
-	protected double daÃ±oCritico;
+	protected double probabilidadEvitarDaño;
+	protected double dañoCritico;
 	protected String nombreCasta;
 
 	protected String[] habilidadesCasta;
 
 	public Casta() {
 		this.probabilidadGolpeCritico = 0.2;
-		this.probabilidadEvitarDaÃ±o = 0.2;
-		this.daÃ±oCritico = 1.5;
+		this.probabilidadEvitarDaño = 0.2;
+		this.dañoCritico = 1.5;
 	}
 
-	public Casta(double prob_crit, double evasion, double daÃ±o_crit) {
+	public Casta(double prob_crit, double evasion, double daño_crit) {
 		this.probabilidadGolpeCritico = prob_crit;
-		this.probabilidadEvitarDaÃ±o = evasion;
-		this.daÃ±oCritico = daÃ±o_crit;
+		this.probabilidadEvitarDaño = evasion;
+		this.dañoCritico = daño_crit;
 	}
 
 	public abstract boolean habilidad1(Personaje caster, Peleable atacado);
@@ -44,19 +45,19 @@ public abstract class Casta implements Serializable {
 		this.probabilidadGolpeCritico = probabilidadGolpeCritico;
 	}
 
-	public double getProbabilidadEvitarDaÃ±o() {
-		return probabilidadEvitarDaÃ±o;
+	public double getProbabilidadEvitarDaño() {
+		return probabilidadEvitarDaño;
 	}
 
-	public void setProbabilidadEvitarDaÃ±o(double probabilidadEvitarDaÃ±o) {
-		this.probabilidadEvitarDaÃ±o = probabilidadEvitarDaÃ±o;
+	public void setProbabilidadEvitarDaño(double probabilidadEvitarDaño) {
+		this.probabilidadEvitarDaño = probabilidadEvitarDaño;
 	}
 
-	public double getDaÃ±oCritico() {
-		return daÃ±oCritico;
+	public double getDañoCritico() {
+		return dañoCritico;
 	}
 
-	public void setDaÃ±oCritico(double daÃ±oCritico) {
-		this.daÃ±oCritico = daÃ±oCritico;
+	public void setDañoCritico(double dañoCritico) {
+		this.dañoCritico = dañoCritico;
 	}
 }
