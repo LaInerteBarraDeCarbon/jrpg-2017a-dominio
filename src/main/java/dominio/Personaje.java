@@ -2,9 +2,22 @@ package dominio;
 
 import java.io.Serializable;
 
+/**
+ * La clase Personaje crea personajes con sus respectivas raza y casta. Se
+ * encarga de asignar el ataque, la defensa y la magia del personaje, llevar a
+ * cabo los métodos para las batallas, como atacar y la experiencia, entre
+ * otros. <br>
+ * <br>
+ * También se encarga de seguir el desarrollo del personaje con respecto a su
+ * nivel, aumentando sus atributos a medida que va subiendo de nivel.<br>
+ * <br>
+ * La clase también lleva el seguimiento de las alianzas realizadas por el
+ * personaje, tanto las que crea y realiza como las que deja.<br>
+ * <br>
+ */
 public abstract class Personaje implements Peleable, Serializable {
 
-	protected int salud;
+	protected Integer salud;
 	protected int energia;
 	protected int defensa;// depende de la destreza
 	protected int ataque;// depende de la fuerza
@@ -34,10 +47,20 @@ public abstract class Personaje implements Peleable, Serializable {
 
 	protected String[] habilidadesRaza;
 
+	/**
+	 * Devuelve las habilidades de la raza que puede usar el personaje. <br>
+	 * 
+	 * @return Habilidades de la raza. <br>
+	 */
 	public String[] getHabilidadesRaza() {
 		return habilidadesRaza;
 	}
 
+	/**
+	 * Devuelve las habilidades de la casta que puede usar el personaje. <br>
+	 * 
+	 * @return Habilidades de la casta. <br>
+	 */
 	public String[] getHabilidadesCasta() {
 		return casta.getHabilidadesCasta();
 	}
@@ -50,6 +73,13 @@ public abstract class Personaje implements Peleable, Serializable {
 			Personaje.tablaDeNiveles[i] = Personaje.tablaDeNiveles[i - 1] + 50;
 	}
 
+	/**
+	 * Crea un personaje dado su nombre y su casta desde el nivel 1. <br>
+	 * 
+	 * @param nombre
+	 * @param casta
+	 * @param id
+	 */
 	public Personaje(String nombre, Casta casta, int id) {
 		this.nombre = nombre;
 		this.casta = casta;
@@ -77,6 +107,20 @@ public abstract class Personaje implements Peleable, Serializable {
 
 	}
 
+	/**
+	 * Crea un personaje con sus atributos ya predefinidos. <br>
+	 * 
+	 * @param nombre
+	 * @param salud
+	 * @param energia
+	 * @param fuerza
+	 * @param destreza
+	 * @param inteligencia
+	 * @param casta
+	 * @param experiencia
+	 * @param nivel
+	 * @param idPersonaje
+	 */
 	public Personaje(String nombre, int salud, int energia, int fuerza, int destreza, int inteligencia, Casta casta,
 			int experiencia, int nivel, int idPersonaje) {
 
@@ -100,6 +144,11 @@ public abstract class Personaje implements Peleable, Serializable {
 		this.magia = this.calcularPuntosDeMagia();
 	}
 
+	/**
+	 * Devuelve el nombre de la raza del personaje. <br>
+	 * 
+	 * @return Nombre de la raza. <br>
+	 */
 	public String getNombreRaza() {
 		return nombreRaza;
 	}
@@ -250,6 +299,11 @@ public abstract class Personaje implements Peleable, Serializable {
 		return 0;
 	}
 
+	/**
+	 * Calcula el daño de un golpe crítico. <br>
+	 * 
+	 * @return Daño del golpe crítico. <br>
+	 */
 	public int golpe_critico() {
 		return (int) (this.ataque * this.getCasta().getDañoCritico());
 	}
@@ -258,26 +312,53 @@ public abstract class Personaje implements Peleable, Serializable {
 
 	}
 
+	/**
+	 * Indica si posee la energía para atacar a otro personaje. <br>
+	 * 
+	 * @return true si tiene energía, false si no tiene la energía suficiente.
+	 *         <br>
+	 */
 	public boolean puedeAtacar() {
 		return energia > 10;
 	}
 
+	/**
+	 * Calcula los puntos de ataque del personaje. <br>
+	 * 
+	 * @return Puntos de ataque. <br>
+	 */
 	public int calcularPuntosDeAtaque() {
 		return (int) (this.getFuerza() * 1.5);
 	}
 
+	/**
+	 * Calcula los puntos de defensa del personaje. <br>
+	 * 
+	 * @return Puntos de defensa. <br>
+	 */
 	public int calcularPuntosDeDefensa() {
 		return (int) (this.getDestreza());
 	}
 
+	/**
+	 * Calcula los puntos de magia del personaje. <br>
+	 * 
+	 * @return Puntos de magia. <br>
+	 */
 	public int calcularPuntosDeMagia() {
 		return (int) (this.getInteligencia() * 1.5);
 	}
 
+	/**
+	 * Devuelve los puntos de salud a punto máximo. <br>
+	 */
 	public void restablecerSalud() {
 		this.salud = this.saludTope;
 	}
 
+	/**
+	 * Devuelve los puntos de energía a su punto máximo. <br>
+	 */
 	public void restablecerEnergia() {
 		this.energia = this.energiaTope;
 	}
@@ -386,6 +467,9 @@ public abstract class Personaje implements Peleable, Serializable {
 		this.modificarAtributos();
 	}
 
+	/**
+	 * Aumenta el nivel del personaje y actualiza sus atributos. <br>
+	 */
 	public void subirNivel() {
 
 		int acumuladorExperiencia = 0;
