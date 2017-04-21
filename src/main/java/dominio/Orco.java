@@ -1,7 +1,20 @@
 package dominio;
 
+/**
+ * La clase Orco crea el personaje de raza Orco e implementa las habilidades
+ * especiales de esta raza.
+ *
+ */
 public class Orco extends Personaje {
 
+	/**
+	 * Creacion del personaje con la salud y energia a tope y las habilidades
+	 * especial de la raza.
+	 * 
+	 * @param nombre
+	 * @param casta
+	 * @param id
+	 */
 	public Orco(String nombre, Casta casta, int id) {
 		super(nombre, casta, id);
 		saludTope += 10;
@@ -14,6 +27,22 @@ public class Orco extends Personaje {
 		habilidadesRaza[1] = "Mordisco de Vida";
 	}
 
+	/**
+	 * Este constructor sobreescribe el constructor de Personaje con los valores
+	 * correspondientes a la raza de Orco. Asignandole las habiliades y
+	 * caracteristicas correspondientes.
+	 * 
+	 * @param nombre
+	 * @param salud
+	 * @param energia
+	 * @param fuerza
+	 * @param destreza
+	 * @param inteligencia
+	 * @param casta
+	 * @param experiencia
+	 * @param nivel
+	 * @param idPersonaje
+	 */
 	public Orco(String nombre, int salud, int energia, int fuerza, int destreza, int inteligencia, Casta casta,
 			int experiencia, int nivel, int idPersonaje) {
 		super(nombre, salud, energia, fuerza, destreza, inteligencia, casta, experiencia, nivel, idPersonaje);
