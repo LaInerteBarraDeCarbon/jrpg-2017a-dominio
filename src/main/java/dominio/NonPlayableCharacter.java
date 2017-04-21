@@ -1,5 +1,9 @@
 package dominio;
 
+/**
+ * La clase NonPlayableCharacter se encarga de crear los NPC, personajes propiamente del juego.
+ * 
+ */
 public class NonPlayableCharacter implements Peleable {
 
 	private int salud;
@@ -9,6 +13,13 @@ public class NonPlayableCharacter implements Peleable {
 	private int nivel;
 	private static final int dificultadAleatoria = -1;
 
+/**
+ * Crea dicho personaje con su nombre y nivel espesifico. Cargando sus cualidades aleatoriamente.
+ * 
+ * @param nombre
+ * @param nivel
+ * @param dificultadNPC
+ */
 	public NonPlayableCharacter(String nombre, int nivel, int dificultadNPC) {
 		this.nombre = nombre;
 		this.nivel = nivel;
@@ -85,7 +96,10 @@ public class NonPlayableCharacter implements Peleable {
 	public void setSalud(int salud) {
 		this.salud = salud;
 	}
-
+/**
+ * Este metodo hace que el NPC pueda atacar. Calculando aleatoriamente la cualidad
+ * de lanzar un ataque con golpe critico( mayor danio ).
+ */
 	public int atacar(Peleable atacado) {
 		if (MyRandom.nextDouble() <= 0.15) {// los NPC tienen 15% de golpes criticos
 			return atacado.serAtacado((int) (this.getAtaque() * 1.5));
