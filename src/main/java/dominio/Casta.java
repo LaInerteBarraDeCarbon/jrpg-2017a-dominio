@@ -2,6 +2,14 @@ package dominio;
 
 import java.io.Serializable;
 
+/**
+ * La clase Casta representa el oficio de cada personaje.
+ * <p>
+ * Administra los atributos de probabilidades que se usarán en la batalla.
+ * <p>
+ * También define las 3 habilidades que varían según el tipo de personaje.
+ * <p>
+ */
 public abstract class Casta implements Serializable {
 	
 	protected double probabilidadGolpeCritico;
@@ -17,16 +25,42 @@ public abstract class Casta implements Serializable {
 		this.dañoCritico = 1.5;
 	}
 
+	/**
+	 * Crea una casta dadas la proabilidad de golpe crítico y
+	 * de evitar daño y el daño crítico del persnaje.
+	 * <p>
+	 * @param prob_crit	es la probabilidad del personaje de dar un golpe crítico.
+	 * @param evasion	es la probabilidad del personaje de evitar el daño.
+	 * @param daño_crit	es la fuerza del daño crítico del personaje.
+	 */
 	public Casta(double prob_crit, double evasion, double daño_crit) {
 		this.probabilidadGolpeCritico = prob_crit;
 		this.probabilidadEvitarDaño = evasion;
 		this.dañoCritico = daño_crit;
 	}
 
+	/**
+	 * Define la habilidad1 para cada tipo de personaje.
+	 * <p>
+	 * @param caster
+	 * @param atacado
+	 */
 	public abstract boolean habilidad1(Personaje caster, Peleable atacado);
 
+	/**
+	 * Define la habilidad2 para este tipo de personaje.
+	 * <p>
+	 * @param caster
+	 * @param atacado
+	 */
 	public abstract boolean habilidad2(Personaje caster, Peleable atacado);
 
+	/**
+	 * Define la habilidad3 para este tipo de personaje.
+	 * <p>
+	 * @param caster
+	 * @param atacado
+	 */
 	public abstract boolean habilidad3(Personaje caster, Peleable atacado);
 
 	public String getNombreCasta() {
