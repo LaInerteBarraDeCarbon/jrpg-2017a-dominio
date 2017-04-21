@@ -1,20 +1,19 @@
 package dominio;
 
 /**
- * La clase Elfo crea los personajes de dicha raza.
- * Asi tambien implementa sus habilidades especiales de esta raza.
+ * La clase Elfo crea los personajes de dicha raza. Asi tambien implementa sus
+ * habilidades especiales de esta raza. <br>
  */
-
 public class Elfo extends Personaje {
 
-/**
- * Crea el personaje Elfo con sus valores ya establecidos 
- * y le asigna sus habilidades de raza.
- * 	
- * @param nombre
- * @param casta
- * @param id
- */
+	/**
+	 * Crea el personaje Elfo con sus valores ya establecidos y le asigna sus
+	 * habilidades de raza. <br>
+	 * 
+	 * @param nombre
+	 * @param casta
+	 * @param id
+	 */
 	public Elfo(String nombre, Casta casta, int id) {
 		super(nombre, casta, id);
 		energiaTope += 10;
@@ -26,22 +25,23 @@ public class Elfo extends Personaje {
 		habilidadesRaza[0] = "Golpe Level";
 		habilidadesRaza[1] = "Ataque Bosque";
 	}
-/**
- * Este constructor sobreescribe el constructor de Personaje con los valores correspondientes
- * a la raza de Elfo.
- * Asignandole las habiliades y caracteristicas correspondientes.
- * 
- * @param nombre
- * @param salud
- * @param energia
- * @param fuerza
- * @param destreza
- * @param inteligencia
- * @param casta
- * @param experiencia
- * @param nivel
- * @param idPersonaje
- */
+
+	/**
+	 * Este constructor sobreescribe el constructor de Personaje con los valores
+	 * correspondientes a la raza de Elfo. Asignandole las habiliades y
+	 * caracteristicas correspondientes. <br>
+	 * 
+	 * @param nombre
+	 * @param salud
+	 * @param energia
+	 * @param fuerza
+	 * @param destreza
+	 * @param inteligencia
+	 * @param casta
+	 * @param experiencia
+	 * @param nivel
+	 * @param idPersonaje
+	 */
 	public Elfo(String nombre, int salud, int energia, int fuerza, int destreza, int inteligencia, Casta casta,
 			int experiencia, int nivel, int idPersonaje) {
 		super(nombre, salud, energia, fuerza, destreza, inteligencia, casta, experiencia, nivel, idPersonaje);

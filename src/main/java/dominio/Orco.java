@@ -2,14 +2,13 @@ package dominio;
 
 /**
  * La clase Orco crea el personaje de raza Orco e implementa las habilidades
- * especiales de esta raza.
- *
+ * especiales de esta raza. <br>
  */
 public class Orco extends Personaje {
 
 	/**
 	 * Creacion del personaje con la salud y energia a tope y las habilidades
-	 * especial de la raza.
+	 * especial de la raza. <br>
 	 * 
 	 * @param nombre
 	 * @param casta
@@ -30,7 +29,7 @@ public class Orco extends Personaje {
 	/**
 	 * Este constructor sobreescribe el constructor de Personaje con los valores
 	 * correspondientes a la raza de Orco. Asignandole las habiliades y
-	 * caracteristicas correspondientes.
+	 * caracteristicas correspondientes. <br>
 	 * 
 	 * @param nombre
 	 * @param salud

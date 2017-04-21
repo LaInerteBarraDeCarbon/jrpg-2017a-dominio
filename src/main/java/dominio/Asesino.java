@@ -1,28 +1,29 @@
 package dominio;
 
 /**
- * La clase Asesino representa el oficio de asesino del personaje
- * y sus 3 habilidades concretas.
+ * La clase Asesino representa el oficio de asesino del personaje y sus 3
+ * habilidades concretas.
  * <p>
  */
 public class Asesino extends Casta {
 
 	/**
-	 * Crea un personaje con oficio de asesino dadas la proabilidad de
-	 * golpe crítico y de evitar daño y el daño crítico del persnaje.
+	 * Crea un personaje con oficio de asesino dadas la proabilidad de golpe
+	 * crítico y de evitar daño y el daño crítico del persnaje.
 	 * <p>
-	 * @param prob_crit	es la probabilidad del personaje de dar un golpe crítico.
-	 * @param evasion	es la probabilidad del personaje de evitar el daño.
-	 * @param daño_crit	es la fuerza del daño crítico del personaje.
+	 * 
+	 * @param prob_crit
+	 * @param evasion
+	 * @param daño_crit
 	 */
 	public Asesino(double prob_crit, double evasion, double daño_crit) {
 		super(prob_crit, evasion, daño_crit);
-		this.nombreCasta="Asesino";
+		this.nombreCasta = "Asesino";
 	}
 
 	public Asesino() {
 		super();
-		this.nombreCasta="Asesino";
+		this.nombreCasta = "Asesino";
 		habilidadesCasta = new String[3];
 		habilidadesCasta[0] = "Golpe Critico";
 		habilidadesCasta[1] = "Aumentar Evasion";
@@ -32,8 +33,11 @@ public class Asesino extends Casta {
 	/**
 	 * Define la habilidad1 para el asesino.
 	 * <p>
+	 * 
 	 * @param caster
 	 * @param atacado
+	 * 
+	 * @return true si logra atacarlo, false de lo contrario. <br>
 	 */
 	// Golpe Crítico
 	public boolean habilidad1(Personaje caster, Peleable atacado) {
@@ -48,8 +52,11 @@ public class Asesino extends Casta {
 	/**
 	 * Define la habilidad2 para el asesino.
 	 * <p>
+	 * 
 	 * @param caster
 	 * @param atacado
+	 * 
+	 * @return true si logra evitar daño, false de lo contrario. <br>
 	 */
 	// Aumentar Evasion
 	public boolean habilidad2(Personaje caster, Peleable atacado) {
@@ -67,8 +74,11 @@ public class Asesino extends Casta {
 	/**
 	 * Define la habilidad3 para el asesino.
 	 * <p>
+	 * 
 	 * @param caster
 	 * @param atacado
+	 * 
+	 * @return true si logra robar, false de lo contrario. <br>
 	 */
 	// Robar
 	public boolean habilidad3(Personaje caster, Peleable atacado) {

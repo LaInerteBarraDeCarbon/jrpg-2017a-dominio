@@ -11,7 +11,7 @@ import java.io.Serializable;
  * <p>
  */
 public abstract class Casta implements Serializable {
-	
+
 	protected double probabilidadGolpeCritico;
 	protected double probabilidadEvitarDaño;
 	protected double dañoCritico;
@@ -26,12 +26,13 @@ public abstract class Casta implements Serializable {
 	}
 
 	/**
-	 * Crea una casta dadas la proabilidad de golpe crítico y
-	 * de evitar daño y el daño crítico del persnaje.
+	 * Crea una casta dadas la proabilidad de golpe crítico y de evitar daño y
+	 * el daño crítico del persnaje.
 	 * <p>
-	 * @param prob_crit	es la probabilidad del personaje de dar un golpe crítico.
-	 * @param evasion	es la probabilidad del personaje de evitar el daño.
-	 * @param daño_crit	es la fuerza del daño crítico del personaje.
+	 * 
+	 * @param prob_crit
+	 * @param evasion
+	 * @param daño_crit
 	 */
 	public Casta(double prob_crit, double evasion, double daño_crit) {
 		this.probabilidadGolpeCritico = prob_crit;
@@ -42,24 +43,33 @@ public abstract class Casta implements Serializable {
 	/**
 	 * Define la habilidad1 para cada tipo de personaje.
 	 * <p>
+	 * 
 	 * @param caster
 	 * @param atacado
+	 * 
+	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
 	public abstract boolean habilidad1(Personaje caster, Peleable atacado);
 
 	/**
 	 * Define la habilidad2 para este tipo de personaje.
 	 * <p>
+	 * 
 	 * @param caster
 	 * @param atacado
+	 * 
+	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
 	public abstract boolean habilidad2(Personaje caster, Peleable atacado);
 
 	/**
 	 * Define la habilidad3 para este tipo de personaje.
 	 * <p>
+	 * 
 	 * @param caster
 	 * @param atacado
+	 * 
+	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
 	public abstract boolean habilidad3(Personaje caster, Peleable atacado);
 

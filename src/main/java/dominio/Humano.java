@@ -1,18 +1,17 @@
 package dominio;
 
 /**
- * La clase Humano es la encargada de crear la raza humano.
- *
+ * La clase Humano es la encargada de crear la raza humano. <br>
  */
 public class Humano extends Personaje {
-/**
- * Crea el personaje de raza Humano
- * asginandole los valores predefinidos de su salud y energia 
- * 
- * @param nombre
- * @param casta
- * @param id
- */
+	/**
+	 * Crea el personaje de raza Humano asginandole los valores predefinidos de
+	 * su salud y energia. <br>
+	 * 
+	 * @param nombre
+	 * @param casta
+	 * @param id
+	 */
 	public Humano(String nombre, Casta casta, int id) {
 		super(nombre, casta, id);
 		saludTope += 5;
@@ -21,22 +20,23 @@ public class Humano extends Personaje {
 		energia = energiaTope;
 		nombreRaza = "Humano";
 	}
-/**
- * Este constructor sobreescribe el constructor de Personaje con los valores correspondientes
- * a la raza de Humano.
- * Asignandole las habiliades y caracteristicas correspondientes.
- * 
- * @param nombre
- * @param salud
- * @param energia
- * @param fuerza
- * @param destreza
- * @param inteligencia
- * @param casta
- * @param experiencia
- * @param nivel
- * @param idPersonaje
- */
+
+	/**
+	 * Este constructor sobreescribe el constructor de Personaje con los valores
+	 * correspondientes a la raza de Humano. Asignandole las habiliades y
+	 * caracteristicas correspondientes. <br>
+	 * 
+	 * @param nombre
+	 * @param salud
+	 * @param energia
+	 * @param fuerza
+	 * @param destreza
+	 * @param inteligencia
+	 * @param casta
+	 * @param experiencia
+	 * @param nivel
+	 * @param idPersonaje
+	 */
 	public Humano(String nombre, int salud, int energia, int fuerza, int destreza, int inteligencia, Casta casta,
 			int experiencia, int nivel, int idPersonaje) {
 		super(nombre, salud, energia, fuerza, destreza, inteligencia, casta, experiencia, nivel, idPersonaje);

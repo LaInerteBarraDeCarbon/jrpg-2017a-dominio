@@ -1,8 +1,8 @@
 package dominio;
 
 /**
- * La clase NonPlayableCharacter se encarga de crear los NPC, personajes propiamente del juego.
- * 
+ * La clase NonPlayableCharacter se encarga de crear los NPC, personajes
+ * propiamente del juego.
  */
 public class NonPlayableCharacter implements Peleable {
 
@@ -13,13 +13,14 @@ public class NonPlayableCharacter implements Peleable {
 	private int nivel;
 	private static final int dificultadAleatoria = -1;
 
-/**
- * Crea dicho personaje con su nombre y nivel espesifico. Cargando sus cualidades aleatoriamente.
- * 
- * @param nombre
- * @param nivel
- * @param dificultadNPC
- */
+	/**
+	 * Crea dicho personaje con su nombre y nivel espesifico. Cargando sus
+	 * cualidades aleatoriamente. <br>
+	 * 
+	 * @param nombre
+	 * @param nivel
+	 * @param dificultadNPC
+	 */
 	public NonPlayableCharacter(String nombre, int nivel, int dificultadNPC) {
 		this.nombre = nombre;
 		this.nivel = nivel;
@@ -96,12 +97,16 @@ public class NonPlayableCharacter implements Peleable {
 	public void setSalud(int salud) {
 		this.salud = salud;
 	}
-/**
- * Este metodo hace que el NPC pueda atacar. Calculando aleatoriamente la cualidad
- * de lanzar un ataque con golpe critico( mayor danio ).
- */
+
+	/**
+	 * Este metodo hace que el NPC pueda atacar. Calculando aleatoriamente la
+	 * cualidad de lanzar un ataque con golpe critico (mayor daño). <br>
+	 * 
+	 * @return Cantidad de daño. <br>
+	 */
 	public int atacar(Peleable atacado) {
-		if (MyRandom.nextDouble() <= 0.15) {// los NPC tienen 15% de golpes criticos
+		if (MyRandom.nextDouble() <= 0.15) {// los NPC tienen 15% de golpes
+											// criticos
 			return atacado.serAtacado((int) (this.getAtaque() * 1.5));
 		} else
 			return atacado.serAtacado(this.getAtaque());
@@ -119,7 +124,8 @@ public class NonPlayableCharacter implements Peleable {
 		return 0;// esquivo el golpe
 	}
 
-	public void despuesDeTurno() { }
+	public void despuesDeTurno() {
+	}
 
 	public void ganarExperiencia(int exp) {
 

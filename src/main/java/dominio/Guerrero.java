@@ -1,19 +1,20 @@
 package dominio;
 
 /**
- * La clase Guerrero representa el oficio de guerrero del personaje
- * y sus 3 habilidades concretas.
+ * La clase Guerrero representa el oficio de guerrero del personaje y sus 3
+ * habilidades concretas.
  * <p>
  */
 public class Guerrero extends Casta {
 
 	/**
-	 * Crea un personaje con oficio de guerrero dadas la proabilidad de
-	 * golpe crítico y de evitar daño y el daño crítico del persnaje.
+	 * Crea un personaje con oficio de guerrero dadas la proabilidad de golpe
+	 * crítico y de evitar daño y el daño crítico del persnaje.
 	 * <p>
-	 * @param prob_crit	es la probabilidad del personaje de dar un golpe crítico.
-	 * @param evasion	es la probabilidad del personaje de evitar el daño.
-	 * @param daño_crit	es la fuerza del daño crítico del personaje.
+	 * 
+	 * @param prob_crit
+	 * @param evasion
+	 * @param daño_crit
 	 */
 	public Guerrero(double prob_crit, double evasion, double daño_crit) {
 		super(prob_crit, evasion, daño_crit);
@@ -33,11 +34,14 @@ public class Guerrero extends Casta {
 	/**
 	 * Define la habilidad1 para el guerrero.
 	 * <p>
+	 * 
 	 * @param caster
 	 * @param atacado
+	 * 
+	 * @return true si logra atacarlo, false de lo contrario. <br>
 	 */
 	// Ataque Doble
-	public boolean habilidad1(Personaje caster, Peleable atacado) { 
+	public boolean habilidad1(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
 			if (atacado.serAtacado(caster.ataque * 2) > 0)
@@ -45,15 +49,18 @@ public class Guerrero extends Casta {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Define la habilidad2 para el guerrero.
 	 * <p>
+	 * 
 	 * @param caster
 	 * @param atacado
+	 * 
+	 * @return true de aumentar la defensa, false de lo contrario. <br>
 	 */
 	// Aumentar Defensa
-	public boolean habilidad2(Personaje caster, Peleable atacado) { 
+	public boolean habilidad2(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
 			caster.setDefensa(caster.getDefensa() + caster.magia);
@@ -65,11 +72,14 @@ public class Guerrero extends Casta {
 	/**
 	 * Define la habilidad3 para el guerrero.
 	 * <p>
+	 * 
 	 * @param caster
 	 * @param atacado
+	 * 
+	 * @return true si logra ignorar la defensa, false de lo contrario. <br>
 	 */
 	// Ignorar Defensa
-	public boolean habilidad3(Personaje caster, Peleable atacado) { 
+	public boolean habilidad3(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
 			if (atacado instanceof Personaje) {

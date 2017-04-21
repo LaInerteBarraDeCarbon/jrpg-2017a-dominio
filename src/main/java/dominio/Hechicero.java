@@ -1,19 +1,20 @@
 package dominio;
 
 /**
- * La clase Hechicero representa el oficio de hechicero del personaje
- * y sus 3 habilidades concretas.
+ * La clase Hechicero representa el oficio de hechicero del personaje y sus 3
+ * habilidades concretas.
  * <p>
  */
 public class Hechicero extends Casta {
 
 	/**
-	 * Crea un personaje con oficio de hechicero dadas la proabilidad de
-	 * golpe crítico y de evitar daño y el daño crítico del persnaje.
+	 * Crea un personaje con oficio de hechicero dadas la proabilidad de golpe
+	 * crítico y de evitar daño y el daño crítico del persnaje.
 	 * <p>
-	 * @param prob_crit	es la probabilidad del personaje de dar un golpe crítico.
-	 * @param evasion	es la probabilidad del personaje de evitar el daño.
-	 * @param daño_crit	es la fuerza del daño crítico del personaje.
+	 * 
+	 * @param prob_crit
+	 * @param evasion
+	 * @param daño_crit
 	 */
 	public Hechicero(double prob_crit, double evasion, double daño_crit) {
 		super(prob_crit, evasion, daño_crit);
@@ -32,8 +33,11 @@ public class Hechicero extends Casta {
 	/**
 	 * Define la habilidad1 para el hechicero.
 	 * <p>
+	 * 
 	 * @param caster
 	 * @param atacado
+	 * 
+	 * @return true si logra atacar, false de lo contrario. <br>
 	 */
 	// Bola de Fuego
 	public boolean habilidad1(Personaje caster, Peleable atacado) {
@@ -48,8 +52,11 @@ public class Hechicero extends Casta {
 	/**
 	 * Define la habilidad2 para el hechicero.
 	 * <p>
+	 * 
 	 * @param caster
 	 * @param atacado
+	 * 
+	 * @return true si logra curar, false de lo contrario. <br>
 	 */
 	// Curar Aliado
 	public boolean habilidad2(Personaje caster, Peleable aliado) {
@@ -66,8 +73,11 @@ public class Hechicero extends Casta {
 	/**
 	 * Define la habilidad3 para el hechicero.
 	 * <p>
+	 * 
 	 * @param caster
 	 * @param atacado
+	 * 
+	 * @return true si logra robar, false de lo contrario. <br>
 	 */
 	// Robar Energia y Salud
 	public boolean habilidad3(Personaje caster, Peleable atacado) {
