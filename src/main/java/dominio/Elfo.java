@@ -53,6 +53,9 @@ public class Elfo extends Personaje {
 	}
 
 	// Golpe Level
+	/**
+	 * Realiza la primer habilidad de raza de elfo, el golpe de nivel. <br>
+	 */
 	public boolean habilidadRaza1(Peleable atacado) {
 		if (this.getEnergia() > 10) {
 			this.setEnergia(this.getEnergia() - 10);
@@ -63,6 +66,9 @@ public class Elfo extends Personaje {
 	}
 
 	// Ataque Bosque
+	/**
+	 * Realiza la segunda habilidad de raza de elfo, el ataque de bosque. <br>
+	 */
 	public boolean habilidadRaza2(Peleable atacado) {
 		if (this.getEnergia() > 10) {
 			this.setEnergia(this.getEnergia() - 10);

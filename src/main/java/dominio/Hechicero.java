@@ -21,6 +21,9 @@ public class Hechicero extends Casta {
 		this.nombreCasta = "Hechicero";
 	}
 
+	/**
+	 * Crea un personaje con oficio de hechizero. <br>
+	 */
 	public Hechicero() {
 		super();
 		this.nombreCasta = "Hechicero";
@@ -30,16 +33,10 @@ public class Hechicero extends Casta {
 		habilidadesCasta[2] = "Robar Energia y Salud";
 	}
 
-	/**
-	 * Define la habilidad1 para el hechicero.
-	 * <p>
-	 * 
-	 * @param caster
-	 * @param atacado
-	 * 
-	 * @return true si logra atacar, false de lo contrario. <br>
-	 */
 	// Bola de Fuego
+	/**
+	 * Realiza la primer habilidad de la casta del hechizero, bola de fuego. <br>
+	 */
 	public boolean habilidad1(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
@@ -49,16 +46,10 @@ public class Hechicero extends Casta {
 		return false;
 	}
 
-	/**
-	 * Define la habilidad2 para el hechicero.
-	 * <p>
-	 * 
-	 * @param caster
-	 * @param atacado
-	 * 
-	 * @return true si logra curar, false de lo contrario. <br>
-	 */
 	// Curar Aliado
+	/**
+	 * Realiza la segunda habilidad de la casta del hechizero, curar aliado. <br>
+	 */
 	public boolean habilidad2(Personaje caster, Peleable aliado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
@@ -70,16 +61,10 @@ public class Hechicero extends Casta {
 		return false;
 	}
 
-	/**
-	 * Define la habilidad3 para el hechicero.
-	 * <p>
-	 * 
-	 * @param caster
-	 * @param atacado
-	 * 
-	 * @return true si logra robar, false de lo contrario. <br>
-	 */
 	// Robar Energia y Salud
+	/**
+	 * Realiza la tercer habilidad de la casta del hechizero, robar energía y salud. <br>
+	 */
 	public boolean habilidad3(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);

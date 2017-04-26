@@ -48,6 +48,9 @@ public class Humano extends Personaje {
 	}
 
 	// Incentivar
+	/**
+	 * Realiza la primer habilidad de raza del humano, incentivar. <br>
+	 */
 	public boolean habilidadRaza1(Peleable atacado) {
 		if (this.getEnergia() > 10) {
 			this.setEnergia(this.getEnergia() - 10);
@@ -58,6 +61,9 @@ public class Humano extends Personaje {
 	}
 
 	// Golpe Fatal
+	/**
+	 * Realiza la segunda habilidad de raza del humano, golpe fatal. <br>
+	 */
 	public boolean habilidadRaza2(Peleable atacado) {
 		if (this.getEnergia() > 10) {
 			if (atacado.serAtacado(atacado.getSalud() / 2) > 0) {

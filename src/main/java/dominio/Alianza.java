@@ -10,32 +10,19 @@ public class Alianza {
 
 	String nombre;
 	LinkedList<Personaje> aliados;
-<<<<<<< Updated upstream
 
 	/**
 	 * La funcion Alianza se utiliza para determinar lazos con otros personajes.
 	 * <br>
 	 */
-=======
-<<<<<<< HEAD
-/** La funcion Alianza se utiliza para determinar lazos con otros personajes*/
-=======
-
->>>>>>> parent of 23c6f48... Merge remote-tracking branch 'origin/PersonajePeleable'
->>>>>>> Stashed changes
 	public Alianza(String nombre) {
 		this.nombre = nombre;
 		this.aliados = new LinkedList<Personaje>();
 	}
-<<<<<<< Updated upstream
 
 	/**
 	 * Devuelve los aliados almacenados en la lista. <br>
 	 */
-=======
-<<<<<<< HEAD
-/** Devuelve los aliados almacenados en la lista*/
->>>>>>> Stashed changes
 	public LinkedList<Personaje> getAliados() {
 		return aliados;
 	}
@@ -52,7 +39,7 @@ public class Alianza {
 	}
 
 	/**
-	 * Esta funcion devuelve el nombre de aliado
+	 * Esta funcion devuelve el nombre de aliado. <br>
 	 * 
 	 * @return Nombre de la alianza. <br>
 	 */
@@ -68,39 +55,12 @@ public class Alianza {
 	public void eliminarPersonaje(Personaje pj) {
 		aliados.remove(pj);
 	}
-<<<<<<< Updated upstream
 
 	/**
 	 * Esta funcion se encarga de agragar un personaje a la alianza. <br>
 	 * 
 	 * @param pj
 	 */
-=======
-/** Esta funcion se encarga de agragar un personaje
- * 
- * @param pj
- * retorna si añado
- */
-=======
-
-	public LinkedList<Personaje> getAliados() {
-		return aliados;
-	}
-
-	public void setAliados(LinkedList<Personaje> aliados) {
-		this.aliados = aliados;
-	}
-
-	public String obtenerNombre() {
-		return nombre;
-	}
-
-	public void eliminarPersonaje(Personaje pj) {
-		aliados.remove(pj);
-	}
-
->>>>>>> parent of 23c6f48... Merge remote-tracking branch 'origin/PersonajePeleable'
->>>>>>> Stashed changes
 	public void añadirPersonaje(Personaje pj) {
 		aliados.add(pj);
 	}

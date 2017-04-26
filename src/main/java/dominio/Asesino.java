@@ -21,6 +21,9 @@ public class Asesino extends Casta {
 		this.nombreCasta = "Asesino";
 	}
 
+	/**
+	 * Crea un personaje con oficio de asesino. <br>
+	 */
 	public Asesino() {
 		super();
 		this.nombreCasta = "Asesino";
@@ -30,16 +33,10 @@ public class Asesino extends Casta {
 		habilidadesCasta[2] = "Robar";
 	}
 
-	/**
-	 * Define la habilidad1 para el asesino.
-	 * <p>
-	 * 
-	 * @param caster
-	 * @param atacado
-	 * 
-	 * @return true si logra atacarlo, false de lo contrario. <br>
-	 */
 	// Golpe Crítico
+	/**
+	 * Realiza la primer habilidad de la casta del asesino, golpe crítico. <br>
+	 */
 	public boolean habilidad1(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
@@ -49,16 +46,10 @@ public class Asesino extends Casta {
 		return false;
 	}
 
-	/**
-	 * Define la habilidad2 para el asesino.
-	 * <p>
-	 * 
-	 * @param caster
-	 * @param atacado
-	 * 
-	 * @return true si logra evitar daño, false de lo contrario. <br>
-	 */
 	// Aumentar Evasion
+	/**
+	 * Realiza la segunda habilidad de la casta del asesino, aumentar evasión. <br>
+	 */
 	public boolean habilidad2(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
@@ -71,16 +62,10 @@ public class Asesino extends Casta {
 		return false;
 	}
 
-	/**
-	 * Define la habilidad3 para el asesino.
-	 * <p>
-	 * 
-	 * @param caster
-	 * @param atacado
-	 * 
-	 * @return true si logra robar, false de lo contrario. <br>
-	 */
 	// Robar
+	/**
+	 * Realiza la tercer habilidad de la casta del asesino, robar. <br>
+	 */
 	public boolean habilidad3(Personaje caster, Peleable atacado) {
 		return false;
 	}

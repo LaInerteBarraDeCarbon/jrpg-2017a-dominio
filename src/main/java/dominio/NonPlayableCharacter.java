@@ -6,11 +6,29 @@ package dominio;
  */
 public class NonPlayableCharacter implements Peleable {
 
+	/**
+	 * Salud del NPC. <br>
+	 */
 	private int salud;
+	/**
+	 * Fuerza del NPC. <br>
+	 */
 	private int fuerza;
+	/**
+	 * Defensa del NPC. <br>
+	 */
 	private int defensa;
+	/**
+	 * Nombre del NPC. <br>
+	 */
 	private String nombre;
+	/**
+	 * Nivel del NPC. <br>
+	 */
 	private int nivel;
+	/**
+	 * Dificultad del NPC. <br>
+	 */
 	private static final int dificultadAleatoria = -1;
 
 	/**
@@ -54,10 +72,20 @@ public class NonPlayableCharacter implements Peleable {
 		return this.nivel * 30;
 	}
 
+	/**
+	 * Devuelve la fuerza del NPC. <br>
+	 * 
+	 * @return Fuerza del NPC. <br>
+	 */
 	public int getFuerza() {
 		return fuerza;
 	}
 
+	/**
+	 * Establece la fuerza del NPC. <br>
+	 * 
+	 * @param fuerza
+	 */
 	public void setFuerza(int fuerza) {
 		this.fuerza = fuerza;
 	}
@@ -66,14 +94,29 @@ public class NonPlayableCharacter implements Peleable {
 		return nombre;
 	}
 
+	/**
+	 * Establece el nombre del NPC. <br>
+	 * 
+	 * @param nombre
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * Devuelve el nivel del NPC. <br>
+	 * 
+	 * @return Nivel del NPC. <br>
+	 */
 	public int getNivel() {
 		return nivel;
 	}
 
+	/**
+	 * Establece el nivel del NPC. <br>
+	 * 
+	 * @param nivel
+	 */
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
@@ -82,10 +125,20 @@ public class NonPlayableCharacter implements Peleable {
 		return salud > 0;
 	}
 
+	/**
+	 * Devuelve la defensa del NPC. <br>
+	 * 
+	 * @return Defensa del NPC. <br>
+	 */
 	public int getDefensa() {
 		return defensa;
 	}
 
+	/**
+	 * Establece la defensa del NPC. <br>
+	 * 
+	 * @param defensa
+	 */
 	public void setDefensa(int defensa) {
 		this.defensa = defensa;
 	}
@@ -94,16 +147,15 @@ public class NonPlayableCharacter implements Peleable {
 		return salud;
 	}
 
+	/**
+	 * Establece la salud del NPC. <br>
+	 * 
+	 * @param salud
+	 */
 	public void setSalud(int salud) {
 		this.salud = salud;
 	}
 
-	/**
-	 * Este metodo hace que el NPC pueda atacar. Calculando aleatoriamente la
-	 * cualidad de lanzar un ataque con golpe critico (mayor daño). <br>
-	 * 
-	 * @return Cantidad de daño. <br>
-	 */
 	public int atacar(Peleable atacado) {
 		if (MyRandom.nextDouble() <= 0.15) {// los NPC tienen 15% de golpes
 											// criticos
@@ -127,6 +179,11 @@ public class NonPlayableCharacter implements Peleable {
 	public void despuesDeTurno() {
 	}
 
+	/**
+	 * Indica la experiencia ganada para el NPC. <br>
+	 * 
+	 * @param exp
+	 */
 	public void ganarExperiencia(int exp) {
 
 	}

@@ -21,6 +21,9 @@ public class Guerrero extends Casta {
 		this.nombreCasta = "Guerrero";
 	}
 
+	/**
+	 * Crea un personaje con el oficio de guerrero. <br>
+	 */
 	public Guerrero() {
 		super();
 		this.nombreCasta = "Guerrero";
@@ -31,16 +34,10 @@ public class Guerrero extends Casta {
 		habilidadesCasta[2] = "Ignorar Defensa";
 	}
 
-	/**
-	 * Define la habilidad1 para el guerrero.
-	 * <p>
-	 * 
-	 * @param caster
-	 * @param atacado
-	 * 
-	 * @return true si logra atacarlo, false de lo contrario. <br>
-	 */
 	// Ataque Doble
+	/**
+	 * Realiza la primer habilidad de la casta del guerrero, ataque doble. <br>
+	 */
 	public boolean habilidad1(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
@@ -50,16 +47,10 @@ public class Guerrero extends Casta {
 		return false;
 	}
 
-	/**
-	 * Define la habilidad2 para el guerrero.
-	 * <p>
-	 * 
-	 * @param caster
-	 * @param atacado
-	 * 
-	 * @return true de aumentar la defensa, false de lo contrario. <br>
-	 */
 	// Aumentar Defensa
+	/**
+	 * Realiza la segunda habilidad de la casta del guerrero, aumentar defensa. <br>
+	 */
 	public boolean habilidad2(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
@@ -69,16 +60,10 @@ public class Guerrero extends Casta {
 		return false;
 	}
 
-	/**
-	 * Define la habilidad3 para el guerrero.
-	 * <p>
-	 * 
-	 * @param caster
-	 * @param atacado
-	 * 
-	 * @return true si logra ignorar la defensa, false de lo contrario. <br>
-	 */
 	// Ignorar Defensa
+	/**
+	 * Realiza la tercer habilidad de la casta del guerrero, ignorar defensa. <br>
+	 */
 	public boolean habilidad3(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);

@@ -53,6 +53,9 @@ public class Orco extends Personaje {
 	}
 
 	// Golpe Defensa
+	/**
+	 * Realiza la primera habilidad de orco, el golpe defensa. <br>
+	 */
 	public boolean habilidadRaza1(Peleable atacado) {
 		if (this.getEnergia() > 10) {
 			this.setEnergia(this.getEnergia() - 10);
@@ -63,6 +66,9 @@ public class Orco extends Personaje {
 	}
 
 	// Mordisco de Vida
+	/**
+	 * Realiza la segunda habilidad de orco, el modisco de vida. <br>
+	 */
 	public boolean habilidadRaza2(Peleable atacado) {
 		if (this.getEnergia() > 10) {
 			this.setEnergia(this.getEnergia() - 10);
