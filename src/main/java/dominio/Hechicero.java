@@ -36,20 +36,23 @@ public class Hechicero extends Casta {
 
 	// Bola de Fuego
 	/**
-	 * Realiza la primer habilidad de la casta del hechizero, bola de fuego. <br>
+	 * Realiza la primer habilidad de la casta del hechizero, bola de fuego.
+	 * <br>
 	 */
 	public boolean habilidad1(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
-			if (atacado.serAtacado((int) (caster.calcularPuntosDeMagia() * 1.5)) > 0)
+			if (atacado.serAtacado((int) (caster.calcularPuntosDeMagia() * 1.5)) > 0) {
 				return true;
+			}
 		}
 		return false;
 	}
 
 	// Curar Aliado
 	/**
-	 * Realiza la segunda habilidad de la casta del hechizero, curar aliado. <br>
+	 * Realiza la segunda habilidad de la casta del hechizero, curar aliado.
+	 * <br>
 	 */
 	public boolean habilidad2(Personaje caster, Peleable aliado) {
 		if (caster.getEnergia() > 10) {
@@ -64,7 +67,8 @@ public class Hechicero extends Casta {
 
 	// Robar Energia y Salud
 	/**
-	 * Realiza la tercer habilidad de la casta del hechizero, robar energía y salud. <br>
+	 * Realiza la tercer habilidad de la casta del hechizero, robar energía y
+	 * salud. <br>
 	 */
 	public boolean habilidad3(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {

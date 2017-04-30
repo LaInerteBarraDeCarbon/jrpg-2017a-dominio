@@ -42,15 +42,17 @@ public class Guerrero extends Casta {
 	public boolean habilidad1(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
-			if (atacado.serAtacado(caster.ataque * 2) > 0)
+			if (atacado.serAtacado(caster.ataque * 2) > 0) {
 				return true;
+			}
 		}
 		return false;
 	}
 
 	// Aumentar Defensa
 	/**
-	 * Realiza la segunda habilidad de la casta del guerrero, aumentar defensa. <br>
+	 * Realiza la segunda habilidad de la casta del guerrero, aumentar defensa.
+	 * <br>
 	 */
 	public boolean habilidad2(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
@@ -63,7 +65,8 @@ public class Guerrero extends Casta {
 
 	// Ignorar Defensa
 	/**
-	 * Realiza la tercer habilidad de la casta del guerrero, ignorar defensa. <br>
+	 * Realiza la tercer habilidad de la casta del guerrero, ignorar defensa.
+	 * <br>
 	 */
 	public boolean habilidad3(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {

@@ -15,6 +15,7 @@ import java.io.Serializable;
  * personaje, tanto las que crea y realiza como las que deja.<br>
  * <br>
  */
+@SuppressWarnings("serial")
 public abstract class Personaje extends Peleable implements Serializable {
 
 	/**
@@ -118,8 +119,9 @@ public abstract class Personaje extends Peleable implements Serializable {
 		Personaje.tablaDeNiveles = new int[101];
 		Personaje.tablaDeNiveles[0] = 0;
 		Personaje.tablaDeNiveles[1] = 0;
-		for (int i = 2; i < 101; i++)
+		for (int i = 2; i < 101; i++) {
 			Personaje.tablaDeNiveles[i] = Personaje.tablaDeNiveles[i - 1] + 50;
+		}
 	}
 
 	/**
@@ -138,12 +140,15 @@ public abstract class Personaje extends Peleable implements Serializable {
 		fuerza = 10;
 		inteligencia = 10;
 		destreza = 10;
-		if (casta instanceof Guerrero)
+		if (casta instanceof Guerrero) {
 			fuerza += 5;
-		if (casta instanceof Hechicero)
+		}
+		if (casta instanceof Hechicero) {
 			inteligencia += 5;
-		if (casta instanceof Asesino)
+		}
+		if (casta instanceof Asesino) {
 			destreza += 5;
+		}
 
 		x = 0;
 		y = 0;
@@ -481,8 +486,9 @@ public abstract class Personaje extends Peleable implements Serializable {
 	}
 
 	public int atacar(Peleable atacado) {
-		if (salud == 0)
+		if (!this.estaVivo()) {
 			return 0;
+		}
 		if (atacado.getSalud() > 0) {
 			if (MyRandom.nextDouble() <= this.casta.getProbabilidadGolpeCritico() + this.destreza / 1000) {
 				return atacado.serAtacado(this.golpe_critico());
@@ -588,11 +594,12 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 */
 	public int serRobadoSalud(int danio) {
 		danio -= this.defensa;
-		if (danio <= 0)
+		if (danio <= 0) {
 			return 0;
-		if ((salud - danio) >= 0)
+		}
+		if ((salud - danio) >= 0) {
 			salud -= danio;
-		else {
+		} else {
 			danio = salud;// le queda menos salud que el danio inflingido
 			salud = 0;
 		}
@@ -607,11 +614,12 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 */
 	public int serDesernegizado(int danio) {
 		danio -= this.defensa;
-		if (danio <= 0)
+		if (danio <= 0) {
 			return 0;
-		if ((energia - danio) >= 0)
+		}
+		if ((energia - danio) >= 0) {
 			energia -= danio;
-		else {
+		} else {
 			danio = energia;// le queda menos energia que el danio inflingido
 			energia = 0;
 		}
@@ -624,10 +632,11 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 * @param salud
 	 */
 	public void serCurado(int salud) {
-		if ((this.salud + salud) <= this.saludTope)
+		if ((this.salud + salud) <= this.saludTope) {
 			this.salud += salud;
-		else
+		} else {
 			this.salud = this.saludTope;
+		}
 	}
 
 	/**
@@ -636,10 +645,11 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 * @param energia
 	 */
 	public void serEnergizado(int energia) {
-		if ((this.energia + energia) <= this.energiaTope)
+		if ((this.energia + energia) <= this.energiaTope) {
 			this.energia += energia;
-		else
+		} else {
 			this.energia = this.energiaTope;
+		}
 	}
 
 	/**
@@ -680,8 +690,9 @@ public abstract class Personaje extends Peleable implements Serializable {
 			nuevo_aliado.clan = this.clan;
 			this.clan.aniadirPersonaje(nuevo_aliado);
 			return true;
-		} else
+		} else {
 			return false;
+		}
 	}
 
 	/**
@@ -692,12 +703,15 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 * @param inteligencia
 	 */
 	public void AsignarPuntosSkills(int fuerza, int destreza, int inteligencia) {
-		if (this.fuerza + fuerza <= 200)
+		if (this.fuerza + fuerza <= 200) {
 			this.fuerza += fuerza;
-		if (this.destreza + destreza <= 200)
+		}
+		if (this.destreza + destreza <= 200) {
 			this.destreza += destreza;
-		if (this.inteligencia + inteligencia <= 200)
+		}
+		if (this.inteligencia + inteligencia <= 200) {
 			this.inteligencia += inteligencia;
+		}
 		this.modificarAtributos();
 	}
 
@@ -705,7 +719,6 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 * Aumenta el nivel del personaje y actualiza sus atributos. <br>
 	 */
 	public void subirNivel() {
-
 		int acumuladorExperiencia = 0;
 		if (this.nivel == 100) {
 			return;
@@ -729,7 +742,6 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 */
 	public boolean ganarExperiencia(int exp) {
 		this.experiencia += exp;
-
 		if (experiencia >= Personaje.tablaDeNiveles[this.nivel + 1]) {
 			subirNivel();
 			return true;

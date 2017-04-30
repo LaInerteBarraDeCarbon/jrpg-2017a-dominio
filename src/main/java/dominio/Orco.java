@@ -4,6 +4,7 @@ package dominio;
  * La clase Orco crea el personaje de raza Orco e implementa las habilidades
  * especiales de esta raza. <br>
  */
+@SuppressWarnings("serial")
 public class Orco extends Personaje {
 
 	/**
@@ -59,8 +60,9 @@ public class Orco extends Personaje {
 	public boolean habilidadRaza1(Peleable atacado) {
 		if (this.getEnergia() > 10) {
 			this.setEnergia(this.getEnergia() - 10);
-			if (atacado.serAtacado(this.getDefensa() * 2) > 0)
+			if (atacado.serAtacado(this.getDefensa() * 2) > 0) {
 				return true;
+			}
 		}
 		return false;
 	}

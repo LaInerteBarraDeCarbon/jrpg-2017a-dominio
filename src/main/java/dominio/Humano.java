@@ -3,6 +3,7 @@ package dominio;
 /**
  * La clase Humano es la encargada de crear la raza humano. <br>
  */
+@SuppressWarnings("serial")
 public class Humano extends Personaje {
 	/**
 	 * Crea el personaje de raza Humano asginandole los valores predefinidos de

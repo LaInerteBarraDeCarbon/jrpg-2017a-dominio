@@ -2,9 +2,10 @@ package dominio;
 
 /**
  * La clase Asesino representa el oficio de asesino del personaje y sus 3
- * habilidades concretas. 
+ * habilidades concretas.
  * <p>
  */
+@SuppressWarnings("serial")
 public class Asesino extends Casta {
 
 	/**
@@ -40,23 +41,26 @@ public class Asesino extends Casta {
 	public boolean habilidad1(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
-			if (atacado.serAtacado((int) (caster.ataque * caster.getCasta().getDanioCritico())) > 0)
+			if (atacado.serAtacado((int) (caster.ataque * caster.getCasta().getDanioCritico())) > 0) {
 				return true;
+			}
 		}
 		return false;
 	}
 
 	// Aumentar Evasion
 	/**
-	 * Realiza la segunda habilidad de la casta del asesino, aumentar evasión. <br>
+	 * Realiza la segunda habilidad de la casta del asesino, aumentar evasión.
+	 * <br>
 	 */
 	public boolean habilidad2(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
-			if (this.getProbabilidadEvitarDanio() + 0.15 < 0.5)
+			if (this.getProbabilidadEvitarDanio() + 0.15 < 0.5) {
 				this.probabilidadEvitarDanio += 0.15;
-			else
+			} else {
 				this.probabilidadEvitarDanio = 0.5;
+			}
 			return true;
 		}
 		return false;

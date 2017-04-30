@@ -4,6 +4,7 @@ package dominio;
  * La clase Elfo crea los personajes de dicha raza. Asi tambien implementa sus
  * habilidades especiales de esta raza. <br>
  */
+@SuppressWarnings("serial")
 public class Elfo extends Personaje {
 
 	/**
