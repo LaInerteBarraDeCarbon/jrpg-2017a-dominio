@@ -11,10 +11,6 @@ public class NonPlayableCharacter extends Peleable {
 	 */
 	private int defensa;
 	/**
-	 * Nombre del NPC. <br>
-	 */
-	private String nombre;
-	/**
 	 * Nivel del NPC. <br>
 	 */
 	private int nivel;
@@ -40,7 +36,6 @@ public class NonPlayableCharacter extends Peleable {
 		} else {
 			dificultad = dificultadNPC;
 		}
-
 		switch (dificultad) {
 		case 0:
 			this.ataque = 10 + (nivel - 1) * 3;// 30%
@@ -57,7 +52,6 @@ public class NonPlayableCharacter extends Peleable {
 			this.salud = 50 + (nivel - 1) * 25;
 			this.defensa = 4 + (nivel - 1) * 4;
 			break;
-
 		}
 	}
 
@@ -81,10 +75,6 @@ public class NonPlayableCharacter extends Peleable {
 	 */
 	public void setataque(int ataque) {
 		this.ataque = ataque;
-	}
-
-	public String getNombre() {
-		return nombre;
 	}
 
 	/**
@@ -139,7 +129,7 @@ public class NonPlayableCharacter extends Peleable {
 	 */
 	public void setSalud(int salud) {
 		this.salud = salud;
-	} 
+	}
 
 	public int atacar(Peleable atacado) {
 		if (MyRandom.nextDouble() <= 0.15) {// los NPC tienen 15% de golpes
