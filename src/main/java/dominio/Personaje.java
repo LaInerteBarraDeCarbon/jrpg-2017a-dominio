@@ -277,7 +277,7 @@ public abstract class Personaje implements Peleable, Serializable {
 	 */
 	public void setClan(Alianza clan) {
 		this.clan = clan;
-		clan.añadirPersonaje(this);
+		clan.aniadirPersonaje(this);
 	}
 
 	public int getSalud() {
@@ -505,12 +505,12 @@ public abstract class Personaje implements Peleable, Serializable {
 	}
 
 	/**
-	 * Calcula el daño de un golpe crítico. <br>
+	 * Calcula el danio de un golpe crítico. <br>
 	 * 
-	 * @return Daño del golpe crítico. <br>
+	 * @return Danio del golpe crítico. <br>
 	 */
 	public int golpe_critico() {
-		return (int) (this.ataque * this.getCasta().getDañoCritico());
+		return (int) (this.ataque * this.getCasta().getDanioCritico());
 	}
 
 	public void despuesDeTurno() {
@@ -581,17 +581,17 @@ public abstract class Personaje implements Peleable, Serializable {
 		return salud > 0;
 	}
 
-	public int serAtacado(int daño) {
-		if (MyRandom.nextDouble() >= this.getCasta().getProbabilidadEvitarDaño()) {
-			daño -= this.defensa;
-			if (daño > 0) {
-				if (salud <= daño) {
-					daño = salud;
+	public int serAtacado(int danio) {
+		if (MyRandom.nextDouble() >= this.getCasta().getProbabilidadEvitarDanio()) {
+			danio -= this.defensa;
+			if (danio > 0) {
+				if (salud <= danio) {
+					danio = salud;
 					salud = 0;
 				} else {
-					salud -= daño;
+					salud -= danio;
 				}
-				return daño;
+				return danio;
 			}
 			return 0;
 		}
@@ -599,42 +599,42 @@ public abstract class Personaje implements Peleable, Serializable {
 	}
 
 	/**
-	 * Indica el daño realizado al personaje. De ser mayor el ataque a la vida,
+	 * Indica el danio realizado al personaje. De ser mayor el ataque a la vida,
 	 * lo mata. <br>
 	 * 
-	 * @param daño
-	 * @return Daño realizado. <br>
+	 * @param danio
+	 * @return Danio realizado. <br>
 	 */
-	public int serRobadoSalud(int daño) {
-		daño -= this.defensa;
-		if (daño <= 0)
+	public int serRobadoSalud(int danio) {
+		danio -= this.defensa;
+		if (danio <= 0)
 			return 0;
-		if ((salud - daño) >= 0)
-			salud -= daño;
+		if ((salud - danio) >= 0)
+			salud -= danio;
 		else {
-			daño = salud;// le queda menos salud que el daño inflingido
+			danio = salud;// le queda menos salud que el danio inflingido
 			salud = 0;
 		}
-		return daño;
+		return danio;
 	}
 
 	/**
 	 * Realiza quita de energía al personaje. <br>
 	 * 
-	 * @param daño
-	 * @return Daño realizado. <br>
+	 * @param danio
+	 * @return Danio realizado. <br>
 	 */
-	public int serDesernegizado(int daño) {
-		daño -= this.defensa;
-		if (daño <= 0)
+	public int serDesernegizado(int danio) {
+		danio -= this.defensa;
+		if (danio <= 0)
 			return 0;
-		if ((energia - daño) >= 0)
-			energia -= daño;
+		if ((energia - danio) >= 0)
+			energia -= danio;
 		else {
-			daño = energia;// le queda menos energia que el daño inflingido
+			danio = energia;// le queda menos energia que el danio inflingido
 			energia = 0;
 		}
-		return daño;
+		return danio;
 	}
 
 	/**
@@ -668,7 +668,7 @@ public abstract class Personaje implements Peleable, Serializable {
 	 */
 	public void crearAlianza(String nombre_alianza) {
 		this.clan = new Alianza(nombre_alianza);
-		this.clan.añadirPersonaje(this);
+		this.clan.aniadirPersonaje(this);
 	}
 
 	/**
@@ -682,7 +682,7 @@ public abstract class Personaje implements Peleable, Serializable {
 	}
 
 	/**
-	 * Añade un personaje a la alianza. De no existir una alianza, la crea. <br>
+	 * Aniade un personaje a la alianza. De no existir una alianza, la crea. <br>
 	 * 
 	 * @param nuevo_aliado
 	 * @return true si se lo incluye a la alianza, false de lo contrario. <br>
@@ -691,12 +691,12 @@ public abstract class Personaje implements Peleable, Serializable {
 		if (this.clan == null) {
 			Alianza a = new Alianza("Alianza 1");
 			this.clan = a;
-			a.añadirPersonaje(this);
+			a.aniadirPersonaje(this);
 		}
 
 		if (nuevo_aliado.clan == null) {
 			nuevo_aliado.clan = this.clan;
-			this.clan.añadirPersonaje(nuevo_aliado);
+			this.clan.aniadirPersonaje(nuevo_aliado);
 			return true;
 		} else
 			return false;

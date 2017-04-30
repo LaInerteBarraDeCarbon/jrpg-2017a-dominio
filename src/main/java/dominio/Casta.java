@@ -13,17 +13,21 @@ import java.io.Serializable;
 public abstract class Casta implements Serializable {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * Probabilidad de acertar un golpe crítico de un personaje. <br>
 	 */
 	protected double probabilidadGolpeCritico;
 	/**
-	 * Probabilidad de evitar daño que tiene el personaje. <br>
+	 * Probabilidad de evitar danio que tiene el personaje. <br>
 	 */
-	protected double probabilidadEvitarDaño;
+	protected double probabilidadEvitarDanio;
 	/**
-	 * Daño crítico que realiza el personaje. <br>
+	 * Danio crítico que realiza el personaje. <br>
 	 */
-	protected double dañoCritico;
+	protected double danioCritico;
 	/**
 	 * Nombre de la casta a la que pertenece el personaje. <br>
 	 */
@@ -35,27 +39,27 @@ public abstract class Casta implements Serializable {
 
 	/**
 	 * Crea la casta de un personaje con probabilidad de golpe crítico y de
-	 * evitar daño, y su daño crítico predefinido. <br>
+	 * evitar danio, y su danio crítico predefinido. <br>
 	 */
 	public Casta() {
 		this.probabilidadGolpeCritico = 0.2;
-		this.probabilidadEvitarDaño = 0.2;
-		this.dañoCritico = 1.5;
+		this.probabilidadEvitarDanio = 0.2;
+		this.danioCritico = 1.5;
 	}
 
 	/**
-	 * Crea una casta dadas la proabilidad de golpe crítico y de evitar daño, y
-	 * el daño crítico del persnaje.
+	 * Crea una casta dadas la proabilidad de golpe crítico y de evitar danio, y
+	 * el danio crítico del persnaje.
 	 * <p>
 	 * 
 	 * @param prob_crit
 	 * @param evasion
-	 * @param daño_crit
+	 * @param danio_crit
 	 */
-	public Casta(double prob_crit, double evasion, double daño_crit) {
+	public Casta(double prob_crit, double evasion, double danio_crit) {
 		this.probabilidadGolpeCritico = prob_crit;
-		this.probabilidadEvitarDaño = evasion;
-		this.dañoCritico = daño_crit;
+		this.probabilidadEvitarDanio = evasion;
+		this.danioCritico = danio_crit;
 	}
 
 	/**
@@ -128,38 +132,38 @@ public abstract class Casta implements Serializable {
 	}
 
 	/**
-	 * Devuelve la probabilidad de evitar daño del personaje. <br>
+	 * Devuelve la probabilidad de evitar danio del personaje. <br>
 	 * 
 	 * @return Probabilidad de evitar golpe. <br>
 	 */
-	public double getProbabilidadEvitarDaño() {
-		return probabilidadEvitarDaño;
+	public double getProbabilidadEvitarDanio() {
+		return probabilidadEvitarDanio;
 	}
 
 	/**
-	 * Establece la probabilidad de evitar daño del personaje. <br>
+	 * Establece la probabilidad de evitar danio del personaje. <br>
 	 * 
-	 * @param probabilidadEvitarDaño
+	 * @param probabilidadEvitarDanio
 	 */
-	public void setProbabilidadEvitarDaño(double probabilidadEvitarDaño) {
-		this.probabilidadEvitarDaño = probabilidadEvitarDaño;
+	public void setProbabilidadEvitarDanio(double probabilidadEvitarDanio) {
+		this.probabilidadEvitarDanio = probabilidadEvitarDanio;
 	}
 
 	/**
-	 * Devuelve el daño crítico del personaje. <br>
+	 * Devuelve el danio crítico del personaje. <br>
 	 * 
-	 * @return Daño crítico. <br>
+	 * @return Danio crítico. <br>
 	 */
-	public double getDañoCritico() {
-		return dañoCritico;
+	public double getDanioCritico() {
+		return danioCritico;
 	}
 
 	/**
-	 * Establece el daño crítico del personaje. <br>
+	 * Establece el danio crítico del personaje. <br>
 	 * 
-	 * @param dañoCritico
+	 * @param danioCritico
 	 */
-	public void setDañoCritico(double dañoCritico) {
-		this.dañoCritico = dañoCritico;
+	public void setDanioCritico(double danioCritico) {
+		this.danioCritico = danioCritico;
 	}
 }

@@ -2,17 +2,17 @@ package dominio;
 
 /**
  * Esta interface proporciona los métodos para la batalla, como el nombre de los
- * personajes, su salud, el daño de ataque que realizan, entre otros. <br>
+ * personajes, su salud, el danio de ataque que realizan, entre otros. <br>
  */
 public interface Peleable {
 
 	/**
-	 * Indica el daño recibido. <br>
+	 * Indica el danio recibido. <br>
 	 * 
-	 * @param daño
-	 * @return Daño recibido. <br>
+	 * @param danio
+	 * @return Danio recibido. <br>
 	 */
-	public int serAtacado(int daño);
+	public int serAtacado(int danio);
 
 	/**
 	 * Devuelve la salud del personaje. <br>
@@ -30,7 +30,7 @@ public interface Peleable {
 	 * Ataca a otro personaje. <br>
 	 * 
 	 * @param atacado
-	 * @return Daño realizado. <br>
+	 * @return Danio realizado. <br>
 	 */
 	public int atacar(Peleable atacado);
 

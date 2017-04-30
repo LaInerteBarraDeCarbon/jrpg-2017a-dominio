@@ -164,14 +164,14 @@ public class NonPlayableCharacter implements Peleable {
 			return atacado.serAtacado(this.getAtaque());
 	}
 
-	public int serAtacado(int daño) {
+	public int serAtacado(int danio) {
 		if (MyRandom.nextDouble() >= 0.15) {
-			daño -= this.getDefensa() / 2;
-			if (daño > 0) {
-				salud -= daño;
-				return daño;
+			danio -= this.getDefensa() / 2;
+			if (danio > 0) {
+				salud -= danio;
+				return danio;
 			}
-			return 0;// no le hace daño ya que la defensa fue mayor
+			return 0;// no le hace danio ya que la defensa fue mayor
 		}
 		return 0;// esquivo el golpe
 	}

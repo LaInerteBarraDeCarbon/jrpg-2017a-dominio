@@ -29,6 +29,7 @@ public class Humano extends Personaje {
 	 * @param nombre
 	 * @param salud
 	 * @param energia
+	 *            Juan
 	 * @param fuerza
 	 * @param destreza
 	 * @param inteligencia

@@ -5,19 +5,20 @@ package dominio;
  * habilidades concretas.
  * <p>
  */
+@SuppressWarnings("serial")
 public class Hechicero extends Casta {
 
 	/**
 	 * Crea un personaje con oficio de hechicero dadas la proabilidad de golpe
-	 * crítico y de evitar daño y el daño crítico del persnaje.
+	 * crítico y de evitar danio y el danio crítico del persnaje.
 	 * <p>
 	 * 
 	 * @param prob_crit
 	 * @param evasion
-	 * @param daño_crit
+	 * @param danio_crit
 	 */
-	public Hechicero(double prob_crit, double evasion, double daño_crit) {
-		super(prob_crit, evasion, daño_crit);
+	public Hechicero(double prob_crit, double evasion, double danio_crit) {
+		super(prob_crit, evasion, danio_crit);
 		this.nombreCasta = "Hechicero";
 	}
 

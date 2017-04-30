@@ -2,22 +2,22 @@ package dominio;
 
 /**
  * La clase Asesino representa el oficio de asesino del personaje y sus 3
- * habilidades concretas.
+ * habilidades concretas. 
  * <p>
  */
 public class Asesino extends Casta {
 
 	/**
 	 * Crea un personaje con oficio de asesino dadas la proabilidad de golpe
-	 * crítico y de evitar daño y el daño crítico del persnaje.
+	 * crítico y de evitar danio y el danio crítico del persnaje.
 	 * <p>
 	 * 
 	 * @param prob_crit
 	 * @param evasion
-	 * @param daño_crit
+	 * @param danio_crit
 	 */
-	public Asesino(double prob_crit, double evasion, double daño_crit) {
-		super(prob_crit, evasion, daño_crit);
+	public Asesino(double prob_crit, double evasion, double danio_crit) {
+		super(prob_crit, evasion, danio_crit);
 		this.nombreCasta = "Asesino";
 	}
 
@@ -40,7 +40,7 @@ public class Asesino extends Casta {
 	public boolean habilidad1(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
-			if (atacado.serAtacado((int) (caster.ataque * caster.getCasta().getDañoCritico())) > 0)
+			if (atacado.serAtacado((int) (caster.ataque * caster.getCasta().getDanioCritico())) > 0)
 				return true;
 		}
 		return false;
@@ -53,10 +53,10 @@ public class Asesino extends Casta {
 	public boolean habilidad2(Personaje caster, Peleable atacado) {
 		if (caster.getEnergia() > 10) {
 			caster.setEnergia(caster.getEnergia() - 10);
-			if (this.getProbabilidadEvitarDaño() + 0.15 < 0.5)
-				this.probabilidadEvitarDaño += 0.15;
+			if (this.getProbabilidadEvitarDanio() + 0.15 < 0.5)
+				this.probabilidadEvitarDanio += 0.15;
 			else
-				this.probabilidadEvitarDaño = 0.5;
+				this.probabilidadEvitarDanio = 0.5;
 			return true;
 		}
 		return false;
