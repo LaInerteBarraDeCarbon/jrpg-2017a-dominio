@@ -15,12 +15,8 @@ import java.io.Serializable;
  * personaje, tanto las que crea y realiza como las que deja.<br>
  * <br>
  */
-public abstract class Personaje implements Peleable, Serializable {
+public abstract class Personaje extends Peleable implements Serializable {
 
-	/**
-	 * Salud del personaje. <br>
-	 */
-	protected Integer salud;
 	/**
 	 * Energía del personaje. <br>
 	 */
@@ -32,18 +28,11 @@ public abstract class Personaje implements Peleable, Serializable {
 	/**
 	 * Ataque del personaje. <br>
 	 */
-	protected int ataque;// depende de la fuerza
-	/**
-	 * Magia del personaje. <br>
-	 */
+
 	protected int magia;// depende de la inteligencia
 
 	/**
 	 * Nombre del personaje. <br>
-	 */
-	protected String nombre;// hay que agregarlo a todos los constructores
-	/**
-	 * Nombre de la raza del personaje. <br>
 	 */
 	protected String nombreRaza;
 
@@ -141,7 +130,7 @@ public abstract class Personaje implements Peleable, Serializable {
 	 * @param id
 	 */
 	public Personaje(String nombre, Casta casta, int id) {
-		this.nombre = nombre;
+		super.nombre = nombre;
 		this.casta = casta;
 		this.idPersonaje = id;
 		experiencia = 0;
@@ -232,7 +221,7 @@ public abstract class Personaje implements Peleable, Serializable {
 	 * @param nombre
 	 */
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		super.nombre = nombre;
 	}
 
 	public int getAtaque() {
@@ -513,10 +502,6 @@ public abstract class Personaje implements Peleable, Serializable {
 		return (int) (this.ataque * this.getCasta().getDanioCritico());
 	}
 
-	public void despuesDeTurno() {
-
-	}
-
 	/**
 	 * Indica si posee la energía para atacar a otro personaje. <br>
 	 * 
@@ -575,10 +560,6 @@ public abstract class Personaje implements Peleable, Serializable {
 		this.ataque = this.calcularPuntosDeAtaque();
 		this.defensa = this.calcularPuntosDeDefensa();
 		this.magia = this.calcularPuntosDeMagia();
-	}
-
-	public boolean estaVivo() {
-		return salud > 0;
 	}
 
 	public int serAtacado(int danio) {
@@ -682,7 +663,8 @@ public abstract class Personaje implements Peleable, Serializable {
 	}
 
 	/**
-	 * Aniade un personaje a la alianza. De no existir una alianza, la crea. <br>
+	 * Aniade un personaje a la alianza. De no existir una alianza, la crea.
+	 * <br>
 	 * 
 	 * @param nuevo_aliado
 	 * @return true si se lo incluye a la alianza, false de lo contrario. <br>

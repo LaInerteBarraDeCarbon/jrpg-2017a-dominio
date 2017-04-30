@@ -4,16 +4,8 @@ package dominio;
  * La clase NonPlayableCharacter se encarga de crear los NPC, personajes
  * propiamente del juego.
  */
-public class NonPlayableCharacter implements Peleable {
+public class NonPlayableCharacter extends Peleable {
 
-	/**
-	 * Salud del NPC. <br>
-	 */
-	private int salud;
-	/**
-	 * Fuerza del NPC. <br>
-	 */
-	private int fuerza;
 	/**
 	 * Defensa del NPC. <br>
 	 */
@@ -50,17 +42,17 @@ public class NonPlayableCharacter implements Peleable {
 
 		switch (dificultad) {
 		case 0:
-			this.fuerza = 10 + (nivel - 1) * 3;// 30%
-			this.salud = 30 + (nivel - 1) * 15;
+			this.ataque = 10 + (nivel - 1) * 3;// 30%
+			super.salud = 30 + (nivel - 1) * 15;
 			this.defensa = 2 + (nivel - 1) * 1;
 			break;
 		case 1:
-			this.fuerza = 20 + (nivel - 1) * 6;// 50%
+			this.ataque = 20 + (nivel - 1) * 6;// 50%
 			this.salud = 40 + (nivel - 1) * 20;
 			this.defensa = 5 + (nivel - 1) * 2;
 			break;
 		case 2:
-			this.fuerza = 30 + (nivel - 1) * 10;// 50%
+			this.ataque = 30 + (nivel - 1) * 10;// 50%
 			this.salud = 50 + (nivel - 1) * 25;
 			this.defensa = 4 + (nivel - 1) * 4;
 			break;
@@ -73,21 +65,21 @@ public class NonPlayableCharacter implements Peleable {
 	}
 
 	/**
-	 * Devuelve la fuerza del NPC. <br>
+	 * Devuelve la ataque del NPC. <br>
 	 * 
-	 * @return Fuerza del NPC. <br>
+	 * @return ataque del NPC. <br>
 	 */
-	public int getFuerza() {
-		return fuerza;
+	public int getataque() {
+		return ataque;
 	}
 
 	/**
-	 * Establece la fuerza del NPC. <br>
+	 * Establece la ataque del NPC. <br>
 	 * 
-	 * @param fuerza
+	 * @param ataque
 	 */
-	public void setFuerza(int fuerza) {
-		this.fuerza = fuerza;
+	public void setataque(int ataque) {
+		this.ataque = ataque;
 	}
 
 	public String getNombre() {
@@ -121,10 +113,6 @@ public class NonPlayableCharacter implements Peleable {
 		this.nivel = nivel;
 	}
 
-	public boolean estaVivo() {
-		return salud > 0;
-	}
-
 	/**
 	 * Devuelve la defensa del NPC. <br>
 	 * 
@@ -141,10 +129,6 @@ public class NonPlayableCharacter implements Peleable {
 	 */
 	public void setDefensa(int defensa) {
 		this.defensa = defensa;
-	}
-
-	public int getSalud() {
-		return salud;
 	}
 
 	/**
@@ -176,9 +160,6 @@ public class NonPlayableCharacter implements Peleable {
 		return 0;// esquivo el golpe
 	}
 
-	public void despuesDeTurno() {
-	}
-
 	/**
 	 * Indica la experiencia ganada para el NPC. <br>
 	 * 
@@ -186,15 +167,5 @@ public class NonPlayableCharacter implements Peleable {
 	 */
 	public void ganarExperiencia(int exp) {
 
-	}
-
-	@Override
-	public int getAtaque() {
-		return fuerza;
-	}
-
-	@Override
-	public void setAtaque(int ataque) {
-		this.fuerza = ataque;
 	}
 }
