@@ -7,6 +7,28 @@ package dominio;
 public class NonPlayableCharacter extends Peleable {
 
 	/**
+	 * Probabilidad de que el NPC de un golpe critico: 0.15. <br>
+	 */
+	private static double probGolpeCritico = 0.15;
+	/**
+	 * Probabilidad de que el NPC esquive un golpe: 0.15. <br>
+	 */
+	private static double probEsquivar = 0.15;
+	/**
+	 * Divisor de defensa para ver si le asertan un golpe: 2. <br>
+	 */
+	private static int divisorDefensa = 2;
+	/**
+	 * Multiplicador que agrega a la experiencia otorgada con respecto al nivel:
+	 * 30. <br>
+	 */
+	private static int multiplicadorExp = 30;
+	/**
+	 * Multiplicador de ataque de realizar golpe critico: 1.5 <br>
+	 */
+	private static double multiplicadorGolpeCritico = 1.5;
+
+	/**
 	 * Defensa del NPC. <br>
 	 */
 	private int defensa;
@@ -56,7 +78,7 @@ public class NonPlayableCharacter extends Peleable {
 	}
 
 	public int otorgarExp() {
-		return this.nivel * 30;
+		return this.nivel * multiplicadorExp;
 	}
 
 	/**
@@ -132,30 +154,30 @@ public class NonPlayableCharacter extends Peleable {
 	}
 
 	public int atacar(Peleable atacado) {
-		if (MyRandom.nextDouble() <= 0.15) {// los NPC tienen 15% de golpes
-											// criticos
-			return atacado.serAtacado((int) (this.getAtaque() * 1.5));
+		if (MyRandom.nextDouble() <= probGolpeCritico) {
+			return atacado.serAtacado((int) (this.getAtaque() * multiplicadorGolpeCritico));
 		} else {
 			return atacado.serAtacado(this.getAtaque());
 		}
 	}
 
 	public int serAtacado(int danio) {
-		if (MyRandom.nextDouble() >= 0.15) {
-			danio -= this.getDefensa() / 2;
-			if (danio > 0) {
+		if (MyRandom.nextDouble() >= probEsquivar) {
+			danio -= this.getDefensa() / divisorDefensa;
+			if (danio > cero) {
 				salud -= danio;
 				return danio;
 			}
-			return 0;// no le hace danio ya que la defensa fue mayor
+			return cero;
 		}
-		return 0;// esquivo el golpe
+		return cero;
 	}
 
 	/**
 	 * Indica la experiencia ganada para el NPC. <br>
 	 * 
 	 * @param exp
+	 *            Experiencia ganada. <br>
 	 */
 	public void ganarExperiencia(int exp) {
 

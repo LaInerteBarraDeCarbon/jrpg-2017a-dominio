@@ -9,16 +9,28 @@ package dominio;
 public class Asesino extends Casta {
 
 	/**
+	 * Maxima evasion: 0.5. <br>
+	 */
+	private static double maximoEvasion = 0.5;
+	/**
+	 * Evasion aumentada: 0.15. <br>
+	 */
+	private static double aumentoEvasion = 0.15;
+	
+	/**
 	 * Crea un personaje con oficio de asesino dadas la proabilidad de golpe
 	 * crítico y de evitar danio y el danio crítico del persnaje.
 	 * <p>
 	 * 
-	 * @param prob_crit
+	 * @param probCrit
+	 *            Probabilidad de realizar un golpe critico. <br>
 	 * @param evasion
-	 * @param danio_crit
+	 *            Evasion. <br>
+	 * @param danioCrit
+	 *            Danio critico que realiza. <br>
 	 */
-	public Asesino(double prob_crit, double evasion, double danio_crit) {
-		super(prob_crit, evasion, danio_crit);
+	public Asesino(double probCrit, double evasion, double danioCrit) {
+		super(probCrit, evasion, danioCrit);
 		this.nombreCasta = "Asesino";
 	}
 
@@ -39,34 +51,32 @@ public class Asesino extends Casta {
 	 * Realiza la primer habilidad de la casta del asesino, golpe crítico. <br>
 	 */
 	public boolean habilidad1(Personaje caster, Peleable atacado) {
-		if (caster.getEnergia() > 10) {
-			caster.setEnergia(caster.getEnergia() - 10);
-			if (atacado.serAtacado((int) (caster.ataque * caster.getCasta().getDanioCritico())) > 0) {
+		if (caster.getEnergia() > energiaMinima) {
+			caster.setEnergia(caster.getEnergia() - energiaMinima);
+			if (atacado.serAtacado((int) (caster.ataque * caster.getCasta().getDanioCritico())) > cero) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	// Aumentar Evasion
 	/**
 	 * Realiza la segunda habilidad de la casta del asesino, aumentar evasión.
 	 * <br>
 	 */
 	public boolean habilidad2(Personaje caster, Peleable atacado) {
-		if (caster.getEnergia() > 10) {
-			caster.setEnergia(caster.getEnergia() - 10);
-			if (this.getProbabilidadEvitarDanio() + 0.15 < 0.5) {
-				this.probabilidadEvitarDanio += 0.15;
+		if (caster.getEnergia() > energiaMinima) {
+			caster.setEnergia(caster.getEnergia() - energiaMinima);
+			if (this.getProbabilidadEvitarDanio() + aumentoEvasion < maximoEvasion) {
+				this.probabilidadEvitarDanio += aumentoEvasion;
 			} else {
-				this.probabilidadEvitarDanio = 0.5;
+				this.probabilidadEvitarDanio = maximoEvasion;
 			}
 			return true;
 		}
 		return false;
 	}
 
-	// Robar
 	/**
 	 * Realiza la tercer habilidad de la casta del asesino, robar. <br>
 	 */

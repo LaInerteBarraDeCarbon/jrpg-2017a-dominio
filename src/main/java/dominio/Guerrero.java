@@ -13,12 +13,15 @@ public class Guerrero extends Casta {
 	 * crítico y de evitar danio y el danio crítico del persnaje.
 	 * <p>
 	 * 
-	 * @param prob_crit
+	 * @param probCrit
+	 *            Probabilidad de danio critico. <br>
 	 * @param evasion
-	 * @param danio_crit
+	 *            Evaion. <br>
+	 * @param danioCrit
+	 *            Danio critico. <br>
 	 */
-	public Guerrero(double prob_crit, double evasion, double danio_crit) {
-		super(prob_crit, evasion, danio_crit);
+	public Guerrero(double probCrit, double evasion, double danioCrit) {
+		super(probCrit, evasion, danioCrit);
 		this.nombreCasta = "Guerrero";
 	}
 
@@ -35,28 +38,26 @@ public class Guerrero extends Casta {
 		habilidadesCasta[2] = "Ignorar Defensa";
 	}
 
-	// Ataque Doble
 	/**
 	 * Realiza la primer habilidad de la casta del guerrero, ataque doble. <br>
 	 */
 	public boolean habilidad1(Personaje caster, Peleable atacado) {
-		if (caster.getEnergia() > 10) {
-			caster.setEnergia(caster.getEnergia() - 10);
-			if (atacado.serAtacado(caster.ataque * 2) > 0) {
+		if (caster.getEnergia() > energiaMinima) {
+			caster.setEnergia(caster.getEnergia() - energiaMinima);
+			if (atacado.serAtacado(caster.ataque * 2) > cero) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	// Aumentar Defensa
 	/**
 	 * Realiza la segunda habilidad de la casta del guerrero, aumentar defensa.
 	 * <br>
 	 */
 	public boolean habilidad2(Personaje caster, Peleable atacado) {
-		if (caster.getEnergia() > 10) {
-			caster.setEnergia(caster.getEnergia() - 10);
+		if (caster.getEnergia() > energiaMinima) {
+			caster.setEnergia(caster.getEnergia() - energiaMinima);
 			caster.setDefensa(caster.getDefensa() + caster.magia);
 			return true;
 		}
@@ -69,12 +70,12 @@ public class Guerrero extends Casta {
 	 * <br>
 	 */
 	public boolean habilidad3(Personaje caster, Peleable atacado) {
-		if (caster.getEnergia() > 10) {
-			caster.setEnergia(caster.getEnergia() - 10);
+		if (caster.getEnergia() > energiaMinima) {
+			caster.setEnergia(caster.getEnergia() - energiaMinima);
 			if (atacado instanceof Personaje) {
 				int defensa_original = ((Personaje) atacado).getDefensa();
-				((Personaje) atacado).setDefensa(0);
-				if (atacado.serAtacado(caster.ataque) > 0) {
+				((Personaje) atacado).setDefensa(cero);
+				if (atacado.serAtacado(caster.ataque) > cero) {
 					((Personaje) atacado).setDefensa(defensa_original);
 					return true;
 				}

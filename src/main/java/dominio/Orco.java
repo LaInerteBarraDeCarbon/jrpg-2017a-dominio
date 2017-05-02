@@ -8,12 +8,20 @@ package dominio;
 public class Orco extends Personaje {
 
 	/**
+	 * Multiplica defensa: 2. <br>
+	 */
+	private static int multiplicadorDefensa = 2;
+
+	/**
 	 * Creacion del personaje con la salud y energia a tope y las habilidades
 	 * especial de la raza. <br>
 	 * 
 	 * @param nombre
+	 *            Nombre del personaje. <br>
 	 * @param casta
+	 *            Casta del personaje. <br>
 	 * @param id
+	 *            ID del personaje. <br>
 	 */
 	public Orco(String nombre, Casta casta, int id) {
 		super(nombre, casta, id);
@@ -33,15 +41,25 @@ public class Orco extends Personaje {
 	 * caracteristicas correspondientes. <br>
 	 * 
 	 * @param nombre
+	 *            Nombre del personaje. <br>
 	 * @param salud
+	 *            Salud del personaje. <br>
 	 * @param energia
+	 *            Energia del personaje. <br>
 	 * @param fuerza
+	 *            Fuerza del personaje. <br>
 	 * @param destreza
+	 *            Destreza del personaje. <br>
 	 * @param inteligencia
+	 *            Inteligencia del personaje. <br>
 	 * @param casta
+	 *            Casta del personaje. <br>
 	 * @param experiencia
+	 *            Experiencia del personaje. <br>
 	 * @param nivel
+	 *            Nivel del personaje. <br>
 	 * @param idPersonaje
+	 *            ID del personaje. <br>
 	 */
 	public Orco(String nombre, int salud, int energia, int fuerza, int destreza, int inteligencia, Casta casta,
 			int experiencia, int nivel, int idPersonaje) {
@@ -53,30 +71,28 @@ public class Orco extends Personaje {
 		habilidadesRaza[1] = "Mordisco de Vida";
 	}
 
-	// Golpe Defensa
 	/**
 	 * Realiza la primera habilidad de orco, el golpe defensa. <br>
 	 */
 	public boolean habilidadRaza1(Peleable atacado) {
-		if (this.getEnergia() > 10) {
-			this.setEnergia(this.getEnergia() - 10);
-			if (atacado.serAtacado(this.getDefensa() * 2) > 0) {
+		if (this.getEnergia() > minimoEnergia) {
+			this.setEnergia(this.getEnergia() - minimoEnergia);
+			if (atacado.serAtacado(this.getDefensa() * multiplicadorDefensa) > cero) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	// Mordisco de Vida
 	/**
 	 * Realiza la segunda habilidad de orco, el modisco de vida. <br>
 	 */
 	public boolean habilidadRaza2(Peleable atacado) {
-		if (this.getEnergia() > 10) {
-			this.setEnergia(this.getEnergia() - 10);
-			int danio_causado = atacado.serAtacado(this.getFuerza());
-			if (danio_causado > 0) {
-				this.serCurado(danio_causado);
+		if (this.getEnergia() > minimoEnergia) {
+			this.setEnergia(this.getEnergia() - minimoEnergia);
+			int danioCausado = atacado.serAtacado(this.getFuerza());
+			if (danioCausado > cero) {
+				this.serCurado(danioCausado);
 				return true;
 			}
 		}

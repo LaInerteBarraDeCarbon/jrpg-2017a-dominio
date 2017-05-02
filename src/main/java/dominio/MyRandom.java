@@ -19,6 +19,7 @@ public class MyRandom {
 	 * Retorna el valor anterior al dado. <br>
 	 * 
 	 * @param val
+	 *            Valor. <br>
 	 * @return Valor. <br>
 	 */
 	public static int nextInt(int val) {
