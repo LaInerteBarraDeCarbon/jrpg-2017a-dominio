@@ -9,7 +9,7 @@ public class MyRandom {
 	/**
 	 * Probabilidad. <br>
 	 */
-	private final static double nextDouble = 0.49;
+	private static final double NEXTDOUBLE = 0.49;
 
 	/**
 	 * Devuelve un número random. <br>
@@ -17,7 +17,7 @@ public class MyRandom {
 	 * @return Número. <br>
 	 */
 	public static double nextDouble() {
-		return nextDouble;
+		return NEXTDOUBLE;
 	}
 
 	/**

@@ -16,15 +16,27 @@ public abstract class Casta implements Serializable {
 	/**
 	 * Energia minima para realizar alguna accion. <br>
 	 */
-	protected final static int energiaMinima = 10;
+	protected static final int ENERGIAMINIMA = 10;
 	/**
-	 * Numero cero. <br>
+	 * Numero CERO. <br>
 	 */
-	protected final static int cero = 0;
+	protected static final int CERO = 0;
 	/**
 	 * Cantidad de habilidades por casta. <br>
 	 */
-	protected final static int cantidadHabilidadesCasta = 3;
+	protected static final int CANTIDADHABILIDADESCASTA = 3;
+	/**
+	 * Probabilidad de golpe critico de casta. <br>
+	 */
+	private static final double PROBABILIDADGOLPECRITICO = 0.2;
+	/**
+	 * Probabilidad de evitar danio de casta. <br>
+	 */
+	private static final double PROBABILIDADEVITARDANIO = 0.2;
+	/**
+	 * Danio critico de casta. <br>
+	 */
+	private static final double DANIOCRITICO = 1.5;
 
 	/**
 	 * Probabilidad de acertar un golpe crítico de un personaje. <br>
@@ -52,9 +64,9 @@ public abstract class Casta implements Serializable {
 	 * evitar danio, y su danio crítico predefinido. <br>
 	 */
 	public Casta() {
-		this.probabilidadGolpeCritico = 0.2;
-		this.probabilidadEvitarDanio = 0.2;
-		this.danioCritico = 1.5;
+		this.probabilidadGolpeCritico = PROBABILIDADGOLPECRITICO;
+		this.probabilidadEvitarDanio = PROBABILIDADEVITARDANIO;
+		this.danioCritico = DANIOCRITICO;
 	}
 
 	/**

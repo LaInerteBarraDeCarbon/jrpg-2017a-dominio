@@ -9,13 +9,13 @@ package dominio;
 public class Asesino extends Casta {
 
 	/**
-	 * Maxima evasion: 0.5. <br>
+	 * Maxima evasion. <br>
 	 */
-	private final static double maximoEvasion = 0.5;
+	private static final double MAXIMOEVASION = 0.5;
 	/**
-	 * Evasion aumentada: 0.15. <br>
+	 * Evasion aumentada. <br>
 	 */
-	private final static double aumentoEvasion = 0.15;
+	private static final double AUMENTAREVASION = 0.15;
 
 	/**
 	 * Crea un personaje con oficio de asesino dadas la proabilidad de golpe
@@ -40,7 +40,7 @@ public class Asesino extends Casta {
 	public Asesino() {
 		super();
 		this.nombreCasta = "Asesino";
-		habilidadesCasta = new String[cantidadHabilidadesCasta];
+		habilidadesCasta = new String[CANTIDADHABILIDADESCASTA];
 		habilidadesCasta[0] = "Golpe Critico";
 		habilidadesCasta[1] = "Aumentar Evasion";
 		habilidadesCasta[2] = "Robar";
@@ -56,9 +56,9 @@ public class Asesino extends Casta {
 	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
 	public boolean habilidad1(final Personaje caster, final Peleable atacado) {
-		if (caster.getEnergia() > energiaMinima) {
-			caster.setEnergia(caster.getEnergia() - energiaMinima);
-			if (atacado.serAtacado((int) (caster.ataque * caster.getCasta().getDanioCritico())) > cero) {
+		if (caster.getEnergia() > ENERGIAMINIMA) {
+			caster.setEnergia(caster.getEnergia() - ENERGIAMINIMA);
+			if (atacado.serAtacado((int) (caster.ataque * caster.getCasta().getDanioCritico())) > CERO) {
 				return true;
 			}
 		}
@@ -76,12 +76,12 @@ public class Asesino extends Casta {
 	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
 	public boolean habilidad2(final Personaje caster, final Peleable atacado) {
-		if (caster.getEnergia() > energiaMinima) {
-			caster.setEnergia(caster.getEnergia() - energiaMinima);
-			if (this.getProbabilidadEvitarDanio() + aumentoEvasion < maximoEvasion) {
-				this.probabilidadEvitarDanio += aumentoEvasion;
+		if (caster.getEnergia() > ENERGIAMINIMA) {
+			caster.setEnergia(caster.getEnergia() - ENERGIAMINIMA);
+			if (this.getProbabilidadEvitarDanio() + AUMENTAREVASION < MAXIMOEVASION) {
+				this.probabilidadEvitarDanio += AUMENTAREVASION;
 			} else {
-				this.probabilidadEvitarDanio = maximoEvasion;
+				this.probabilidadEvitarDanio = MAXIMOEVASION;
 			}
 			return true;
 		}

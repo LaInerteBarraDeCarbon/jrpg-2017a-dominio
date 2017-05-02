@@ -32,7 +32,7 @@ public class Guerrero extends Casta {
 		super();
 		this.nombreCasta = "Guerrero";
 
-		habilidadesCasta = new String[cantidadHabilidadesCasta];
+		habilidadesCasta = new String[CANTIDADHABILIDADESCASTA];
 		habilidadesCasta[0] = "Ataque Doble";
 		habilidadesCasta[1] = "Aumentar Defensa";
 		habilidadesCasta[2] = "Ignorar Defensa";
@@ -48,9 +48,9 @@ public class Guerrero extends Casta {
 	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
 	public boolean habilidad1(final Personaje caster, final Peleable atacado) {
-		if (caster.getEnergia() > energiaMinima) {
-			caster.setEnergia(caster.getEnergia() - energiaMinima);
-			if (atacado.serAtacado(caster.ataque * 2) > cero) {
+		if (caster.getEnergia() > ENERGIAMINIMA) {
+			caster.setEnergia(caster.getEnergia() - ENERGIAMINIMA);
+			if (atacado.serAtacado(caster.ataque * 2) > CERO) {
 				return true;
 			}
 		}
@@ -68,8 +68,8 @@ public class Guerrero extends Casta {
 	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
 	public boolean habilidad2(final Personaje caster, final Peleable atacado) {
-		if (caster.getEnergia() > energiaMinima) {
-			caster.setEnergia(caster.getEnergia() - energiaMinima);
+		if (caster.getEnergia() > ENERGIAMINIMA) {
+			caster.setEnergia(caster.getEnergia() - ENERGIAMINIMA);
 			caster.setDefensa(caster.getDefensa() + caster.magia);
 			return true;
 		}
@@ -87,12 +87,12 @@ public class Guerrero extends Casta {
 	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
 	public boolean habilidad3(final Personaje caster, final Peleable atacado) {
-		if (caster.getEnergia() > energiaMinima) {
-			caster.setEnergia(caster.getEnergia() - energiaMinima);
+		if (caster.getEnergia() > ENERGIAMINIMA) {
+			caster.setEnergia(caster.getEnergia() - ENERGIAMINIMA);
 			if (atacado instanceof Personaje) {
 				int defensaOriginal = ((Personaje) atacado).getDefensa();
-				((Personaje) atacado).setDefensa(cero);
-				if (atacado.serAtacado(caster.ataque) > cero) {
+				((Personaje) atacado).setDefensa(CERO);
+				if (atacado.serAtacado(caster.ataque) > CERO) {
 					((Personaje) atacado).setDefensa(defensaOriginal);
 					return true;
 				}

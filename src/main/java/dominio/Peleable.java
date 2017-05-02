@@ -7,9 +7,9 @@ package dominio;
 public abstract class Peleable {
 
 	/**
-	 * Numero cero. <br>
+	 * Numero CERO. <br>
 	 */
-	protected final static int cero = 0;
+	protected static final int CERO = 0;
 	/**
 	 * Salud del personaje. <br>
 	 */
@@ -79,7 +79,7 @@ public abstract class Peleable {
 	 * @param ataque
 	 *            Ataque del personaje. <br>
 	 */
-	public void setAtaque(int ataque) {
+	public void setAtaque(final int ataque) {
 		this.ataque = ataque;
 	}
 
@@ -89,7 +89,7 @@ public abstract class Peleable {
 	 * @return true de estar vivo, false de estar muerto. <br>
 	 */
 	public boolean estaVivo() {
-		return this.salud > cero;
+		return this.salud > CERO;
 	}
 
 	/**

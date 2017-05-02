@@ -74,7 +74,7 @@ public class Humano extends Personaje {
 		super(nombre, salud, energia, fuerza, destreza, inteligencia, casta, experiencia, nivel, idPersonaje);
 		nombreRaza = "Humano";
 
-		habilidadesRaza = new String[cantidadHabilidadesPersonaje];
+		habilidadesRaza = new String[CANTIDADHABILIDADPERSONAJE];
 		habilidadesRaza[0] = "Incentivar";
 		habilidadesRaza[1] = "Golpe Fatal";
 	}
@@ -87,8 +87,8 @@ public class Humano extends Personaje {
 	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
 	public boolean habilidadRaza1(final Peleable atacado) {
-		if (this.getEnergia() > minimoEnergia) {
-			this.setEnergia(this.getEnergia() - minimoEnergia);
+		if (this.getEnergia() > MINIMOENERGIA) {
+			this.setEnergia(this.getEnergia() - MINIMOENERGIA);
 			atacado.setAtaque(atacado.getAtaque() + this.getMagia());
 			return true;
 		}
@@ -103,13 +103,13 @@ public class Humano extends Personaje {
 	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
 	public boolean habilidadRaza2(final Peleable atacado) {
-		if (this.getEnergia() > minimoEnergia) {
-			if (atacado.serAtacado(atacado.getSalud() / divisorVida) > cero) {
+		if (this.getEnergia() > MINIMOENERGIA) {
+			if (atacado.serAtacado(atacado.getSalud() / divisorVida) > CERO) {
 				this.setEnergia(this.getEnergia() / divisorEnergia);
 				return true;
 			}
 		}
-		this.setEnergia(this.getEnergia() - minimoEnergia);
+		this.setEnergia(this.getEnergia() - MINIMOENERGIA);
 		return false;
 	}
 }

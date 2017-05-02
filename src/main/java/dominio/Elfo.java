@@ -10,7 +10,7 @@ public class Elfo extends Personaje {
 	/**
 	 * Aumento de salud del elfo. <br>
 	 */
-	protected final static int aumentoSalud = 10;
+	protected static final int AUMENTARSALUD = 10;
 
 	/**
 	 * Crea el personaje Elfo con sus valores ya establecidos y le asigna sus
@@ -25,11 +25,11 @@ public class Elfo extends Personaje {
 	 */
 	public Elfo(final String nombre, final Casta casta, final int id) {
 		super(nombre, casta, id);
-		energiaTope += aumentoSalud;
+		energiaTope += AUMENTARSALUD;
 		salud = saludTope;
 		energia = energiaTope;
 		nombreRaza = "Elfo";
-		habilidadesRaza = new String[cantidadHabilidadesPersonaje];
+		habilidadesRaza = new String[CANTIDADHABILIDADPERSONAJE];
 		habilidadesRaza[0] = "Golpe Level";
 		habilidadesRaza[1] = "Ataque Bosque";
 	}
@@ -64,7 +64,7 @@ public class Elfo extends Personaje {
 			final int inteligencia, final Casta casta, final int experiencia, final int nivel, final int idPersonaje) {
 		super(nombre, salud, energia, fuerza, destreza, inteligencia, casta, experiencia, nivel, idPersonaje);
 		nombreRaza = "Elfo";
-		habilidadesRaza = new String[cantidadHabilidadesPersonaje];
+		habilidadesRaza = new String[CANTIDADHABILIDADPERSONAJE];
 		habilidadesRaza[0] = "Golpe Level";
 		habilidadesRaza[1] = "Ataque Bosque";
 	}
@@ -77,9 +77,9 @@ public class Elfo extends Personaje {
 	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
 	public boolean habilidadRaza1(final Peleable atacado) {
-		if (this.getEnergia() > minimoEnergia) {
-			this.setEnergia(this.getEnergia() - minimoEnergia);
-			if (atacado.serAtacado(this.getFuerza() + this.getNivel() * minimoEnergia) > cero) {
+		if (this.getEnergia() > MINIMOENERGIA) {
+			this.setEnergia(this.getEnergia() - MINIMOENERGIA);
+			if (atacado.serAtacado(this.getFuerza() + this.getNivel() * MINIMOENERGIA) > CERO) {
 				return true;
 			}
 		}
@@ -94,9 +94,9 @@ public class Elfo extends Personaje {
 	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
 	public boolean habilidadRaza2(final Peleable atacado) {
-		if (this.getEnergia() > minimoEnergia) {
-			this.setEnergia(this.getEnergia() - minimoEnergia);
-			if (atacado.serAtacado((int) (this.magia)) > cero) {
+		if (this.getEnergia() > MINIMOENERGIA) {
+			this.setEnergia(this.getEnergia() - MINIMOENERGIA);
+			if (atacado.serAtacado((int) (this.magia)) > CERO) {
 				return true;
 			}
 		}

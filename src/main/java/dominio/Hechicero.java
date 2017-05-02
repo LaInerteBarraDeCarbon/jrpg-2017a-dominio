@@ -11,11 +11,11 @@ public class Hechicero extends Casta {
 	/**
 	 * Divide la magia. <br>
 	 */
-	private final static int divisorMagia = 2;
+	private static final int DIVISORMAGIA = 2;
 	/**
 	 * Multplica la magia. <br>
 	 */
-	private final static double multiplicadorMagia = 1.5;
+	private static final double MULTIPLICADORMAGIA = 1.5;
 
 	/**
 	 * Crea un personaje con oficio de hechicero dadas la proabilidad de golpe
@@ -40,7 +40,7 @@ public class Hechicero extends Casta {
 	public Hechicero() {
 		super();
 		this.nombreCasta = "Hechicero";
-		habilidadesCasta = new String[cantidadHabilidadesCasta];
+		habilidadesCasta = new String[CANTIDADHABILIDADESCASTA];
 		habilidadesCasta[0] = "Bola de Fuego";
 		habilidadesCasta[1] = "Curar Aliado";
 		habilidadesCasta[2] = "Robar Energia y Salud";
@@ -57,9 +57,9 @@ public class Hechicero extends Casta {
 	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
 	public boolean habilidad1(final Personaje caster, final Peleable atacado) {
-		if (caster.getEnergia() > energiaMinima) {
-			caster.setEnergia(caster.getEnergia() - energiaMinima);
-			if (atacado.serAtacado((int) (caster.calcularPuntosDeMagia() * multiplicadorMagia)) > cero) {
+		if (caster.getEnergia() > ENERGIAMINIMA) {
+			caster.setEnergia(caster.getEnergia() - ENERGIAMINIMA);
+			if (atacado.serAtacado((int) (caster.calcularPuntosDeMagia() * MULTIPLICADORMAGIA)) > CERO) {
 				return true;
 			}
 		}
@@ -77,8 +77,8 @@ public class Hechicero extends Casta {
 	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
 	public boolean habilidad2(final Personaje caster, final Peleable aliado) {
-		if (caster.getEnergia() > energiaMinima) {
-			caster.setEnergia(caster.getEnergia() - energiaMinima);
+		if (caster.getEnergia() > ENERGIAMINIMA) {
+			caster.setEnergia(caster.getEnergia() - ENERGIAMINIMA);
 			if (aliado instanceof Personaje) {
 				((Personaje) aliado).serCurado(caster.calcularPuntosDeMagia());
 				return true;
@@ -98,11 +98,11 @@ public class Hechicero extends Casta {
 	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
 	public boolean habilidad3(final Personaje caster, final Peleable atacado) {
-		if (caster.getEnergia() > energiaMinima) {
-			caster.setEnergia(caster.getEnergia() - energiaMinima);
+		if (caster.getEnergia() > ENERGIAMINIMA) {
+			caster.setEnergia(caster.getEnergia() - ENERGIAMINIMA);
 			if (atacado instanceof Personaje) {
 				int energiaRobada = ((Personaje) atacado).serDesernegizado(caster.calcularPuntosDeMagia());
-				int saludRobada = ((Personaje) atacado).serRobadoSalud(caster.calcularPuntosDeMagia() / divisorMagia);
+				int saludRobada = ((Personaje) atacado).serRobadoSalud(caster.calcularPuntosDeMagia() / DIVISORMAGIA);
 				caster.serEnergizado(energiaRobada);
 				caster.serCurado(saludRobada);
 				return true;

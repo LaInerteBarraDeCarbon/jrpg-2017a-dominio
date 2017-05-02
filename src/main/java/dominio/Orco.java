@@ -10,11 +10,11 @@ public class Orco extends Personaje {
 	/**
 	 * Multiplica defensa: 2. <br>
 	 */
-	private final static int multiplicadorDefensa = 2;
+	private static final int MULTPLICADORDEFENSA = 2;
 	/**
 	 * Aumento de salud: 10. <br>
 	 */
-	private final static int aumentoSalud = 10;
+	private static final int AUMENTOSALUD = 10;
 
 	/**
 	 * Creacion del personaje con la salud y energia a tope y las habilidades
@@ -29,12 +29,12 @@ public class Orco extends Personaje {
 	 */
 	public Orco(final String nombre, final Casta casta, final int id) {
 		super(nombre, casta, id);
-		saludTope += aumentoSalud;
+		saludTope += AUMENTOSALUD;
 		salud = saludTope;
 		energia = energiaTope;
 		nombreRaza = "Orco";
 
-		habilidadesRaza = new String[cantidadHabilidadesPersonaje];
+		habilidadesRaza = new String[CANTIDADHABILIDADPERSONAJE];
 		habilidadesRaza[0] = "Golpe Defensa";
 		habilidadesRaza[1] = "Mordisco de Vida";
 	}
@@ -70,7 +70,7 @@ public class Orco extends Personaje {
 		super(nombre, salud, energia, fuerza, destreza, inteligencia, casta, experiencia, nivel, idPersonaje);
 		nombreRaza = "Orco";
 
-		habilidadesRaza = new String[cantidadHabilidadesPersonaje];
+		habilidadesRaza = new String[CANTIDADHABILIDADPERSONAJE];
 		habilidadesRaza[0] = "Golpe Defensa";
 		habilidadesRaza[1] = "Mordisco de Vida";
 	}
@@ -83,9 +83,9 @@ public class Orco extends Personaje {
 	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
 	public boolean habilidadRaza1(final Peleable atacado) {
-		if (this.getEnergia() > minimoEnergia) {
-			this.setEnergia(this.getEnergia() - minimoEnergia);
-			if (atacado.serAtacado(this.getDefensa() * multiplicadorDefensa) > cero) {
+		if (this.getEnergia() > MINIMOENERGIA) {
+			this.setEnergia(this.getEnergia() - MINIMOENERGIA);
+			if (atacado.serAtacado(this.getDefensa() * MULTPLICADORDEFENSA) > CERO) {
 				return true;
 			}
 		}
@@ -100,10 +100,10 @@ public class Orco extends Personaje {
 	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
 	public boolean habilidadRaza2(final Peleable atacado) {
-		if (this.getEnergia() > minimoEnergia) {
-			this.setEnergia(this.getEnergia() - minimoEnergia);
+		if (this.getEnergia() > MINIMOENERGIA) {
+			this.setEnergia(this.getEnergia() - MINIMOENERGIA);
 			int danioCausado = atacado.serAtacado(this.getFuerza());
-			if (danioCausado > cero) {
+			if (danioCausado > CERO) {
 				this.serCurado(danioCausado);
 				return true;
 			}

@@ -9,24 +9,24 @@ public class NonPlayableCharacter extends Peleable {
 	/**
 	 * Probabilidad de que el NPC de un golpe critico. <br>
 	 */
-	private final static double probGolpeCritico = 0.15;
+	private static final double PROBGOLPECRITICO = 0.15;
 	/**
 	 * Probabilidad de que el NPC esquive un golpe. <br>
 	 */
-	private final static double probEsquivar = 0.15;
+	private static final double PROBESQUIVAR = 0.15;
 	/**
 	 * Divisor de defensa para ver si le asertan un golpe. <br>
 	 */
-	private final static int divisorDefensa = 2;
+	private static final int DIVISORDEFENSA = 2;
 	/**
 	 * Multiplicador que agrega a la experiencia otorgada con respecto al nivel.
 	 * <br>
 	 */
-	private final static int multiplicadorExp = 30;
+	private static final int MULTIPLICADOREXP = 30;
 	/**
 	 * Multiplicador de ataque de realizar golpe critico. <br>
 	 */
-	private final static double multiplicadorGolpeCritico = 1.5;
+	private static final double MULTIPLICADORGOLPECRITICO = 1.5;
 
 	/**
 	 * Defensa del NPC. <br>
@@ -86,7 +86,7 @@ public class NonPlayableCharacter extends Peleable {
 	 * @return Experiencia ganada. <br>
 	 */
 	public int otorgarExp() {
-		return this.nivel * multiplicadorExp;
+		return this.nivel * MULTIPLICADOREXP;
 	}
 
 	/**
@@ -174,8 +174,8 @@ public class NonPlayableCharacter extends Peleable {
 	 * @return Danio realizado. <br>
 	 */
 	public int atacar(final Peleable atacado) {
-		if (MyRandom.nextDouble() <= probGolpeCritico) {
-			return atacado.serAtacado((int) (this.getAtaque() * multiplicadorGolpeCritico));
+		if (MyRandom.nextDouble() <= PROBGOLPECRITICO) {
+			return atacado.serAtacado((int) (this.getAtaque() * MULTIPLICADORGOLPECRITICO));
 		} else {
 			return atacado.serAtacado(this.getAtaque());
 		}
@@ -189,15 +189,15 @@ public class NonPlayableCharacter extends Peleable {
 	 * @return Danio recibido. <br>
 	 */
 	public int serAtacado(int danio) {
-		if (MyRandom.nextDouble() >= probEsquivar) {
-			danio -= this.getDefensa() / divisorDefensa;
-			if (danio > cero) {
+		if (MyRandom.nextDouble() >= PROBESQUIVAR) {
+			danio -= this.getDefensa() / DIVISORDEFENSA;
+			if (danio > CERO) {
 				salud -= danio;
 				return danio;
 			}
-			return cero;
+			return CERO;
 		}
-		return cero;
+		return CERO;
 	}
 
 	/**
