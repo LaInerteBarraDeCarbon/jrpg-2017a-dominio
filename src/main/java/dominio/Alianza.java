@@ -8,20 +8,31 @@ import java.util.LinkedList;
  */
 public class Alianza {
 
-	String nombre;
-	LinkedList<Personaje> aliados;
+	/**
+	 * Nombre de la alianza. <br>
+	 */
+	private String nombre;
+	/**
+	 * Lista de personajes que integran la alianza. <br>
+	 */
+	private LinkedList<Personaje> aliados;
 
 	/**
 	 * La funcion Alianza se utiliza para determinar lazos con otros personajes.
 	 * <br>
+	 * 
+	 * @param nombre
+	 *            Nombre de la alianza. <br>
 	 */
-	public Alianza(String nombre) {
+	public Alianza(final String nombre) {
 		this.nombre = nombre;
 		this.aliados = new LinkedList<Personaje>();
 	}
 
 	/**
 	 * Devuelve los aliados almacenados en la lista. <br>
+	 * 
+	 * @return Lista de los aliados. <br>
 	 */
 	public LinkedList<Personaje> getAliados() {
 		return aliados;
@@ -32,9 +43,10 @@ public class Alianza {
 	 * <br>
 	 * 
 	 * @param aliados
+	 *            Lista de aliados. <br>
 	 * 
 	 */
-	public void setAliados(LinkedList<Personaje> aliados) {
+	public void setAliados(final LinkedList<Personaje> aliados) {
 		this.aliados = aliados;
 	}
 
@@ -51,8 +63,9 @@ public class Alianza {
 	 * Esta funcion se encarga de quitar personajes de la alianza. <br>
 	 * 
 	 * @param pj
+	 *            Persona a eliminar de la alianza. <br>
 	 */
-	public void eliminarPersonaje(Personaje pj) {
+	public void eliminarPersonaje(final Personaje pj) {
 		aliados.remove(pj);
 	}
 
@@ -60,8 +73,9 @@ public class Alianza {
 	 * Esta funcion se encarga de agragar un personaje a la alianza. <br>
 	 * 
 	 * @param pj
+	 *            Personaje que integra la alianza. <br>
 	 */
-	public void aniadirPersonaje(Personaje pj) {
+	public void aniadirPersonaje(final Personaje pj) {
 		aliados.add(pj);
 	}
 }

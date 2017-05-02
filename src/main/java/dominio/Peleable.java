@@ -7,6 +7,10 @@ package dominio;
 public abstract class Peleable {
 
 	/**
+	 * Numero CERO. <br>
+	 */
+	protected static final int CERO = 0;
+	/**
 	 * Salud del personaje. <br>
 	 */
 	protected Integer salud;
@@ -23,6 +27,7 @@ public abstract class Peleable {
 	 * Indica el danio recibido. <br>
 	 * 
 	 * @param danio
+	 *            Danio recibido. <br>
 	 * @return Danio recibido. <br>
 	 */
 	public abstract int serAtacado(int danio);
@@ -47,6 +52,7 @@ public abstract class Peleable {
 	 * Ataca a otro personaje. <br>
 	 * 
 	 * @param atacado
+	 *            Personaje atacado. <br>
 	 * @return Danio realizado. <br>
 	 */
 	public abstract int atacar(Peleable atacado);
@@ -71,8 +77,9 @@ public abstract class Peleable {
 	 * Establece el ataque del personaje. <br>
 	 * 
 	 * @param ataque
+	 *            Ataque del personaje. <br>
 	 */
-	public void setAtaque(int ataque) {
+	public void setAtaque(final int ataque) {
 		this.ataque = ataque;
 	}
 
@@ -82,7 +89,7 @@ public abstract class Peleable {
 	 * @return true de estar vivo, false de estar muerto. <br>
 	 */
 	public boolean estaVivo() {
-		return this.salud > 0;
+		return this.salud > CERO;
 	}
 
 	/**

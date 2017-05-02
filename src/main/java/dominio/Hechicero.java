@@ -9,16 +9,28 @@ package dominio;
 public class Hechicero extends Casta {
 
 	/**
+	 * Divide la magia. <br>
+	 */
+	private static final int DIVISORMAGIA = 2;
+	/**
+	 * Multplica la magia. <br>
+	 */
+	private static final double MULTIPLICADORMAGIA = 1.5;
+
+	/**
 	 * Crea un personaje con oficio de hechicero dadas la proabilidad de golpe
 	 * crítico y de evitar danio y el danio crítico del persnaje.
 	 * <p>
 	 * 
-	 * @param prob_crit
+	 * @param probCrit
+	 *            Probabilidad de danio critico. <br>
 	 * @param evasion
-	 * @param danio_crit
+	 *            Evasion. <br>
+	 * @param danioCrit
+	 *            Danio critico. <br>
 	 */
-	public Hechicero(double prob_crit, double evasion, double danio_crit) {
-		super(prob_crit, evasion, danio_crit);
+	public Hechicero(final double probCrit, final double evasion, final double danioCrit) {
+		super(probCrit, evasion, danioCrit);
 		this.nombreCasta = "Hechicero";
 	}
 
@@ -28,32 +40,45 @@ public class Hechicero extends Casta {
 	public Hechicero() {
 		super();
 		this.nombreCasta = "Hechicero";
-		habilidadesCasta = new String[3];
+		habilidadesCasta = new String[CANTIDADHABILIDADESCASTA];
 		habilidadesCasta[0] = "Bola de Fuego";
 		habilidadesCasta[1] = "Curar Aliado";
 		habilidadesCasta[2] = "Robar Energia y Salud";
 	}
 
-	// Bola de Fuego
 	/**
-	 * Realiza la primer habilidad de la casta del hechizero, bola de fuego. <br>
+	 * Realiza la primer habilidad de la casta del hechizero, bola de fuego.
+	 * <br>
+	 * 
+	 * @param caster
+	 *            Personaje que lanza la habilidad. <br>
+	 * @param atacado
+	 *            Personaje a quien lanza la habilidad. <br>
+	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
-	public boolean habilidad1(Personaje caster, Peleable atacado) {
-		if (caster.getEnergia() > 10) {
-			caster.setEnergia(caster.getEnergia() - 10);
-			if (atacado.serAtacado((int) (caster.calcularPuntosDeMagia() * 1.5)) > 0)
+	public boolean habilidad1(final Personaje caster, final Peleable atacado) {
+		if (caster.getEnergia() > ENERGIAMINIMA) {
+			caster.setEnergia(caster.getEnergia() - ENERGIAMINIMA);
+			if (atacado.serAtacado((int) (caster.calcularPuntosDeMagia() * MULTIPLICADORMAGIA)) > CERO) {
 				return true;
+			}
 		}
 		return false;
 	}
 
-	// Curar Aliado
 	/**
-	 * Realiza la segunda habilidad de la casta del hechizero, curar aliado. <br>
+	 * Realiza la segunda habilidad de la casta del hechizero, curar aliado.
+	 * <br>
+	 * 
+	 * @param caster
+	 *            Personaje que lanza la habilidad. <br>
+	 * @param aliado
+	 *            Personaje a quien lanza la habilidad. <br>
+	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
-	public boolean habilidad2(Personaje caster, Peleable aliado) {
-		if (caster.getEnergia() > 10) {
-			caster.setEnergia(caster.getEnergia() - 10);
+	public boolean habilidad2(final Personaje caster, final Peleable aliado) {
+		if (caster.getEnergia() > ENERGIAMINIMA) {
+			caster.setEnergia(caster.getEnergia() - ENERGIAMINIMA);
 			if (aliado instanceof Personaje) {
 				((Personaje) aliado).serCurado(caster.calcularPuntosDeMagia());
 				return true;
@@ -62,18 +87,24 @@ public class Hechicero extends Casta {
 		return false;
 	}
 
-	// Robar Energia y Salud
 	/**
-	 * Realiza la tercer habilidad de la casta del hechizero, robar energía y salud. <br>
+	 * Realiza la tercer habilidad de la casta del hechizero, robar energía y
+	 * salud. <br>
+	 * 
+	 * @param caster
+	 *            Personaje que lanza la habilidad. <br>
+	 * @param atacado
+	 *            Personaje a quien lanza la habilidad. <br>
+	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
-	public boolean habilidad3(Personaje caster, Peleable atacado) {
-		if (caster.getEnergia() > 10) {
-			caster.setEnergia(caster.getEnergia() - 10);
+	public boolean habilidad3(final Personaje caster, final Peleable atacado) {
+		if (caster.getEnergia() > ENERGIAMINIMA) {
+			caster.setEnergia(caster.getEnergia() - ENERGIAMINIMA);
 			if (atacado instanceof Personaje) {
-				int energia_robada = ((Personaje) atacado).serDesernegizado(caster.calcularPuntosDeMagia());
-				int salud_robada = ((Personaje) atacado).serRobadoSalud(caster.calcularPuntosDeMagia() / 2);
-				caster.serEnergizado(energia_robada);
-				caster.serCurado(salud_robada);
+				int energiaRobada = ((Personaje) atacado).serDesernegizado(caster.calcularPuntosDeMagia());
+				int saludRobada = ((Personaje) atacado).serRobadoSalud(caster.calcularPuntosDeMagia() / DIVISORMAGIA);
+				caster.serEnergizado(energiaRobada);
+				caster.serCurado(saludRobada);
 				return true;
 			}
 

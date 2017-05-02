@@ -2,22 +2,35 @@ package dominio;
 
 /**
  * La clase Asesino representa el oficio de asesino del personaje y sus 3
- * habilidades concretas. 
+ * habilidades concretas.
  * <p>
  */
+@SuppressWarnings("serial")
 public class Asesino extends Casta {
+
+	/**
+	 * Maxima evasion. <br>
+	 */
+	private static final double MAXIMOEVASION = 0.5;
+	/**
+	 * Evasion aumentada. <br>
+	 */
+	private static final double AUMENTAREVASION = 0.15;
 
 	/**
 	 * Crea un personaje con oficio de asesino dadas la proabilidad de golpe
 	 * crítico y de evitar danio y el danio crítico del persnaje.
 	 * <p>
 	 * 
-	 * @param prob_crit
+	 * @param probCrit
+	 *            Probabilidad de realizar un golpe critico. <br>
 	 * @param evasion
-	 * @param danio_crit
+	 *            Evasion. <br>
+	 * @param danioCrit
+	 *            Danio critico que realiza. <br>
 	 */
-	public Asesino(double prob_crit, double evasion, double danio_crit) {
-		super(prob_crit, evasion, danio_crit);
+	public Asesino(final double probCrit, final double evasion, final double danioCrit) {
+		super(probCrit, evasion, danioCrit);
 		this.nombreCasta = "Asesino";
 	}
 
@@ -27,46 +40,64 @@ public class Asesino extends Casta {
 	public Asesino() {
 		super();
 		this.nombreCasta = "Asesino";
-		habilidadesCasta = new String[3];
+		habilidadesCasta = new String[CANTIDADHABILIDADESCASTA];
 		habilidadesCasta[0] = "Golpe Critico";
 		habilidadesCasta[1] = "Aumentar Evasion";
 		habilidadesCasta[2] = "Robar";
 	}
 
-	// Golpe Crítico
 	/**
 	 * Realiza la primer habilidad de la casta del asesino, golpe crítico. <br>
+	 * 
+	 * @param caster
+	 *            Personaje que lanza la habilidad. <br>
+	 * @param atacado
+	 *            Personaje a quien lanza la habilidad. <br>
+	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
-	public boolean habilidad1(Personaje caster, Peleable atacado) {
-		if (caster.getEnergia() > 10) {
-			caster.setEnergia(caster.getEnergia() - 10);
-			if (atacado.serAtacado((int) (caster.ataque * caster.getCasta().getDanioCritico())) > 0)
+	public boolean habilidad1(final Personaje caster, final Peleable atacado) {
+		if (caster.getEnergia() > ENERGIAMINIMA) {
+			caster.setEnergia(caster.getEnergia() - ENERGIAMINIMA);
+			if (atacado.serAtacado((int) (caster.ataque * caster.getCasta().getDanioCritico())) > CERO) {
 				return true;
+			}
 		}
 		return false;
 	}
 
-	// Aumentar Evasion
 	/**
-	 * Realiza la segunda habilidad de la casta del asesino, aumentar evasión. <br>
+	 * Realiza la segunda habilidad de la casta del asesino, aumentar evasión.
+	 * <br>
+	 * 
+	 * @param caster
+	 *            Personaje que lanza la habilidad. <br>
+	 * @param atacado
+	 *            Nadie. <br>
+	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
-	public boolean habilidad2(Personaje caster, Peleable atacado) {
-		if (caster.getEnergia() > 10) {
-			caster.setEnergia(caster.getEnergia() - 10);
-			if (this.getProbabilidadEvitarDanio() + 0.15 < 0.5)
-				this.probabilidadEvitarDanio += 0.15;
-			else
-				this.probabilidadEvitarDanio = 0.5;
+	public boolean habilidad2(final Personaje caster, final Peleable atacado) {
+		if (caster.getEnergia() > ENERGIAMINIMA) {
+			caster.setEnergia(caster.getEnergia() - ENERGIAMINIMA);
+			if (this.getProbabilidadEvitarDanio() + AUMENTAREVASION < MAXIMOEVASION) {
+				this.probabilidadEvitarDanio += AUMENTAREVASION;
+			} else {
+				this.probabilidadEvitarDanio = MAXIMOEVASION;
+			}
 			return true;
 		}
 		return false;
 	}
 
-	// Robar
 	/**
 	 * Realiza la tercer habilidad de la casta del asesino, robar. <br>
+	 * 
+	 * @param caster
+	 *            Personaje que lanza la habilidad. <br>
+	 * @param atacado
+	 *            Personaje a quien lanza la habilidad. <br>
+	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
-	public boolean habilidad3(Personaje caster, Peleable atacado) {
+	public boolean habilidad3(final Personaje caster, final Peleable atacado) {
 		return false;
 	}
 }

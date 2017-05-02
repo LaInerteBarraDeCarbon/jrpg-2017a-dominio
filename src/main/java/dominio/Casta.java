@@ -10,12 +10,34 @@ import java.io.Serializable;
  * También define las 3 habilidades que varían según el tipo de personaje.
  * <p>
  */
+@SuppressWarnings("serial")
 public abstract class Casta implements Serializable {
 
 	/**
-	 * 
+	 * Energia minima para realizar alguna accion. <br>
 	 */
-	private static final long serialVersionUID = 1L;
+	protected static final int ENERGIAMINIMA = 10;
+	/**
+	 * Numero CERO. <br>
+	 */
+	protected static final int CERO = 0;
+	/**
+	 * Cantidad de habilidades por casta. <br>
+	 */
+	protected static final int CANTIDADHABILIDADESCASTA = 3;
+	/**
+	 * Probabilidad de golpe critico de casta. <br>
+	 */
+	private static final double PROBABILIDADGOLPECRITICO = 0.2;
+	/**
+	 * Probabilidad de evitar danio de casta. <br>
+	 */
+	private static final double PROBABILIDADEVITARDANIO = 0.2;
+	/**
+	 * Danio critico de casta. <br>
+	 */
+	private static final double DANIOCRITICO = 1.5;
+
 	/**
 	 * Probabilidad de acertar un golpe crítico de un personaje. <br>
 	 */
@@ -42,24 +64,27 @@ public abstract class Casta implements Serializable {
 	 * evitar danio, y su danio crítico predefinido. <br>
 	 */
 	public Casta() {
-		this.probabilidadGolpeCritico = 0.2;
-		this.probabilidadEvitarDanio = 0.2;
-		this.danioCritico = 1.5;
+		this.probabilidadGolpeCritico = PROBABILIDADGOLPECRITICO;
+		this.probabilidadEvitarDanio = PROBABILIDADEVITARDANIO;
+		this.danioCritico = DANIOCRITICO;
 	}
 
 	/**
 	 * Crea una casta dadas la proabilidad de golpe crítico y de evitar danio, y
-	 * el danio crítico del persnaje.
+	 * el danio crítico del personaje.
 	 * <p>
 	 * 
-	 * @param prob_crit
+	 * @param probCrit
+	 *            Probabilidad de realizar crítico. <br>
 	 * @param evasion
-	 * @param danio_crit
+	 *            Evasion. <br>
+	 * @param danCrit
+	 *            Danio Critico que realiza. <br>
 	 */
-	public Casta(double prob_crit, double evasion, double danio_crit) {
-		this.probabilidadGolpeCritico = prob_crit;
+	public Casta(final double probCrit, final double evasion, final double danioCrit) {
+		this.probabilidadGolpeCritico = probCrit;
 		this.probabilidadEvitarDanio = evasion;
-		this.danioCritico = danio_crit;
+		this.danioCritico = danioCrit;
 	}
 
 	/**
@@ -67,7 +92,9 @@ public abstract class Casta implements Serializable {
 	 * <p>
 	 * 
 	 * @param caster
+	 *            Personaje que lanza la habilidad. <br>
 	 * @param atacado
+	 *            Personaje a quien lanza la habilidad. <br>
 	 * 
 	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
@@ -78,7 +105,9 @@ public abstract class Casta implements Serializable {
 	 * <p>
 	 * 
 	 * @param caster
+	 *            Personaje que lanza la habilidad. <br>
 	 * @param atacado
+	 *            Personaje a quien lanza la habilidad. <br>
 	 * 
 	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
@@ -89,7 +118,9 @@ public abstract class Casta implements Serializable {
 	 * <p>
 	 * 
 	 * @param caster
+	 *            Personaje que lanza la habilidad. <br>
 	 * @param atacado
+	 *            Personaje a quien lanza la habilidad. <br
 	 * 
 	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
@@ -126,8 +157,9 @@ public abstract class Casta implements Serializable {
 	 * Establece la probabilidad de golpe crítico del personaje. <br>
 	 * 
 	 * @param probabilidadGolpeCritico
+	 *            Probabilidad de realizar un golpe critico. <br>
 	 */
-	public void setProbabilidadGolpeCritico(double probabilidadGolpeCritico) {
+	public void setProbabilidadGolpeCritico(final double probabilidadGolpeCritico) {
 		this.probabilidadGolpeCritico = probabilidadGolpeCritico;
 	}
 
@@ -144,8 +176,9 @@ public abstract class Casta implements Serializable {
 	 * Establece la probabilidad de evitar danio del personaje. <br>
 	 * 
 	 * @param probabilidadEvitarDanio
+	 *            La probabilidad de evitar danio. <br>
 	 */
-	public void setProbabilidadEvitarDanio(double probabilidadEvitarDanio) {
+	public void setProbabilidadEvitarDanio(final double probabilidadEvitarDanio) {
 		this.probabilidadEvitarDanio = probabilidadEvitarDanio;
 	}
 
@@ -162,8 +195,9 @@ public abstract class Casta implements Serializable {
 	 * Establece el danio crítico del personaje. <br>
 	 * 
 	 * @param danioCritico
+	 *            Danio critico que realiza. <br>
 	 */
-	public void setDanioCritico(double danioCritico) {
+	public void setDanioCritico(final double danioCritico) {
 		this.danioCritico = danioCritico;
 	}
 }
