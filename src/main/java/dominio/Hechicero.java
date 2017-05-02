@@ -9,13 +9,13 @@ package dominio;
 public class Hechicero extends Casta {
 
 	/**
-	 * Divide la magia: 2. <br>
+	 * Divide la magia. <br>
 	 */
-	private static int divisorMagia = 2;
+	private final static int divisorMagia = 2;
 	/**
-	 * Multplica la magia: 1.5 <br>
+	 * Multplica la magia. <br>
 	 */
-	private static double multiplicadorMagia = 1.5;
+	private final static double multiplicadorMagia = 1.5;
 
 	/**
 	 * Crea un personaje con oficio de hechicero dadas la proabilidad de golpe
@@ -29,7 +29,7 @@ public class Hechicero extends Casta {
 	 * @param danioCrit
 	 *            Danio critico. <br>
 	 */
-	public Hechicero(double probCrit, double evasion, double danioCrit) {
+	public Hechicero(final double probCrit, final double evasion, final double danioCrit) {
 		super(probCrit, evasion, danioCrit);
 		this.nombreCasta = "Hechicero";
 	}
@@ -40,7 +40,7 @@ public class Hechicero extends Casta {
 	public Hechicero() {
 		super();
 		this.nombreCasta = "Hechicero";
-		habilidadesCasta = new String[3];
+		habilidadesCasta = new String[cantidadHabilidadesCasta];
 		habilidadesCasta[0] = "Bola de Fuego";
 		habilidadesCasta[1] = "Curar Aliado";
 		habilidadesCasta[2] = "Robar Energia y Salud";
@@ -49,8 +49,14 @@ public class Hechicero extends Casta {
 	/**
 	 * Realiza la primer habilidad de la casta del hechizero, bola de fuego.
 	 * <br>
+	 * 
+	 * @param caster
+	 *            Personaje que lanza la habilidad. <br>
+	 * @param atacado
+	 *            Personaje a quien lanza la habilidad. <br>
+	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
-	public boolean habilidad1(Personaje caster, Peleable atacado) {
+	public boolean habilidad1(final Personaje caster, final Peleable atacado) {
 		if (caster.getEnergia() > energiaMinima) {
 			caster.setEnergia(caster.getEnergia() - energiaMinima);
 			if (atacado.serAtacado((int) (caster.calcularPuntosDeMagia() * multiplicadorMagia)) > cero) {
@@ -63,8 +69,14 @@ public class Hechicero extends Casta {
 	/**
 	 * Realiza la segunda habilidad de la casta del hechizero, curar aliado.
 	 * <br>
+	 * 
+	 * @param caster
+	 *            Personaje que lanza la habilidad. <br>
+	 * @param aliado
+	 *            Personaje a quien lanza la habilidad. <br>
+	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
-	public boolean habilidad2(Personaje caster, Peleable aliado) {
+	public boolean habilidad2(final Personaje caster, final Peleable aliado) {
 		if (caster.getEnergia() > energiaMinima) {
 			caster.setEnergia(caster.getEnergia() - energiaMinima);
 			if (aliado instanceof Personaje) {
@@ -78,8 +90,14 @@ public class Hechicero extends Casta {
 	/**
 	 * Realiza la tercer habilidad de la casta del hechizero, robar energía y
 	 * salud. <br>
+	 * 
+	 * @param caster
+	 *            Personaje que lanza la habilidad. <br>
+	 * @param atacado
+	 *            Personaje a quien lanza la habilidad. <br>
+	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
-	public boolean habilidad3(Personaje caster, Peleable atacado) {
+	public boolean habilidad3(final Personaje caster, final Peleable atacado) {
 		if (caster.getEnergia() > energiaMinima) {
 			caster.setEnergia(caster.getEnergia() - energiaMinima);
 			if (atacado instanceof Personaje) {

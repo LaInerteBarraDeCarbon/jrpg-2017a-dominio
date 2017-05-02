@@ -9,7 +9,7 @@ public abstract class Peleable {
 	/**
 	 * Numero cero. <br>
 	 */
-	protected static int cero = 0;
+	protected final static int cero = 0;
 	/**
 	 * Salud del personaje. <br>
 	 */

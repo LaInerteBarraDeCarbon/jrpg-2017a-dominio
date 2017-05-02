@@ -7,26 +7,26 @@ package dominio;
 public class NonPlayableCharacter extends Peleable {
 
 	/**
-	 * Probabilidad de que el NPC de un golpe critico: 0.15. <br>
+	 * Probabilidad de que el NPC de un golpe critico. <br>
 	 */
-	private static double probGolpeCritico = 0.15;
+	private final static double probGolpeCritico = 0.15;
 	/**
-	 * Probabilidad de que el NPC esquive un golpe: 0.15. <br>
+	 * Probabilidad de que el NPC esquive un golpe. <br>
 	 */
-	private static double probEsquivar = 0.15;
+	private final static double probEsquivar = 0.15;
 	/**
-	 * Divisor de defensa para ver si le asertan un golpe: 2. <br>
+	 * Divisor de defensa para ver si le asertan un golpe. <br>
 	 */
-	private static int divisorDefensa = 2;
+	private final static int divisorDefensa = 2;
 	/**
-	 * Multiplicador que agrega a la experiencia otorgada con respecto al nivel:
-	 * 30. <br>
+	 * Multiplicador que agrega a la experiencia otorgada con respecto al nivel.
+	 * <br>
 	 */
-	private static int multiplicadorExp = 30;
+	private final static int multiplicadorExp = 30;
 	/**
-	 * Multiplicador de ataque de realizar golpe critico: 1.5 <br>
+	 * Multiplicador de ataque de realizar golpe critico. <br>
 	 */
-	private static double multiplicadorGolpeCritico = 1.5;
+	private final static double multiplicadorGolpeCritico = 1.5;
 
 	/**
 	 * Defensa del NPC. <br>
@@ -46,10 +46,13 @@ public class NonPlayableCharacter extends Peleable {
 	 * cualidades aleatoriamente. <br>
 	 * 
 	 * @param nombre
+	 *            Nombre del NPC. <br>
 	 * @param nivel
+	 *            Nivel del NPC. <br>
 	 * @param dificultadNPC
+	 *            Dificultad del NPC. <br>
 	 */
-	public NonPlayableCharacter(String nombre, int nivel, int dificultadNPC) {
+	public NonPlayableCharacter(final String nombre, final int nivel, final int dificultadNPC) {
 		this.nombre = nombre;
 		this.nivel = nivel;
 		int dificultad;
@@ -77,6 +80,11 @@ public class NonPlayableCharacter extends Peleable {
 		}
 	}
 
+	/**
+	 * Cantidad de experiencia que otorga al jugador. <br>
+	 * 
+	 * @return Experiencia ganada. <br>
+	 */
 	public int otorgarExp() {
 		return this.nivel * multiplicadorExp;
 	}
@@ -94,8 +102,9 @@ public class NonPlayableCharacter extends Peleable {
 	 * Establece la ataque del NPC. <br>
 	 * 
 	 * @param ataque
+	 *            Ataque. <br>
 	 */
-	public void setataque(int ataque) {
+	public void setataque(final int ataque) {
 		this.ataque = ataque;
 	}
 
@@ -103,8 +112,9 @@ public class NonPlayableCharacter extends Peleable {
 	 * Establece el nombre del NPC. <br>
 	 * 
 	 * @param nombre
+	 *            Nombre. <br>
 	 */
-	public void setNombre(String nombre) {
+	public void setNombre(final String nombre) {
 		this.nombre = nombre;
 	}
 
@@ -121,8 +131,9 @@ public class NonPlayableCharacter extends Peleable {
 	 * Establece el nivel del NPC. <br>
 	 * 
 	 * @param nivel
+	 *            Nivel. <br>
 	 */
-	public void setNivel(int nivel) {
+	public void setNivel(final int nivel) {
 		this.nivel = nivel;
 	}
 
@@ -139,8 +150,9 @@ public class NonPlayableCharacter extends Peleable {
 	 * Establece la defensa del NPC. <br>
 	 * 
 	 * @param defensa
+	 *            Defensa. <br>
 	 */
-	public void setDefensa(int defensa) {
+	public void setDefensa(final int defensa) {
 		this.defensa = defensa;
 	}
 
@@ -148,12 +160,20 @@ public class NonPlayableCharacter extends Peleable {
 	 * Establece la salud del NPC. <br>
 	 * 
 	 * @param salud
+	 *            Salud. <br>
 	 */
-	public void setSalud(int salud) {
+	public void setSalud(final int salud) {
 		this.salud = salud;
 	}
 
-	public int atacar(Peleable atacado) {
+	/**
+	 * Ataca a otro personaje. <br>
+	 *
+	 * @param atacado
+	 *            Personaje atacado. <br>
+	 * @return Danio realizado. <br>
+	 */
+	public int atacar(final Peleable atacado) {
 		if (MyRandom.nextDouble() <= probGolpeCritico) {
 			return atacado.serAtacado((int) (this.getAtaque() * multiplicadorGolpeCritico));
 		} else {
@@ -161,6 +181,13 @@ public class NonPlayableCharacter extends Peleable {
 		}
 	}
 
+	/**
+	 * Indica el danio recibido. <br>
+	 * 
+	 * @param danio
+	 *            Danio recibido. <br>
+	 * @return Danio recibido. <br>
+	 */
 	public int serAtacado(int danio) {
 		if (MyRandom.nextDouble() >= probEsquivar) {
 			danio -= this.getDefensa() / divisorDefensa;
@@ -179,7 +206,7 @@ public class NonPlayableCharacter extends Peleable {
 	 * @param exp
 	 *            Experiencia ganada. <br>
 	 */
-	public void ganarExperiencia(int exp) {
+	public void ganarExperiencia(final int exp) {
 
 	}
 }

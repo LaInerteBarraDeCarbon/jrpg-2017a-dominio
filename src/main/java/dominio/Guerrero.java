@@ -20,7 +20,7 @@ public class Guerrero extends Casta {
 	 * @param danioCrit
 	 *            Danio critico. <br>
 	 */
-	public Guerrero(double probCrit, double evasion, double danioCrit) {
+	public Guerrero(final double probCrit, final double evasion, final double danioCrit) {
 		super(probCrit, evasion, danioCrit);
 		this.nombreCasta = "Guerrero";
 	}
@@ -32,7 +32,7 @@ public class Guerrero extends Casta {
 		super();
 		this.nombreCasta = "Guerrero";
 
-		habilidadesCasta = new String[3];
+		habilidadesCasta = new String[cantidadHabilidadesCasta];
 		habilidadesCasta[0] = "Ataque Doble";
 		habilidadesCasta[1] = "Aumentar Defensa";
 		habilidadesCasta[2] = "Ignorar Defensa";
@@ -40,8 +40,14 @@ public class Guerrero extends Casta {
 
 	/**
 	 * Realiza la primer habilidad de la casta del guerrero, ataque doble. <br>
+	 * 
+	 * @param caster
+	 *            Personaje que lanza la habilidad. <br>
+	 * @param atacado
+	 *            Personaje a quien lanza la habilidad. <br>
+	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
-	public boolean habilidad1(Personaje caster, Peleable atacado) {
+	public boolean habilidad1(final Personaje caster, final Peleable atacado) {
 		if (caster.getEnergia() > energiaMinima) {
 			caster.setEnergia(caster.getEnergia() - energiaMinima);
 			if (atacado.serAtacado(caster.ataque * 2) > cero) {
@@ -54,8 +60,14 @@ public class Guerrero extends Casta {
 	/**
 	 * Realiza la segunda habilidad de la casta del guerrero, aumentar defensa.
 	 * <br>
+	 * 
+	 * @param caster
+	 *            Personaje que lanza la habilidad. <br>
+	 * @param atacado
+	 *            Nadie. <br>
+	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
-	public boolean habilidad2(Personaje caster, Peleable atacado) {
+	public boolean habilidad2(final Personaje caster, final Peleable atacado) {
 		if (caster.getEnergia() > energiaMinima) {
 			caster.setEnergia(caster.getEnergia() - energiaMinima);
 			caster.setDefensa(caster.getDefensa() + caster.magia);
@@ -64,19 +76,24 @@ public class Guerrero extends Casta {
 		return false;
 	}
 
-	// Ignorar Defensa
 	/**
 	 * Realiza la tercer habilidad de la casta del guerrero, ignorar defensa.
 	 * <br>
+	 * 
+	 * @param caster
+	 *            Personaje que lanza la habilidad. <br>
+	 * @param atacado
+	 *            Personaje a quien lanza la habilidad. <br>
+	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
-	public boolean habilidad3(Personaje caster, Peleable atacado) {
+	public boolean habilidad3(final Personaje caster, final Peleable atacado) {
 		if (caster.getEnergia() > energiaMinima) {
 			caster.setEnergia(caster.getEnergia() - energiaMinima);
 			if (atacado instanceof Personaje) {
-				int defensa_original = ((Personaje) atacado).getDefensa();
+				int defensaOriginal = ((Personaje) atacado).getDefensa();
 				((Personaje) atacado).setDefensa(cero);
 				if (atacado.serAtacado(caster.ataque) > cero) {
-					((Personaje) atacado).setDefensa(defensa_original);
+					((Personaje) atacado).setDefensa(defensaOriginal);
 					return true;
 				}
 			}

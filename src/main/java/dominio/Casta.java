@@ -14,13 +14,17 @@ import java.io.Serializable;
 public abstract class Casta implements Serializable {
 
 	/**
-	 * Energia minima para realizar alguna accion: 10. <br>
+	 * Energia minima para realizar alguna accion. <br>
 	 */
-	protected static int energiaMinima = 10;
+	protected final static int energiaMinima = 10;
 	/**
 	 * Numero cero. <br>
 	 */
-	protected static int cero = 0;
+	protected final static int cero = 0;
+	/**
+	 * Cantidad de habilidades por casta. <br>
+	 */
+	protected final static int cantidadHabilidadesCasta = 3;
 
 	/**
 	 * Probabilidad de acertar un golpe crítico de un personaje. <br>
@@ -65,7 +69,7 @@ public abstract class Casta implements Serializable {
 	 * @param danCrit
 	 *            Danio Critico que realiza. <br>
 	 */
-	public Casta(double probCrit, double evasion, double danioCrit) {
+	public Casta(final double probCrit, final double evasion, final double danioCrit) {
 		this.probabilidadGolpeCritico = probCrit;
 		this.probabilidadEvitarDanio = evasion;
 		this.danioCritico = danioCrit;
@@ -143,7 +147,7 @@ public abstract class Casta implements Serializable {
 	 * @param probabilidadGolpeCritico
 	 *            Probabilidad de realizar un golpe critico. <br>
 	 */
-	public void setProbabilidadGolpeCritico(double probabilidadGolpeCritico) {
+	public void setProbabilidadGolpeCritico(final double probabilidadGolpeCritico) {
 		this.probabilidadGolpeCritico = probabilidadGolpeCritico;
 	}
 
@@ -162,7 +166,7 @@ public abstract class Casta implements Serializable {
 	 * @param probabilidadEvitarDanio
 	 *            La probabilidad de evitar danio. <br>
 	 */
-	public void setProbabilidadEvitarDanio(double probabilidadEvitarDanio) {
+	public void setProbabilidadEvitarDanio(final double probabilidadEvitarDanio) {
 		this.probabilidadEvitarDanio = probabilidadEvitarDanio;
 	}
 
@@ -181,7 +185,7 @@ public abstract class Casta implements Serializable {
 	 * @param danioCritico
 	 *            Danio critico que realiza. <br>
 	 */
-	public void setDanioCritico(double danioCritico) {
+	public void setDanioCritico(final double danioCritico) {
 		this.danioCritico = danioCritico;
 	}
 }
