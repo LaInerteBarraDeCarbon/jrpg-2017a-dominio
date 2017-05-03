@@ -39,7 +39,7 @@ public class NonPlayableCharacter extends Peleable {
 	/**
 	 * Dificultad del NPC. <br>
 	 */
-	private static final int dificultadAleatoria = -1;
+	private static final int DIFICULTADALEATORIA = -1;
 
 	/**
 	 * Crea dicho personaje con su nombre y nivel espesifico. Cargando sus
@@ -56,7 +56,7 @@ public class NonPlayableCharacter extends Peleable {
 		this.nombre = nombre;
 		this.nivel = nivel;
 		int dificultad;
-		if (dificultadNPC == dificultadAleatoria) {
+		if (dificultadNPC == DIFICULTADALEATORIA) {
 			dificultad = MyRandom.nextInt(3);
 		} else {
 			dificultad = dificultadNPC;

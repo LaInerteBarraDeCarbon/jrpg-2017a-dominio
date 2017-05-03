@@ -8,19 +8,19 @@ public class Humano extends Personaje {
 	/**
 	 * Aumento de salud. <br>
 	 */
-	private final static int aumentoSalud = 5;
+	private static final int AUMENTOSALUD = 5;
 	/**
 	 * Aumento de energia. <br>
 	 */
-	private final static int aumentoEnergia = 5;
+	private static final int AUMENTOENERGIA = 5;
 	/**
 	 * Divisor de consumo de energia. <br>
 	 */
-	private final static int divisorEnergia = 2;
+	private static final int DIVISORENERGIA = 2;
 	/**
 	 * Divisor de cantidad de vida. <br>
 	 */
-	private final static int divisorVida = 2;
+	private static final int DIVISORVIDA = 2;
 
 	/**
 	 * Crea el personaje de raza Humano asginandole los valores predefinidos de
@@ -35,11 +35,11 @@ public class Humano extends Personaje {
 	 */
 	public Humano(final String nombre, final Casta casta, final int id) {
 		super(nombre, casta, id);
-		saludTope += aumentoSalud;
-		energiaTope += aumentoEnergia;
-		salud = saludTope;
-		energia = energiaTope;
-		nombreRaza = "Humano";
+		this.setEnergiaTope(this.getEnergiaTope() + AUMENTOENERGIA);
+		this.setSaludTope(getSaludTope() + AUMENTOSALUD);
+		this.setSalud(this.getSaludTope());
+		this.setEnergia(this.getEnergiaTope());
+		setNombreRaza("Humano");
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class Humano extends Personaje {
 	public Humano(final String nombre, final int salud, final int energia, final int fuerza, final int destreza,
 			final int inteligencia, final Casta casta, final int experiencia, final int nivel, final int idPersonaje) {
 		super(nombre, salud, energia, fuerza, destreza, inteligencia, casta, experiencia, nivel, idPersonaje);
-		nombreRaza = "Humano";
+		setNombreRaza("Humano");
 
 		habilidadesRaza = new String[CANTIDADHABILIDADPERSONAJE];
 		habilidadesRaza[0] = "Incentivar";
@@ -104,8 +104,8 @@ public class Humano extends Personaje {
 	 */
 	public boolean habilidadRaza2(final Peleable atacado) {
 		if (this.getEnergia() > MINIMOENERGIA) {
-			if (atacado.serAtacado(atacado.getSalud() / divisorVida) > CERO) {
-				this.setEnergia(this.getEnergia() / divisorEnergia);
+			if (atacado.serAtacado(atacado.getSalud() / DIVISORVIDA) > CERO) {
+				this.setEnergia(this.getEnergia() / DIVISORENERGIA);
 				return true;
 			}
 		}

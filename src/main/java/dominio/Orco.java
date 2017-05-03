@@ -29,10 +29,11 @@ public class Orco extends Personaje {
 	 */
 	public Orco(final String nombre, final Casta casta, final int id) {
 		super(nombre, casta, id);
-		saludTope += AUMENTOSALUD;
-		salud = saludTope;
-		energia = energiaTope;
-		nombreRaza = "Orco";
+		this.setEnergiaTope(this.getEnergiaTope());
+		this.setSaludTope(getSaludTope() + AUMENTOSALUD);
+		this.setSalud(this.getSaludTope());
+		this.setEnergia(this.getEnergiaTope());
+		setNombreRaza("Orco");
 
 		habilidadesRaza = new String[CANTIDADHABILIDADPERSONAJE];
 		habilidadesRaza[0] = "Golpe Defensa";
@@ -68,7 +69,7 @@ public class Orco extends Personaje {
 	public Orco(final String nombre, final int salud, final int energia, final int fuerza, final int destreza,
 			final int inteligencia, final Casta casta, final int experiencia, final int nivel, final int idPersonaje) {
 		super(nombre, salud, energia, fuerza, destreza, inteligencia, casta, experiencia, nivel, idPersonaje);
-		nombreRaza = "Orco";
+		setNombreRaza("Orco");
 
 		habilidadesRaza = new String[CANTIDADHABILIDADPERSONAJE];
 		habilidadesRaza[0] = "Golpe Defensa";

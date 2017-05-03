@@ -94,75 +94,75 @@ public abstract class Personaje extends Peleable implements Serializable {
 	/**
 	 * Energía del personaje. <br>
 	 */
-	protected int energia;
+	private int energia;
 	/**
 	 * Defensa del personaje. Depende de la destreza. <br>
 	 */
-	protected int defensa;
+	private int defensa;
 
 	/**
 	 * Magia del personaje. Depende de la inteligencia. <br>
 	 */
-	protected int magia;
+	private int magia;
 
 	/**
 	 * Nombre del personaje. <br>
 	 */
-	protected String nombreRaza;
+	private String nombreRaza;
 
 	/**
 	 * Máxima vida del personaje. <br>
 	 */
-	protected int saludTope;
+	private int saludTope;
 	/**
 	 * Energía máxima del personaje. <br>
 	 */
-	protected int energiaTope;
+	private int energiaTope;
 
 	/**
 	 * Fuerza del personaje. <br>
 	 */
-	protected int fuerza;
+	private int fuerza;
 	/**
 	 * Destreza del personaje. <br>
 	 */
-	protected int destreza;
+	private int destreza;
 	/**
 	 * Inteligencia del personaje. <br>
 	 */
-	protected int inteligencia;
+	private int inteligencia;
 	/**
 	 * Casta del personaje. <br>
 	 */
-	protected Casta casta;
+	private Casta casta;
 
 	/**
 	 * Posicion X del personaje. <br>
 	 */
-	protected int x;
+	private int x;
 	/**
 	 * Posicion Y del personaje. <br>
 	 */
-	protected int y;
+	private int y;
 
 	/**
 	 * Experiencia del personaje. <br>
 	 */
-	protected int experiencia;
+	private int experiencia;
 	/**
 	 * Nivel del personaje. <br>
 	 */
-	protected int nivel;
+	private int nivel;
 
 	/**
 	 * ID del personaje. <br>
 	 */
-	protected int idPersonaje;
+	private int idPersonaje;
 
 	/**
 	 * Alianza del personaje. <br>
 	 */
-	protected Alianza clan = null;
+	private Alianza clan = null;
 	/**
 	 * Tabla de nivel del personaje. <br>
 	 */

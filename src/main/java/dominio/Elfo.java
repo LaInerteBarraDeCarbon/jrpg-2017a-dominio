@@ -10,7 +10,7 @@ public class Elfo extends Personaje {
 	/**
 	 * Aumento de salud del elfo. <br>
 	 */
-	protected static final int AUMENTARSALUD = 10;
+	protected static final int AUMENTARENERGIA = 10;
 
 	/**
 	 * Crea el personaje Elfo con sus valores ya establecidos y le asigna sus
@@ -25,10 +25,11 @@ public class Elfo extends Personaje {
 	 */
 	public Elfo(final String nombre, final Casta casta, final int id) {
 		super(nombre, casta, id);
-		energiaTope += AUMENTARSALUD;
-		salud = saludTope;
-		energia = energiaTope;
-		nombreRaza = "Elfo";
+		this.setEnergiaTope(this.getEnergiaTope() + AUMENTARENERGIA);
+		this.setSaludTope(getSaludTope());
+		this.setSalud(this.getSaludTope());
+		this.setEnergia(this.getEnergiaTope());
+		this.setNombreRaza("Elfo");
 		habilidadesRaza = new String[CANTIDADHABILIDADPERSONAJE];
 		habilidadesRaza[0] = "Golpe Level";
 		habilidadesRaza[1] = "Ataque Bosque";
@@ -63,7 +64,7 @@ public class Elfo extends Personaje {
 	public Elfo(final String nombre, final int salud, final int energia, final int fuerza, final int destreza,
 			final int inteligencia, final Casta casta, final int experiencia, final int nivel, final int idPersonaje) {
 		super(nombre, salud, energia, fuerza, destreza, inteligencia, casta, experiencia, nivel, idPersonaje);
-		nombreRaza = "Elfo";
+		setNombreRaza("Elfo");
 		habilidadesRaza = new String[CANTIDADHABILIDADPERSONAJE];
 		habilidadesRaza[0] = "Golpe Level";
 		habilidadesRaza[1] = "Ataque Bosque";
@@ -96,7 +97,7 @@ public class Elfo extends Personaje {
 	public boolean habilidadRaza2(final Peleable atacado) {
 		if (this.getEnergia() > MINIMOENERGIA) {
 			this.setEnergia(this.getEnergia() - MINIMOENERGIA);
-			if (atacado.serAtacado((int) (this.magia)) > CERO) {
+			if (atacado.serAtacado((int) (this.getMagia())) > CERO) {
 				return true;
 			}
 		}

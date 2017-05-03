@@ -78,7 +78,7 @@ public abstract class Casta implements Serializable {
 	 *            Probabilidad de realizar crítico. <br>
 	 * @param evasion
 	 *            Evasion. <br>
-	 * @param danCrit
+	 * @param danioCrit
 	 *            Danio Critico que realiza. <br>
 	 */
 	public Casta(final double probCrit, final double evasion, final double danioCrit) {

@@ -31,7 +31,7 @@ public class Asesino extends Casta {
 	 */
 	public Asesino(final double probCrit, final double evasion, final double danioCrit) {
 		super(probCrit, evasion, danioCrit);
-		this.nombreCasta = "Asesino";
+		nombreCasta = "Asesino";
 	}
 
 	/**

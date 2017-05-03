@@ -70,7 +70,7 @@ public class Guerrero extends Casta {
 	public boolean habilidad2(final Personaje caster, final Peleable atacado) {
 		if (caster.getEnergia() > ENERGIAMINIMA) {
 			caster.setEnergia(caster.getEnergia() - ENERGIAMINIMA);
-			caster.setDefensa(caster.getDefensa() + caster.magia);
+			caster.setDefensa(caster.getDefensa() + caster.getMagia());
 			return true;
 		}
 		return false;
