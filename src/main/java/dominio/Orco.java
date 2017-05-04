@@ -8,13 +8,17 @@ package dominio;
 public class Orco extends Personaje {
 
 	/**
-	 * Multiplica defensa: 2. <br>
+	 * Multiplica defensa. <br>
 	 */
 	private static final int MULTPLICADORDEFENSA = 2;
 	/**
-	 * Aumento de salud: 10. <br>
+	 * Aumento de salud. <br>
 	 */
 	private static final int AUMENTOSALUD = 10;
+	/**
+	 * Aumento de la energia. <br>
+	 */
+	private static final int AUMENTOENERGIA = CERO;
 
 	/**
 	 * Creacion del personaje con la salud y energia a tope y las habilidades
@@ -28,16 +32,10 @@ public class Orco extends Personaje {
 	 *            ID del personaje. <br>
 	 */
 	public Orco(final String nombre, final Casta casta, final int id) {
-		super(nombre, casta, id);
-		this.setEnergiaTope(this.getEnergiaTope());
-		this.setSaludTope(getSaludTope() + AUMENTOSALUD);
-		this.setSalud(this.getSaludTope());
-		this.setEnergia(this.getEnergiaTope());
-		setNombreRaza("Orco");
-
-		habilidadesRaza = new String[CANTIDADHABILIDADPERSONAJE];
-		habilidadesRaza[0] = "Golpe Defensa";
-		habilidadesRaza[1] = "Mordisco de Vida";
+		super(nombre, casta, id, AUMENTOSALUD, AUMENTOENERGIA);
+		super.setSalud(this.getSaludTope());
+		super.setEnergia(this.getEnergiaTope());
+		this.cargarOrco();
 	}
 
 	/**
@@ -69,9 +67,14 @@ public class Orco extends Personaje {
 	public Orco(final String nombre, final int salud, final int energia, final int fuerza, final int destreza,
 			final int inteligencia, final Casta casta, final int experiencia, final int nivel, final int idPersonaje) {
 		super(nombre, salud, energia, fuerza, destreza, inteligencia, casta, experiencia, nivel, idPersonaje);
-		setNombreRaza("Orco");
+		this.cargarOrco();
+	}
 
-		habilidadesRaza = new String[CANTIDADHABILIDADPERSONAJE];
+	/**
+	 * Carga la raza orco con sus habilidades. <br>
+	 */
+	private void cargarOrco() {
+		super.setNombreRaza("Orco");
 		habilidadesRaza[0] = "Golpe Defensa";
 		habilidadesRaza[1] = "Mordisco de Vida";
 	}

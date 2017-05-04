@@ -9,6 +9,11 @@ package dominio;
 public class Guerrero extends Casta {
 
 	/**
+	 * Fuerza adicional de la casta. <br>
+	 */
+	private static final int INCREMENTOFUERZA = 5;
+
+	/**
 	 * Crea un personaje con oficio de guerrero dadas la proabilidad de golpe
 	 * crítico y de evitar danio y el danio crítico del persnaje.
 	 * <p>
@@ -22,7 +27,8 @@ public class Guerrero extends Casta {
 	 */
 	public Guerrero(final double probCrit, final double evasion, final double danioCrit) {
 		super(probCrit, evasion, danioCrit);
-		this.nombreCasta = "Guerrero";
+		super.setNombreCasta("Guerrero");
+		super.setIncrementoFuerza(INCREMENTOFUERZA);
 	}
 
 	/**
@@ -30,8 +36,8 @@ public class Guerrero extends Casta {
 	 */
 	public Guerrero() {
 		super();
-		this.nombreCasta = "Guerrero";
-
+		super.setNombreCasta("Guerrero");
+		super.setIncrementoFuerza(INCREMENTOFUERZA);
 		habilidadesCasta = new String[CANTIDADHABILIDADESCASTA];
 		habilidadesCasta[0] = "Ataque Doble";
 		habilidadesCasta[1] = "Aumentar Defensa";

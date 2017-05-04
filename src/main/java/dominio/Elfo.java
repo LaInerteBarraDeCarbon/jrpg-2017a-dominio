@@ -10,7 +10,11 @@ public class Elfo extends Personaje {
 	/**
 	 * Aumento de salud del elfo. <br>
 	 */
-	protected static final int AUMENTARENERGIA = 10;
+	private static final int AUMENTARENERGIA = 10;
+	/**
+	 * Aumento de energia del elfo. <br>
+	 */
+	private static final int AUMENTARVIDA = CERO;
 
 	/**
 	 * Crea el personaje Elfo con sus valores ya establecidos y le asigna sus
@@ -24,15 +28,10 @@ public class Elfo extends Personaje {
 	 *            ID del personaje. <br>
 	 */
 	public Elfo(final String nombre, final Casta casta, final int id) {
-		super(nombre, casta, id);
-		this.setEnergiaTope(this.getEnergiaTope() + AUMENTARENERGIA);
-		this.setSaludTope(getSaludTope());
-		this.setSalud(this.getSaludTope());
-		this.setEnergia(this.getEnergiaTope());
-		this.setNombreRaza("Elfo");
-		habilidadesRaza = new String[CANTIDADHABILIDADPERSONAJE];
-		habilidadesRaza[0] = "Golpe Level";
-		habilidadesRaza[1] = "Ataque Bosque";
+		super(nombre, casta, id, AUMENTARVIDA, AUMENTARENERGIA);
+		super.setSalud(this.getSaludTope());
+		super.setEnergia(this.getEnergiaTope());
+		this.cargarElfo();
 	}
 
 	/**
@@ -64,8 +63,14 @@ public class Elfo extends Personaje {
 	public Elfo(final String nombre, final int salud, final int energia, final int fuerza, final int destreza,
 			final int inteligencia, final Casta casta, final int experiencia, final int nivel, final int idPersonaje) {
 		super(nombre, salud, energia, fuerza, destreza, inteligencia, casta, experiencia, nivel, idPersonaje);
-		setNombreRaza("Elfo");
-		habilidadesRaza = new String[CANTIDADHABILIDADPERSONAJE];
+		this.cargarElfo();
+	}
+
+	/**
+	 * Carga la raza elfo con sus habilidades de raza. <br>
+	 */
+	private void cargarElfo() {
+		super.setNombreRaza("Elfo");
 		habilidadesRaza[0] = "Golpe Level";
 		habilidadesRaza[1] = "Ataque Bosque";
 	}

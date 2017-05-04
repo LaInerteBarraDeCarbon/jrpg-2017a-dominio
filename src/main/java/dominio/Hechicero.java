@@ -9,6 +9,10 @@ package dominio;
 public class Hechicero extends Casta {
 
 	/**
+	 * Magia adicional de la casta. <br>
+	 */
+	private static final int INCREMENTOMAGIA = 5;
+	/**
 	 * Divide la magia. <br>
 	 */
 	private static final int DIVISORMAGIA = 2;
@@ -31,7 +35,7 @@ public class Hechicero extends Casta {
 	 */
 	public Hechicero(final double probCrit, final double evasion, final double danioCrit) {
 		super(probCrit, evasion, danioCrit);
-		this.nombreCasta = "Hechicero";
+		super.setNombreCasta("Hechicero");
 	}
 
 	/**
@@ -39,7 +43,8 @@ public class Hechicero extends Casta {
 	 */
 	public Hechicero() {
 		super();
-		this.nombreCasta = "Hechicero";
+		super.setNombreCasta("Hechicero");
+		super.setIncrementoInteligencia(INCREMENTOMAGIA);
 		habilidadesCasta = new String[CANTIDADHABILIDADESCASTA];
 		habilidadesCasta[0] = "Bola de Fuego";
 		habilidadesCasta[1] = "Curar Aliado";

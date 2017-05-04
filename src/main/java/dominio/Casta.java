@@ -41,23 +41,36 @@ public abstract class Casta implements Serializable {
 	/**
 	 * Probabilidad de acertar un golpe crítico de un personaje. <br>
 	 */
-	protected double probabilidadGolpeCritico;
+	private double probabilidadGolpeCritico;
 	/**
 	 * Probabilidad de evitar danio que tiene el personaje. <br>
 	 */
-	protected double probabilidadEvitarDanio;
+	private double probabilidadEvitarDanio;
 	/**
 	 * Danio crítico que realiza el personaje. <br>
 	 */
-	protected double danioCritico;
+	private double danioCritico;
 	/**
 	 * Nombre de la casta a la que pertenece el personaje. <br>
 	 */
-	protected String nombreCasta;
+	private String nombreCasta;
 	/**
 	 * Habilidades de la casta del personaje. <br>
 	 */
 	protected String[] habilidadesCasta;
+
+	/**
+	 * Incremento de inteligencia de la casta. <br>
+	 */
+	private int incrementoInteligencia;
+	/**
+	 * Incremento de destreza de la casta. <br>
+	 */
+	private int incrementoDestreza;
+	/**
+	 * Incremento de fuerza de la casta. <br>
+	 */
+	private int incrementoFuerza;
 
 	/**
 	 * Crea la casta de un personaje con probabilidad de golpe crítico y de
@@ -67,6 +80,9 @@ public abstract class Casta implements Serializable {
 		this.probabilidadGolpeCritico = PROBABILIDADGOLPECRITICO;
 		this.probabilidadEvitarDanio = PROBABILIDADEVITARDANIO;
 		this.danioCritico = DANIOCRITICO;
+		this.incrementoInteligencia = CERO;
+		this.incrementoDestreza = CERO;
+		this.incrementoFuerza = CERO;
 	}
 
 	/**
@@ -199,5 +215,72 @@ public abstract class Casta implements Serializable {
 	 */
 	public void setDanioCritico(final double danioCritico) {
 		this.danioCritico = danioCritico;
+	}
+
+	/**
+	 * Devuelve el incrementeo de inteligencia de la casta. <br>
+	 * 
+	 * @return Inteligencia adicional. <br>
+	 */
+	public int getIncrementoInteligencia() {
+		return incrementoInteligencia;
+	}
+
+	/**
+	 * Establece el incremento de inteligencia de la casta. <br>
+	 * 
+	 * @param incrementoInteligencia
+	 *            Incremento de inteligencia. <br>
+	 */
+	public void setIncrementoInteligencia(int incrementoInteligencia) {
+		this.incrementoInteligencia = incrementoInteligencia;
+	}
+
+	/**
+	 * Devuelve el incremento de destreza de la casta. <br>
+	 * 
+	 * @return Destreza adicional. <br>
+	 */
+	public int getIncrementoDestreza() {
+		return incrementoDestreza;
+	}
+
+	/**
+	 * Establece el incremento de destreza de la casta. <br>
+	 * 
+	 * @param incrementoDestreza
+	 *            Incremento de destreza. <br>
+	 */
+	public void setIncrementoDestreza(int incrementoDestreza) {
+		this.incrementoDestreza = incrementoDestreza;
+	}
+
+	/**
+	 * Devuelve el incremento de fuerza de la casta. <br>
+	 * 
+	 * @return Fuerza adicional. <br>
+	 */
+	public int getIncrementoFuerza() {
+		return incrementoFuerza;
+	}
+
+	/**
+	 * Establece el incremento de fuerza de la casta. <br>
+	 * 
+	 * @param incrementoFuerza
+	 *            Incremento de fuerza. <br>
+	 */
+	public void setIncrementoFuerza(int incrementoFuerza) {
+		this.incrementoFuerza = incrementoFuerza;
+	}
+
+	/**
+	 * Establece el nombre de la casta. <br>
+	 * 
+	 * @param nombreCasta
+	 *            Nombre de la casta. <br>
+	 */
+	public void setNombreCasta(String nombreCasta) {
+		this.nombreCasta = nombreCasta;
 	}
 }

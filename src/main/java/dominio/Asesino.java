@@ -9,6 +9,10 @@ package dominio;
 public class Asesino extends Casta {
 
 	/**
+	 * Destreza adicional de la casta. <br>
+	 */
+	private static final int INCREMENTODESTREZA = 5;
+	/**
 	 * Maxima evasion. <br>
 	 */
 	private static final double MAXIMOEVASION = 0.5;
@@ -31,7 +35,8 @@ public class Asesino extends Casta {
 	 */
 	public Asesino(final double probCrit, final double evasion, final double danioCrit) {
 		super(probCrit, evasion, danioCrit);
-		nombreCasta = "Asesino";
+		super.setIncrementoDestreza(INCREMENTODESTREZA);
+		super.setNombreCasta("Asesino");
 	}
 
 	/**
@@ -39,7 +44,8 @@ public class Asesino extends Casta {
 	 */
 	public Asesino() {
 		super();
-		this.nombreCasta = "Asesino";
+		super.setNombreCasta("Asesino");
+		super.setIncrementoDestreza(INCREMENTODESTREZA);
 		habilidadesCasta = new String[CANTIDADHABILIDADESCASTA];
 		habilidadesCasta[0] = "Golpe Critico";
 		habilidadesCasta[1] = "Aumentar Evasion";
@@ -79,9 +85,9 @@ public class Asesino extends Casta {
 		if (caster.getEnergia() > ENERGIAMINIMA) {
 			caster.setEnergia(caster.getEnergia() - ENERGIAMINIMA);
 			if (this.getProbabilidadEvitarDanio() + AUMENTAREVASION < MAXIMOEVASION) {
-				this.probabilidadEvitarDanio += AUMENTAREVASION;
+				super.setProbabilidadEvitarDanio(super.getProbabilidadEvitarDanio() + AUMENTAREVASION);
 			} else {
-				this.probabilidadEvitarDanio = MAXIMOEVASION;
+				super.setProbabilidadEvitarDanio(MAXIMOEVASION);
 			}
 			return true;
 		}

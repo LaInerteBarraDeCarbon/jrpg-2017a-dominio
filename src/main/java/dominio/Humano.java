@@ -34,12 +34,10 @@ public class Humano extends Personaje {
 	 *            ID del personaje. <br>
 	 */
 	public Humano(final String nombre, final Casta casta, final int id) {
-		super(nombre, casta, id);
-		this.setEnergiaTope(this.getEnergiaTope() + AUMENTOENERGIA);
-		this.setSaludTope(getSaludTope() + AUMENTOSALUD);
-		this.setSalud(this.getSaludTope());
-		this.setEnergia(this.getEnergiaTope());
-		setNombreRaza("Humano");
+		super(nombre, casta, id, AUMENTOSALUD, AUMENTOENERGIA);
+		super.setSalud(this.getSaludTope());
+		super.setEnergia(this.getEnergiaTope());
+		this.cargarHumano();
 	}
 
 	/**
@@ -72,9 +70,14 @@ public class Humano extends Personaje {
 	public Humano(final String nombre, final int salud, final int energia, final int fuerza, final int destreza,
 			final int inteligencia, final Casta casta, final int experiencia, final int nivel, final int idPersonaje) {
 		super(nombre, salud, energia, fuerza, destreza, inteligencia, casta, experiencia, nivel, idPersonaje);
-		setNombreRaza("Humano");
+		this.cargarHumano();
+	}
 
-		habilidadesRaza = new String[CANTIDADHABILIDADPERSONAJE];
+	/**
+	 * Carga la raza humano con sus habilidades de raza. <br>
+	 */
+	private void cargarHumano() {
+		super.setNombreRaza("Humano");
 		habilidadesRaza[0] = "Incentivar";
 		habilidadesRaza[1] = "Golpe Fatal";
 	}

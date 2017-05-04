@@ -32,7 +32,9 @@ public class TestNPC {
 	public void ataqueNPC() {
 		NonPlayableCharacter npc = new NonPlayableCharacter("Lamia", 30, 1);
 		Humano jugador = new Humano("Firion", new Guerrero(), 1);
-		jugador.atacar(npc);
+		if (jugador.puedeAtacar()) {
+			jugador.atacar(npc);
+		}
 		npc.atacar(jugador);
 		if (jugador.estaVivo() && npc.estaVivo()) {
 			jugador.despuesDeTurno();

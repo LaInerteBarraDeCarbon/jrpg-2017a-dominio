@@ -21,7 +21,7 @@ public abstract class Personaje extends Peleable implements Serializable {
 	/**
 	 * Cantidad de habilidades del personaje. <br>
 	 */
-	protected static final int CANTIDADHABILIDADPERSONAJE = 2;
+	private static final int CANTIDADHABILIDADPERSONAJE = 2;
 	/**
 	 * Capacidad maxima para aumentar habilidades. <br>
 	 */
@@ -70,10 +70,6 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 * Energia inicial del personaje. <br>
 	 */
 	private static final int ENERGIAINICIAL = 100;
-	/**
-	 * Puntos adicionales a atributo por casta. <br>
-	 */
-	private static final int INCREMENTOCASTA = 5;
 	/**
 	 * Destreza necesaria para realizar critico. <br>
 	 */
@@ -166,12 +162,12 @@ public abstract class Personaje extends Peleable implements Serializable {
 	/**
 	 * Tabla de nivel del personaje. <br>
 	 */
-	public static int tablaDeNiveles[];
+	private static int[] tablaDeNiveles;
 
 	/**
 	 * Habilidades de la raza. <br>
 	 */
-	protected String[] habilidadesRaza;
+	protected String[] habilidadesRaza = new String[CANTIDADHABILIDADPERSONAJE];
 
 	/**
 	 * Devuelve las habilidades de la raza que puede usar el personaje. <br>
@@ -212,8 +208,12 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 *            Casta del personaje. <br>
 	 * @param id
 	 *            ID del personaje. <br>
+	 * @param vidaRaza
+	 *            Vida adicional de la raza. <br>
+	 * @param energiaRaza
+	 *            Energia adicional de la raza. <br>
 	 */
-	public Personaje(final String nombre, final Casta casta, final int id) {
+	public Personaje(final String nombre, final Casta casta, final int id, final int vidaRaza, final int energiaRaza) {
 		super.setNombre(nombre);
 		this.casta = casta;
 		this.idPersonaje = id;
@@ -222,20 +222,14 @@ public abstract class Personaje extends Peleable implements Serializable {
 		fuerza = FUERZAINICIAL;
 		inteligencia = INTELIGENCIAINICIAL;
 		destreza = DESTREZAINICIAL;
-		if (casta instanceof Guerrero) {
-			fuerza += INCREMENTOCASTA;
-		}
-		if (casta instanceof Hechicero) {
-			inteligencia += INCREMENTOCASTA;
-		}
-		if (casta instanceof Asesino) {
-			destreza += INCREMENTOCASTA;
-		}
+		fuerza += casta.getIncrementoFuerza();
+		inteligencia += casta.getIncrementoInteligencia();
+		destreza += casta.getIncrementoDestreza();
 
 		x = CERO;
 		y = CERO;
-		saludTope = VIDAINICIAL;
-		energiaTope = ENERGIAINICIAL;
+		saludTope = VIDAINICIAL + vidaRaza;
+		energiaTope = ENERGIAINICIAL + energiaRaza;
 
 		super.setAtaque(this.calcularPuntosDeAtaque());
 		defensa = this.calcularPuntosDeDefensa();
