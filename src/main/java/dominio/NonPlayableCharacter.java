@@ -53,7 +53,7 @@ public class NonPlayableCharacter extends Peleable {
 	 *            Dificultad del NPC. <br>
 	 */
 	public NonPlayableCharacter(final String nombre, final int nivel, final int dificultadNPC) {
-		this.nombre = nombre;
+		this.setNombre(nombre);
 		this.nivel = nivel;
 		int dificultad;
 		if (dificultadNPC == DIFICULTADALEATORIA) {
@@ -63,18 +63,18 @@ public class NonPlayableCharacter extends Peleable {
 		}
 		switch (dificultad) {
 		case 0:
-			this.ataque = 10 + (nivel - 1) * 3;// 30%
-			super.salud = 30 + (nivel - 1) * 15;
+			super.setAtaque(10 + (nivel - 1) * 3);// 30%
+			super.setSalud(30 + (nivel - 1) * 15);
 			this.defensa = 2 + (nivel - 1) * 1;
 			break;
 		case 1:
-			this.ataque = 20 + (nivel - 1) * 6;// 50%
-			this.salud = 40 + (nivel - 1) * 20;
+			super.setAtaque(20 + (nivel - 1) * 6);// 50%
+			super.setSalud(40 + (nivel - 1) * 20);
 			this.defensa = 5 + (nivel - 1) * 2;
 			break;
 		case 2:
-			this.ataque = 30 + (nivel - 1) * 10;// 50%
-			this.salud = 50 + (nivel - 1) * 25;
+			super.setAtaque(30 + (nivel - 1) * 10);// 50%
+			super.setSalud(50 + (nivel - 1) * 25);
 			this.defensa = 4 + (nivel - 1) * 4;
 			break;
 		}
@@ -87,35 +87,6 @@ public class NonPlayableCharacter extends Peleable {
 	 */
 	public int otorgarExp() {
 		return this.nivel * MULTIPLICADOREXP;
-	}
-
-	/**
-	 * Devuelve la ataque del NPC. <br>
-	 * 
-	 * @return ataque del NPC. <br>
-	 */
-	public int getataque() {
-		return ataque;
-	}
-
-	/**
-	 * Establece la ataque del NPC. <br>
-	 * 
-	 * @param ataque
-	 *            Ataque. <br>
-	 */
-	public void setataque(final int ataque) {
-		this.ataque = ataque;
-	}
-
-	/**
-	 * Establece el nombre del NPC. <br>
-	 * 
-	 * @param nombre
-	 *            Nombre. <br>
-	 */
-	public void setNombre(final String nombre) {
-		this.nombre = nombre;
 	}
 
 	/**
@@ -157,16 +128,6 @@ public class NonPlayableCharacter extends Peleable {
 	}
 
 	/**
-	 * Establece la salud del NPC. <br>
-	 * 
-	 * @param salud
-	 *            Salud. <br>
-	 */
-	public void setSalud(final int salud) {
-		this.salud = salud;
-	}
-
-	/**
 	 * Ataca a otro personaje. <br>
 	 *
 	 * @param atacado
@@ -192,7 +153,7 @@ public class NonPlayableCharacter extends Peleable {
 		if (MyRandom.nextDouble() >= PROBESQUIVAR) {
 			danio -= this.getDefensa() / DIVISORDEFENSA;
 			if (danio > CERO) {
-				salud -= danio;
+				super.setSalud(super.getSalud() - danio);
 				return danio;
 			}
 			return CERO;

@@ -13,15 +13,15 @@ public abstract class Peleable {
 	/**
 	 * Salud del personaje. <br>
 	 */
-	protected Integer salud;
+	private Integer salud;
 	/**
 	 * Nombre del personaje. <br>
 	 */
-	protected String nombre;
+	private String nombre;
 	/**
 	 * Fuerza del personaje. <br>
 	 */
-	protected int ataque;
+	private int ataque;
 
 	/**
 	 * Indica el danio recibido. <br>
@@ -41,6 +41,16 @@ public abstract class Peleable {
 		return this.salud;
 	}
 
+	/**
+	 * Establece la salud del NPC. <br>
+	 * 
+	 * @param salud
+	 *            Salud. <br>
+	 */
+	public void setSalud(final int salud) {
+		this.salud = salud;
+	}
+	
 	/**
 	 * Indica la condición de después de turno. <br>
 	 */
@@ -99,5 +109,15 @@ public abstract class Peleable {
 	 */
 	public String getNombre() {
 		return this.nombre;
+	}
+
+	/**
+	 * Establece el nombre del NPC. <br>
+	 * 
+	 * @param nombre
+	 *            Nombre. <br>
+	 */
+	public void setNombre(final String nombre) {
+		this.nombre = nombre;
 	}
 }

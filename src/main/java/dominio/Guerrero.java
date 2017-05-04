@@ -50,7 +50,7 @@ public class Guerrero extends Casta {
 	public boolean habilidad1(final Personaje caster, final Peleable atacado) {
 		if (caster.getEnergia() > ENERGIAMINIMA) {
 			caster.setEnergia(caster.getEnergia() - ENERGIAMINIMA);
-			if (atacado.serAtacado(caster.ataque * 2) > CERO) {
+			if (atacado.serAtacado(caster.getAtaque() * 2) > CERO) {
 				return true;
 			}
 		}
@@ -92,7 +92,7 @@ public class Guerrero extends Casta {
 			if (atacado instanceof Personaje) {
 				int defensaOriginal = ((Personaje) atacado).getDefensa();
 				((Personaje) atacado).setDefensa(CERO);
-				if (atacado.serAtacado(caster.ataque) > CERO) {
+				if (atacado.serAtacado(caster.getAtaque()) > CERO) {
 					((Personaje) atacado).setDefensa(defensaOriginal);
 					return true;
 				}
