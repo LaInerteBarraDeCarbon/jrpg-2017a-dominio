@@ -15,6 +15,13 @@ public class TestPersonaje {
 		Assert.assertTrue(h.getFuerza() == 15);
 		Assert.assertTrue(h.getDestreza() == 10);
 		Assert.assertTrue(h.getInteligencia() == 10);
+		h.cargarTablaNivel();
+		Humano h4 = new Humano("Nico", 100, 100, 55, 20, 30, new Hechicero(0.2, 0.3, 1.5), 0, 1, 1);
+		h4.crearAlianza("Locos");
+		h4.aliar(h);
+		h.aliar(h4);
+		h4.salirDeAlianza();
+		h4.ganarExperiencia(100);
 
 		Humano h2 = new Humano("Lautaro", new Hechicero(), 2);
 		Assert.assertTrue(h2.getSalud() == 105);
