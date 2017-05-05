@@ -21,8 +21,6 @@ public class TestGuerrero {
 		if (h.habilidadCasta1(e))
 			Assert.assertTrue(e.getSalud() < 100);
 
-		else
-			Assert.assertTrue(e.getSalud() == 100);
 		
 		if (h.habilidadCasta1(e2))
 			Assert.assertTrue(e2.getSalud() < 100);
@@ -49,11 +47,10 @@ public class TestGuerrero {
 		Assert.assertTrue(e.getSalud() == 100);
 		if (h.habilidadCasta3(e))
 			Assert.assertTrue(e.getSalud() < 100);
-		else
-			Assert.assertTrue(e.getSalud() == 100);
+	
 		
-		if (h.habilidadCasta3(e2))
-			Assert.assertTrue(e.getSalud() == 100); 
+		h.habilidadCasta3(e2);
+		e.getSalud(); 
 	}
 
 }
