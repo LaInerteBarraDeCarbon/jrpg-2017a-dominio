@@ -32,4 +32,10 @@ public class TestAtributos {
 		h.AsignarPuntosSkills(0, 0, 10);
 		Assert.assertTrue(h.getMagia() > 15);
 	}
+	
+	@Test
+	public void testDespuesDeTurno() {
+		Humano h = new Humano("Nicolas", new Guerrero(), 1);
+		h.despuesDeTurno();
+	}
 }
