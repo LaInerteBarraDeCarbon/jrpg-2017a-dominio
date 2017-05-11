@@ -5,13 +5,13 @@ import java.io.Serializable;
 /**
  * La clase Personaje crea personajes con sus respectivas raza y casta. Se
  * encarga de asignar el ataque, la defensa y la magia del personaje, llevar a
- * cabo los métodos para las batallas, como atacar y la experiencia, entre
+ * cabo los mï¿½todos para las batallas, como atacar y la experiencia, entre
  * otros. <br>
  * <br>
- * También se encarga de seguir el desarrollo del personaje con respecto a su
+ * Tambiï¿½n se encarga de seguir el desarrollo del personaje con respecto a su
  * nivel, aumentando sus atributos a medida que va subiendo de nivel.<br>
  * <br>
- * La clase también lleva el seguimiento de las alianzas realizadas por el
+ * La clase tambiï¿½n lleva el seguimiento de las alianzas realizadas por el
  * personaje, tanto las que crea y realiza como las que deja.<br>
  * <br>
  */
@@ -88,7 +88,7 @@ public abstract class Personaje extends Peleable implements Serializable {
 	private static final double MULTIPLICADORMAGIA = 1.5;
 
 	/**
-	 * Energía del personaje. <br>
+	 * Energï¿½a del personaje. <br>
 	 */
 	private int energia;
 	/**
@@ -107,11 +107,11 @@ public abstract class Personaje extends Peleable implements Serializable {
 	private String nombreRaza;
 
 	/**
-	 * Máxima vida del personaje. <br>
+	 * Mï¿½xima vida del personaje. <br>
 	 */
 	private int saludTope;
 	/**
-	 * Energía máxima del personaje. <br>
+	 * Energï¿½a mï¿½xima del personaje. <br>
 	 */
 	private int energiaTope;
 
@@ -342,7 +342,7 @@ public abstract class Personaje extends Peleable implements Serializable {
 	}
 
 	/**
-	 * Devuelve la energía del personaje. <br>
+	 * Devuelve la energï¿½a del personaje. <br>
 	 * 
 	 * @return Energia del personaje. <br>
 	 */
@@ -351,7 +351,7 @@ public abstract class Personaje extends Peleable implements Serializable {
 	}
 
 	/**
-	 * Establece la energía del personaje. <br>
+	 * Establece la energï¿½a del personaje. <br>
 	 * 
 	 * @param energia
 	 *            Energia del personaje. <br>
@@ -513,16 +513,16 @@ public abstract class Personaje extends Peleable implements Serializable {
 	}
 
 	/**
-	 * Devuelve la vida máxima del personaje. <br>
+	 * Devuelve la vida mï¿½xima del personaje. <br>
 	 * 
-	 * @return Vida máxima del personaje. <br>
+	 * @return Vida mï¿½xima del personaje. <br>
 	 */
 	public int getSaludTope() {
 		return saludTope;
 	}
 
 	/**
-	 * Establece la vida máxima del personaje. <br>
+	 * Establece la vida mï¿½xima del personaje. <br>
 	 * 
 	 * @param saludTope
 	 *            Maxima salud del personaje. <br>
@@ -532,16 +532,16 @@ public abstract class Personaje extends Peleable implements Serializable {
 	}
 
 	/**
-	 * Devuelve la energía máxima del personaje. <br>
+	 * Devuelve la energï¿½a mï¿½xima del personaje. <br>
 	 * 
-	 * @return Energía máxima del personaje. <br>
+	 * @return Energï¿½a mï¿½xima del personaje. <br>
 	 */
 	public int getEnergiaTope() {
 		return energiaTope;
 	}
 
 	/**
-	 * Establece la energía máxima del personaje. <br>
+	 * Establece la energï¿½a mï¿½xima del personaje. <br>
 	 * 
 	 * @param energiaTope
 	 *            Maxima energia del personaje. <br>
@@ -555,7 +555,7 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 * 
 	 * @param atacado
 	 *            Personaje atacado. <br>
-	 * @return Danio realizado. <br>
+	 * @return daÃ±o realizado. <br>
 	 */
 	public int atacar(final Peleable atacado) {
 		if (!this.estaVivo()) {
@@ -572,18 +572,18 @@ public abstract class Personaje extends Peleable implements Serializable {
 	}
 
 	/**
-	 * Calcula el danio de un golpe crítico. <br>
+	 * Calcula el daÃ±o de un golpe crï¿½tico. <br>
 	 * 
-	 * @return Danio del golpe crítico. <br>
+	 * @return daÃ±o del golpe crï¿½tico. <br>
 	 */
 	public int golpeCritico() {
-		return (int) (super.getAtaque() * this.getCasta().getDanioCritico());
+		return (int) (super.getAtaque() * this.getCasta().getDaÃ±oCritico());
 	}
 
 	/**
-	 * Indica si posee la energía para atacar a otro personaje. <br>
+	 * Indica si posee la energï¿½a para atacar a otro personaje. <br>
 	 * 
-	 * @return true si tiene energía, false si no tiene la energía suficiente.
+	 * @return true si tiene energï¿½a, false si no tiene la energï¿½a suficiente.
 	 *         <br>
 	 */
 	public boolean puedeAtacar() {
@@ -618,14 +618,14 @@ public abstract class Personaje extends Peleable implements Serializable {
 	}
 
 	/**
-	 * Devuelve los puntos de salud a punto máximo. <br>
+	 * Devuelve los puntos de salud a punto mï¿½ximo. <br>
 	 */
 	public void restablecerSalud() {
 		super.setSalud(this.saludTope);
 	}
 
 	/**
-	 * Devuelve los puntos de energía a su punto máximo. <br>
+	 * Devuelve los puntos de energï¿½a a su punto mï¿½ximo. <br>
 	 */
 	public void restablecerEnergia() {
 		this.energia = this.energiaTope;
@@ -641,23 +641,23 @@ public abstract class Personaje extends Peleable implements Serializable {
 	}
 
 	/**
-	 * Indica el danio recibido. <br>
+	 * Indica el daÃ±o recibido. <br>
 	 * 
-	 * @param danio
-	 *            Danio recibido. <br>
-	 * @return Danio recibido. <br>
+	 * @param daÃ±o
+	 *            daÃ±o recibido. <br>
+	 * @return daÃ±o recibido. <br>
 	 */
-	public int serAtacado(int danio) {
-		if (MyRandom.nextDouble() >= this.getCasta().getProbabilidadEvitarDanio()) {
-			danio -= this.defensa;
-			if (danio > CERO) {
-				if (super.getSalud() <= danio) {
-					danio = super.getSalud();
+	public int serAtacado(int daÃ±o) {
+		if (MyRandom.nextDouble() >= this.getCasta().getProbabilidadEvitarDaÃ±o()) {
+			daÃ±o -= this.defensa;
+			if (daÃ±o > CERO) {
+				if (super.getSalud() <= daÃ±o) {
+					daÃ±o = super.getSalud();
 					super.setSalud(CERO);
 				} else {
-					super.setSalud(super.getSalud() - danio);
+					super.setSalud(super.getSalud() - daÃ±o);
 				}
-				return danio;
+				return daÃ±o;
 			}
 			return CERO;
 		}
@@ -665,50 +665,50 @@ public abstract class Personaje extends Peleable implements Serializable {
 	}
 
 	/**
-	 * Indica el danio realizado al personaje. De ser mayor el ataque a la vida,
+	 * Indica el daÃ±o realizado al personaje. De ser mayor el ataque a la vida,
 	 * lo mata. <br>
 	 * 
-	 * @param danio
-	 *            Danio recibido. <br>
-	 * @return Danio realizado. <br>
+	 * @param daÃ±o
+	 *            daÃ±o recibido. <br>
+	 * @return daÃ±o realizado. <br>
 	 */
-	public int serRobadoSalud(int danio) {
-		danio -= this.defensa;
-		if (danio <= CERO) {
+	public int serRobadoSalud(int daÃ±o) {
+		daÃ±o -= this.defensa;
+		if (daÃ±o <= CERO) {
 			return CERO;
 		}
-		if ((super.getSalud() - danio) >= CERO) {
-			super.setSalud(super.getSalud() - danio);
+		if ((super.getSalud() - daÃ±o) >= CERO) {
+			super.setSalud(super.getSalud() - daÃ±o);
 		} else {
-			danio = super.getSalud();
+			daÃ±o = super.getSalud();
 			super.setSalud(CERO);
 		}
-		return danio;
+		return daÃ±o;
 	}
 
 	/**
-	 * Realiza quita de energía al personaje. <br>
+	 * Realiza quita de energï¿½a al personaje. <br>
 	 * 
-	 * @param danio
-	 *            Danio recibido. <br>
-	 * @return Danio realizado. <br>
+	 * @param daÃ±o
+	 *            daÃ±o recibido. <br>
+	 * @return daÃ±o realizado. <br>
 	 */
-	public int serDesernegizado(int danio) {
-		danio -= this.defensa;
-		if (danio <= CERO) {
+	public int serDesernegizado(int daÃ±o) {
+		daÃ±o -= this.defensa;
+		if (daÃ±o <= CERO) {
 			return CERO;
 		}
-		if ((energia - danio) >= CERO) {
-			energia -= danio;
+		if ((energia - daÃ±o) >= CERO) {
+			energia -= daÃ±o;
 		} else {
-			danio = energia;
+			daÃ±o = energia;
 			energia = CERO;
 		}
-		return danio;
+		return daÃ±o;
 	}
 
 	/**
-	 * Realiza curación al personaje. <br>
+	 * Realiza curaciï¿½n al personaje. <br>
 	 * 
 	 * @param salud
 	 *            Salud a recuperar. <br>
@@ -722,7 +722,7 @@ public abstract class Personaje extends Peleable implements Serializable {
 	}
 
 	/**
-	 * Devuelve energía al personaje. <br>
+	 * Devuelve energï¿½a al personaje. <br>
 	 * 
 	 * @param energia
 	 *            Energia a recuperar. <br>

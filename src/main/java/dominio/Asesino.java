@@ -23,18 +23,18 @@ public class Asesino extends Casta {
 
 	/**
 	 * Crea un personaje con oficio de asesino dadas la proabilidad de golpe
-	 * cr�tico y de evitar danio y el danio cr�tico del persnaje.
+	 * cr�tico y de evitar daño y el daño cr�tico del persnaje.
 	 * <p>
 	 * 
 	 * @param probCrit
 	 *            Probabilidad de realizar un golpe critico. <br>
 	 * @param evasion
 	 *            Evasion. <br>
-	 * @param danioCrit
-	 *            Danio critico que realiza. <br>
+	 * @param dañoCrit
+	 *            Daño critico que realiza. <br>
 	 */
-	public Asesino(final double probCrit, final double evasion, final double danioCrit) {
-		super(probCrit, evasion, danioCrit);
+	public Asesino(final double probCrit, final double evasion, final double dañoCrit) {
+		super(probCrit, evasion, dañoCrit);
 		super.setIncrementoDestreza(INCREMENTODESTREZA);
 		super.setNombreCasta("Asesino");
 	}
@@ -53,7 +53,7 @@ public class Asesino extends Casta {
 	}
 
 	/**
-	 * Realiza la primer habilidad de la casta del asesino, golpe cr�tico. <br>
+	 * Realiza la primer habilidad de la casta del asesino, golpe cr�tico. <br>
 	 * 
 	 * @param caster
 	 *            Personaje que lanza la habilidad. <br>
@@ -64,7 +64,7 @@ public class Asesino extends Casta {
 	public boolean habilidad1(final Personaje caster, final Peleable atacado) {
 		if (caster.getEnergia() > ENERGIAMINIMA) {
 			caster.setEnergia(caster.getEnergia() - ENERGIAMINIMA);
-			if (atacado.serAtacado((int) (caster.getAtaque() * caster.getCasta().getDanioCritico())) > CERO) {
+			if (atacado.serAtacado((int) (caster.getAtaque() * caster.getCasta().getDañoCritico())) > CERO) {
 				return true;
 			}
 		}
@@ -72,7 +72,7 @@ public class Asesino extends Casta {
 	}
 
 	/**
-	 * Realiza la segunda habilidad de la casta del asesino, aumentar evasi�n.
+	 * Realiza la segunda habilidad de la casta del asesino, aumentar evasi�n.
 	 * <br>
 	 * 
 	 * @param caster
@@ -84,10 +84,10 @@ public class Asesino extends Casta {
 	public boolean habilidad2(final Personaje caster, final Peleable atacado) {
 		if (caster.getEnergia() > ENERGIAMINIMA) {
 			caster.setEnergia(caster.getEnergia() - ENERGIAMINIMA);
-			if (this.getProbabilidadEvitarDanio() + AUMENTAREVASION < MAXIMOEVASION) {
-				super.setProbabilidadEvitarDanio(super.getProbabilidadEvitarDanio() + AUMENTAREVASION);
+			if (this.getProbabilidadEvitarDaño() + AUMENTAREVASION < MAXIMOEVASION) {
+				super.setProbabilidadEvitarDaño(super.getProbabilidadEvitarDaño() + AUMENTAREVASION);
 			} else {
-				super.setProbabilidadEvitarDanio(MAXIMOEVASION);
+				super.setProbabilidadEvitarDaño(MAXIMOEVASION);
 			}
 			return true;
 		}

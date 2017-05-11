@@ -11,7 +11,7 @@ import dominio.Elfo;
 import dominio.Asesino;
 
 
-public class TestDa�o {
+public class TestDaño {
 
 	@Test
 	public void testAtaqueComunYLaSaludNoBajeDe0() {
@@ -79,7 +79,7 @@ public class TestDa�o {
   
   @Test
   
-  public void testSerAtacadoConDa�oNoNulo(){
+  public void testSerAtacadoConDañoNoNulo(){
 	  Humano h= new Humano("Octi",16,0,25,10,30,new Hechicero(0.2, 0, 1.5),0,1,1);
 	 Orco o = new Orco ("Nico",0,200, 15, 0, 30, new Guerrero(0.2, 0, 1.5), 0, 1, 1);
 	o.setAtaque(230);
@@ -108,12 +108,12 @@ public class TestDa�o {
 }
   
   @Test
-     public void testDanioCritico(){
+     public void testDañoCritico(){
 	 Guerrero g= new Guerrero(0,0, 0);
 	  //Humano hum = new Humano("Octi",16,0,25,10,30,g,0,1,1);
-	  g.setProbabilidadEvitarDanio(0.2);
+	  g.setProbabilidadEvitarDaño(0.2);
 	  
-	  g.setDanioCritico(1.5);
+	  g.setDañoCritico(1.5);
   
 }
   
@@ -122,7 +122,7 @@ public class TestDa�o {
   public void TestAtaqueMayorProbGolpeCritico(){
 
 	 Guerrero g= new Guerrero(0.4,2,1.5);
-	 g.setProbabilidadEvitarDanio(0.88);
+	 g.setProbabilidadEvitarDaño(0.88);
 	 g.setProbabilidadGolpeCritico(0.95);
 	 Orco o= new Orco("Octi",89,200, 15, 0, 30,g, 0, 1, 1);
 	 Humano h= new Humano ("Nico",56,240,12,0,30,new Guerrero(0.2, 0, 1.5),1,1,1);

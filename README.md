@@ -1,6 +1,8 @@
+[Travis](https://travis-ci.org/LaInerteBarraDeCarbon/jrpg-2017a-dominio)
+
 # World Of Middle Earth (WOME) - dominio
 
-## Sobre las personas
+## Sobre las personas 
 
 > Para ver los participantes anteriores, referirse al archivo [humans.md](humans.md)
 
@@ -12,18 +14,16 @@
 
 ### Integrantes del equipo
 
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
-* Completar ([xxxx](https://github.com/xxxx))
+* Damian Alladio ([DamianAlladio](https://github.com/DamianAlladio))
+* Octavio Frutos Angelucci ([of-utos](https://github.com/of-utos))
+* Pablo García ([PabloSebastian](https://github.com/PabloSebastian))
+* Valeria Couto ([ValeAC](https://github.com/ValeAC))
 
 ## Sobre la tecnología
 
 ### Herramientas utilizadas
 
-* Java 1.7
+* Java 1.8
 * JUnit 4
 
 ## Cómo hacer andar el proyecto

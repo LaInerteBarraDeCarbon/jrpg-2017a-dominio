@@ -5,9 +5,9 @@ import java.io.Serializable;
 /**
  * La clase Casta representa el oficio de cada personaje.
  * <p>
- * Administra los atributos de probabilidades que se usar�n en la batalla.
+ * Administra los atributos de probabilidades que se usar�n en la batalla.
  * <p>
- * Tambi�n define las 3 habilidades que var�an seg�n el tipo de personaje.
+ * Tambi�n define las 3 habilidades que var�an seg�n el tipo de personaje.
  * <p>
  */
 @SuppressWarnings("serial")
@@ -30,26 +30,26 @@ public abstract class Casta implements Serializable {
 	 */
 	private static final double PROBABILIDADGOLPECRITICO = 0.2;
 	/**
-	 * Probabilidad de evitar danio de casta. <br>
+	 * Probabilidad de evitar daño de casta. <br>
 	 */
-	private static final double PROBABILIDADEVITARDANIO = 0.2;
+	private static final double PROBABILIDADEVITARdaño = 0.2;
 	/**
-	 * Danio critico de casta. <br>
+	 * daño critico de casta. <br>
 	 */
-	private static final double DANIOCRITICO = 1.5;
+	private static final double dañoCRITICO = 1.5;
 
 	/**
-	 * Probabilidad de acertar un golpe cr�tico de un personaje. <br>
+	 * Probabilidad de acertar un golpe cr�tico de un personaje. <br>
 	 */
 	private double probabilidadGolpeCritico;
 	/**
-	 * Probabilidad de evitar danio que tiene el personaje. <br>
+	 * Probabilidad de evitar daño que tiene el personaje. <br>
 	 */
-	private double probabilidadEvitarDanio;
+	private double probabilidadEvitardaño;
 	/**
-	 * Danio cr�tico que realiza el personaje. <br>
+	 * daño cr�tico que realiza el personaje. <br>
 	 */
-	private double danioCritico;
+	private double dañoCritico;
 	/**
 	 * Nombre de la casta a la que pertenece el personaje. <br>
 	 */
@@ -73,34 +73,34 @@ public abstract class Casta implements Serializable {
 	private int incrementoFuerza;
 
 	/**
-	 * Crea la casta de un personaje con probabilidad de golpe cr�tico y de
-	 * evitar danio, y su danio cr�tico predefinido. <br>
+	 * Crea la casta de un personaje con probabilidad de golpe cr�tico y de
+	 * evitar daño, y su daño cr�tico predefinido. <br>
 	 */
 	public Casta() {
 		this.probabilidadGolpeCritico = PROBABILIDADGOLPECRITICO;
-		this.probabilidadEvitarDanio = PROBABILIDADEVITARDANIO;
-		this.danioCritico = DANIOCRITICO;
+		this.probabilidadEvitardaño = PROBABILIDADEVITARdaño;
+		this.dañoCritico = dañoCRITICO;
 		this.incrementoInteligencia = CERO;
 		this.incrementoDestreza = CERO;
 		this.incrementoFuerza = CERO;
 	}
 
 	/**
-	 * Crea una casta dadas la proabilidad de golpe cr�tico y de evitar danio, y
-	 * el danio cr�tico del personaje.
+	 * Crea una casta dadas la proabilidad de golpe cr�tico y de evitar daño, y
+	 * el daño cr�tico del personaje.
 	 * <p>
 	 * 
 	 * @param probCrit
-	 *            Probabilidad de realizar cr�tico. <br>
+	 *            Probabilidad de realizar cr�tico. <br>
 	 * @param evasion
 	 *            Evasion. <br>
-	 * @param danioCrit
-	 *            Danio Critico que realiza. <br>
+	 * @param dañoCrit
+	 *            daño Critico que realiza. <br>
 	 */
-	public Casta(final double probCrit, final double evasion, final double danioCrit) {
+	public Casta(final double probCrit, final double evasion, final double dañoCrit) {
 		this.probabilidadGolpeCritico = probCrit;
-		this.probabilidadEvitarDanio = evasion;
-		this.danioCritico = danioCrit;
+		this.probabilidadEvitardaño = evasion;
+		this.dañoCritico = dañoCrit;
 	}
 
 	/**
@@ -161,16 +161,16 @@ public abstract class Casta implements Serializable {
 	}
 
 	/**
-	 * Devuelve la probabilidad de golpe cr�tico del personaje. <br>
+	 * Devuelve la probabilidad de golpe cr�tico del personaje. <br>
 	 * 
-	 * @return Probabilida de golpe cr�tico. <br>
+	 * @return Probabilida de golpe cr�tico. <br>
 	 */
 	public double getProbabilidadGolpeCritico() {
 		return probabilidadGolpeCritico;
 	}
 
 	/**
-	 * Establece la probabilidad de golpe cr�tico del personaje. <br>
+	 * Establece la probabilidad de golpe cr�tico del personaje. <br>
 	 * 
 	 * @param probabilidadGolpeCritico
 	 *            Probabilidad de realizar un golpe critico. <br>
@@ -180,41 +180,41 @@ public abstract class Casta implements Serializable {
 	}
 
 	/**
-	 * Devuelve la probabilidad de evitar danio del personaje. <br>
+	 * Devuelve la probabilidad de evitar daño del personaje. <br>
 	 * 
 	 * @return Probabilidad de evitar golpe. <br>
 	 */
-	public double getProbabilidadEvitarDanio() {
-		return probabilidadEvitarDanio;
+	public double getProbabilidadEvitarDaño() {
+		return probabilidadEvitardaño;
 	}
 
 	/**
-	 * Establece la probabilidad de evitar danio del personaje. <br>
+	 * Establece la probabilidad de evitar daño del personaje. <br>
 	 * 
-	 * @param probabilidadEvitarDanio
-	 *            La probabilidad de evitar danio. <br>
+	 * @param probabilidadEvitardaño
+	 *            La probabilidad de evitar daño. <br>
 	 */
-	public void setProbabilidadEvitarDanio(final double probabilidadEvitarDanio) {
-		this.probabilidadEvitarDanio = probabilidadEvitarDanio;
+	public void setProbabilidadEvitarDaño(final double probabilidadEvitardaño) {
+		this.probabilidadEvitardaño = probabilidadEvitardaño;
 	}
 
 	/**
-	 * Devuelve el danio cr�tico del personaje. <br>
+	 * Devuelve el daño cr�tico del personaje. <br>
 	 * 
-	 * @return Danio cr�tico. <br>
+	 * @return daño crítico. <br>
 	 */
-	public double getDanioCritico() {
-		return danioCritico;
+	public double getDañoCritico() {
+		return dañoCritico;
 	}
 
 	/**
-	 * Establece el danio cr�tico del personaje. <br>
+	 * Establece el daño cr�tico del personaje. <br>
 	 * 
-	 * @param danioCritico
-	 *            Danio critico que realiza. <br>
+	 * @param dañoCritico
+	 *            daño critico que realiza. <br>
 	 */
-	public void setDanioCritico(final double danioCritico) {
-		this.danioCritico = danioCritico;
+	public void setDañoCritico(final double dañoCritico) {
+		this.dañoCritico = dañoCritico;
 	}
 
 	/**

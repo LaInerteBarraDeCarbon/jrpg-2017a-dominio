@@ -5,7 +5,7 @@ apply plugin: 'checkstyle'
 apply plugin: 'findbugs'
 apply plugin: 'jacoco'
 
-// Configuración
+// Configuracion
 
 sourceCompatibility = 1.7
 version = '0.1'
