@@ -39,18 +39,6 @@ public class Alianza {
 	}
 
 	/**
-	 * Esta funcion se encarga de cargar la lista con los aliados obtenidos.
-	 * <br>
-	 * 
-	 * @param aliados
-	 *            Lista de aliados. <br>
-	 * 
-	 */
-	public void setAliados(final LinkedList<Personaje> aliados) {
-		this.aliados = aliados;
-	}
-
-	/**
 	 * Esta funcion devuelve el nombre de aliado. <br>
 	 * 
 	 * @return Nombre de la alianza. <br>

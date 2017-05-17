@@ -1,7 +1,7 @@
 package dominio;
 
 /**
- * Esta clase proporciona los métodos para la batalla, como el nombre de los
+ * Esta clase proporciona los mï¿½todos para la batalla, como el nombre de los
  * personajes, su salud, el danio de ataque que realizan, entre otros. <br>
  */
 public abstract class Peleable {
@@ -42,17 +42,7 @@ public abstract class Peleable {
 	}
 
 	/**
-	 * Establece la salud del NPC. <br>
-	 * 
-	 * @param salud
-	 *            Salud. <br>
-	 */
-	public void setSalud(final int salud) {
-		this.salud = salud;
-	}
-	
-	/**
-	 * Indica la condición de después de turno. <br>
+	 * Indica la condiciÃ³n de despuï¿½s de turno. <br>
 	 */
 	public void despuesDeTurno() {
 

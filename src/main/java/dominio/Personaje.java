@@ -331,33 +331,12 @@ public abstract class Personaje extends Peleable implements Serializable {
 	}
 
 	/**
-	 * Establece el clan al que pertence el personaje. <br>
-	 * 
-	 * @param clan
-	 *            Alianza del personaje. <br>
-	 */
-	public void setClan(final Alianza clan) {
-		this.clan = clan;
-		clan.aniadirPersonaje(this);
-	}
-
-	/**
 	 * Devuelve la energ�a del personaje. <br>
 	 * 
 	 * @return Energia del personaje. <br>
 	 */
 	public int getEnergia() {
 		return energia;
-	}
-
-	/**
-	 * Establece la energ�a del personaje. <br>
-	 * 
-	 * @param energia
-	 *            Energia del personaje. <br>
-	 */
-	public void setEnergia(final int energia) {
-		this.energia = energia;
 	}
 
 	/**
@@ -370,32 +349,12 @@ public abstract class Personaje extends Peleable implements Serializable {
 	}
 
 	/**
-	 * Establece la fuerza del personaje. <br>
-	 * 
-	 * @param fuerza
-	 *            Fuerza del personaje. <br>
-	 */
-	public void setFuerza(final int fuerza) {
-		this.fuerza = fuerza;
-	}
-
-	/**
 	 * Devuelve la destreza del personaje. <br>
 	 * 
 	 * @return Destreza del personaje. <br>
 	 */
 	public int getDestreza() {
 		return destreza;
-	}
-
-	/**
-	 * Establece la destreza del personaje. <br>
-	 * 
-	 * @param destreza
-	 *            Destreza del personaje. <br>
-	 */
-	public void setDestreza(final int destreza) {
-		this.destreza = destreza;
 	}
 
 	/**
@@ -408,32 +367,12 @@ public abstract class Personaje extends Peleable implements Serializable {
 	}
 
 	/**
-	 * Establece la inteligencia del personaje. <br>
-	 * 
-	 * @param inteligencia
-	 *            Inteligencia del personaje. <br>
-	 */
-	public void setInteligencia(final int inteligencia) {
-		this.inteligencia = inteligencia;
-	}
-
-	/**
 	 * Devuelve la casta del personaje. <br>
 	 * 
 	 * @return Casta del personaje. <br>
 	 */
 	public Casta getCasta() {
 		return casta;
-	}
-
-	/**
-	 * Establece la casta del personaje. <br>
-	 * 
-	 * @param casta
-	 *            Casta del personaje. <br>
-	 */
-	public void setCasta(final Casta casta) {
-		this.casta = casta;
 	}
 
 	/**
@@ -446,32 +385,12 @@ public abstract class Personaje extends Peleable implements Serializable {
 	}
 
 	/**
-	 * Establece la experiencia del personaje. <br>
-	 * 
-	 * @param experiencia
-	 *            Experiencia del personaje. <br>
-	 */
-	public void setExperiencia(final int experiencia) {
-		this.experiencia = experiencia;
-	}
-
-	/**
 	 * Devuelve el nivel del personaje. <br>
 	 * 
 	 * @return Nivel del personaje. <br>
 	 */
 	public int getNivel() {
 		return nivel;
-	}
-
-	/**
-	 * Establece el nivel del personaje. <br>
-	 * 
-	 * @param nivel
-	 *            Nivel del personaje. <br>
-	 */
-	public void setNivel(final int nivel) {
-		this.nivel = nivel;
 	}
 
 	/**
@@ -484,32 +403,12 @@ public abstract class Personaje extends Peleable implements Serializable {
 	}
 
 	/**
-	 * Establece el ID del personaje. <br>
-	 * 
-	 * @param idPersonaje
-	 *            ID del personaje. <br>
-	 */
-	public void setIdPersonaje(final int idPersonaje) {
-		this.idPersonaje = idPersonaje;
-	}
-
-	/**
 	 * Devuelve la defensa del personaje. <br>
 	 * 
 	 * @return Defensa del personaje. <br>
 	 */
 	public int getDefensa() {
 		return defensa;
-	}
-
-	/**
-	 * Establece la defensa del personaje. <br>
-	 * 
-	 * @param defensa
-	 *            Defensa del personaje. <br>
-	 */
-	public void setDefensa(final int defensa) {
-		this.defensa = defensa;
 	}
 
 	/**
@@ -522,32 +421,12 @@ public abstract class Personaje extends Peleable implements Serializable {
 	}
 
 	/**
-	 * Establece la vida m�xima del personaje. <br>
-	 * 
-	 * @param saludTope
-	 *            Maxima salud del personaje. <br>
-	 */
-	public void setSaludTope(final int saludTope) {
-		this.saludTope = saludTope;
-	}
-
-	/**
 	 * Devuelve la energ�a m�xima del personaje. <br>
 	 * 
 	 * @return Energ�a m�xima del personaje. <br>
 	 */
 	public int getEnergiaTope() {
 		return energiaTope;
-	}
-
-	/**
-	 * Establece la energ�a m�xima del personaje. <br>
-	 * 
-	 * @param energiaTope
-	 *            Maxima energia del personaje. <br>
-	 */
-	public void setEnergiaTope(final int energiaTope) {
-		this.energiaTope = energiaTope;
 	}
 
 	/**
@@ -919,4 +798,30 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
 	public abstract boolean habilidadRaza2(Peleable atacado);
+
+	/////////////////////////////////////////////////////////////////////
+
+	/**
+	 * Quita energía al personaje. <br>
+	 * 
+	 * @param energia
+	 *            Energía. <br>
+	 */
+	public void quitarEnergia(final int energia) {
+		this.energia -= energia;
+	}
+	
+	/**
+	 * Establece el maximo de vida de un personaje. <br>
+	 */
+	public void maximoEnergia(){
+		this.energiaTope = ENERGIAINICIAL;
+	}
+	
+	/**
+	 * Establece el maximo de vida de un personaje. <br>
+	 */
+	public void maximoVida(){
+		super.salud = VIDAINICIAL;
+	}
 }
