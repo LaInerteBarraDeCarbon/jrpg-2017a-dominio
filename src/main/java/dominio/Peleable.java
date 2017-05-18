@@ -1,7 +1,7 @@
 package dominio;
 
 /**
- * Esta clase proporciona los m�todos para la batalla, como el nombre de los
+ * Esta clase proporciona los metodos para la batalla, como el nombre de los
  * personajes, su salud, el danio de ataque que realizan, entre otros. <br>
  */
 public abstract class Peleable {

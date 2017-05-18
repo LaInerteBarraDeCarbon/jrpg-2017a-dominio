@@ -33,8 +33,8 @@ public class Asesino extends Casta {
 	 * @param dañoCrit
 	 *            Daño critico que realiza. <br>
 	 */
-	public Asesino(final double probCrit, final double evasion, final double dañoCrit) {
-		super(probCrit, evasion, dañoCrit);
+	public Asesino(final double probCrit, final double evasion, final double danioCrit) {
+		super(probCrit, evasion, danioCrit);
 		super.setIncrementoDestreza(INCREMENTODESTREZA);
 		super.setNombreCasta("Asesino");
 	}
@@ -64,7 +64,7 @@ public class Asesino extends Casta {
 	public boolean habilidad1(final Personaje caster, final Peleable atacado) {
 		if (caster.getEnergia() > ENERGIAMINIMA) {
 			caster.quitarEnergia(ENERGIAMINIMA);
-			if (atacado.serAtacado((int) (caster.getAtaque() * caster.getCasta().getDañoCritico())) > CERO) {
+			if (atacado.serAtacado((int) (caster.getAtaque() * caster.getCasta().getDanioCritico())) > CERO) {
 				return true;
 			}
 		}
@@ -84,10 +84,10 @@ public class Asesino extends Casta {
 	public boolean habilidad2(final Personaje caster, final Peleable atacado) {
 		if (caster.getEnergia() > ENERGIAMINIMA) {
 			caster.quitarEnergia(ENERGIAMINIMA);
-			if (this.getProbabilidadEvitarDaño() + AUMENTAREVASION < MAXIMOEVASION) {
-				super.setProbabilidadEvitarDaño(super.getProbabilidadEvitarDaño() + AUMENTAREVASION);
+			if (this.getProbabilidadEvitarDanio() + AUMENTAREVASION < MAXIMOEVASION) {
+				super.setProbabilidadEvitarDanio(super.getProbabilidadEvitarDanio() + AUMENTAREVASION);
 			} else {
-				super.setProbabilidadEvitarDaño(MAXIMOEVASION);
+				super.setProbabilidadEvitarDanio(MAXIMOEVASION);
 			}
 			return true;
 		}

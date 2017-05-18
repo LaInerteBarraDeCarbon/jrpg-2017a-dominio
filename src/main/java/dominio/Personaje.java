@@ -456,7 +456,7 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 * @return daño del golpe cr�tico. <br>
 	 */
 	public int golpeCritico() {
-		return (int) (super.getAtaque() * this.getCasta().getDañoCritico());
+		return (int) (super.getAtaque() * this.getCasta().getDanioCritico());
 	}
 
 	/**
@@ -526,17 +526,17 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 *            daño recibido. <br>
 	 * @return daño recibido. <br>
 	 */
-	public int serAtacado(int daño) {
-		if (MyRandom.nextDouble() >= this.getCasta().getProbabilidadEvitarDaño()) {
-			daño -= this.defensa;
-			if (daño > CERO) {
-				if (super.getSalud() <= daño) {
-					daño = super.getSalud();
+	public int serAtacado(int danio) {
+		if (MyRandom.nextDouble() >= this.getCasta().getProbabilidadEvitarDanio()) {
+			danio -= this.defensa;
+			if (danio > CERO) {
+				if (super.getSalud() <= danio) {
+					danio = super.getSalud();
 					super.setSalud(CERO);
 				} else {
-					super.setSalud(super.getSalud() - daño);
+					super.setSalud(super.getSalud() - danio);
 				}
-				return daño;
+				return danio;
 			}
 			return CERO;
 		}
@@ -551,18 +551,18 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 *            daño recibido. <br>
 	 * @return daño realizado. <br>
 	 */
-	public int serRobadoSalud(int daño) {
+	public int serRobadoSalud(int danio) {
 		daño -= this.defensa;
 		if (daño <= CERO) {
 			return CERO;
 		}
-		if ((super.getSalud() - daño) >= CERO) {
-			super.setSalud(super.getSalud() - daño);
+		if ((super.getSalud() - danio) >= CERO) {
+			super.setSalud(super.getSalud() - danio);
 		} else {
-			daño = super.getSalud();
+			danio = super.getSalud();
 			super.setSalud(CERO);
 		}
-		return daño;
+		return danio;
 	}
 
 	/**
@@ -572,18 +572,18 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 *            daño recibido. <br>
 	 * @return daño realizado. <br>
 	 */
-	public int serDesernegizado(int daño) {
-		daño -= this.defensa;
-		if (daño <= CERO) {
+	public int serDesernegizado(int danio) {
+		danio -= this.defensa;
+		if (danio <= CERO) {
 			return CERO;
 		}
-		if ((energia - daño) >= CERO) {
-			energia -= daño;
+		if ((energia - danio) >= CERO) {
+			energia -= danio;
 		} else {
-			daño = energia;
+			danio = energia;
 			energia = CERO;
 		}
-		return daño;
+		return danio;
 	}
 
 	/**
