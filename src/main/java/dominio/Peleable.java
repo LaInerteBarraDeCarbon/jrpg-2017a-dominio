@@ -42,7 +42,7 @@ public abstract class Peleable {
 	}
 
 	/**
-	 * Indica la condición de despu�s de turno. <br>
+	 * Indica la condicion de despues de turno. <br>
 	 */
 	public void despuesDeTurno() {
 
@@ -110,4 +110,11 @@ public abstract class Peleable {
 	public void setNombre(final String nombre) {
 		this.nombre = nombre;
 	}
+	
+	public abstract void maximaSalud();
+	
+	public void CurarSalud(int salud){
+		this.salud = salud;
+	}
+	
 }
