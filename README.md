@@ -1,6 +1,6 @@
-[Travis](https://travis-ci.org/LaInerteBarraDeCarbon/jrpg-2017a-dominio)
-
 # World Of Middle Earth (WOME) - dominio
+
+[Travis](https://travis-ci.org/LaInerteBarraDeCarbon/jrpg-2017a-dominio)
 
 ## Sobre las personas 
 

@@ -191,11 +191,11 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 * Carga la tabla de nivel del personaje. <br>
 	 */
 	public static void cargarTablaNivel() {
-		Personaje.tablaDeNiveles = new int[MAXIMONIVEL + 1];
-		Personaje.tablaDeNiveles[0] = CERO;
-		Personaje.tablaDeNiveles[1] = CERO;
+		Personaje.setTablaDeNiveles(new int[MAXIMONIVEL + 1]);
+		Personaje.getTablaDeNiveles()[0] = CERO;
+		Personaje.getTablaDeNiveles()[1] = CERO;
 		for (int i = 2; i < MAXIMONIVEL + 1; i++) {
-			Personaje.tablaDeNiveles[i] = Personaje.tablaDeNiveles[i - 1] + CANTIDADEXP;
+			Personaje.getTablaDeNiveles()[i] = Personaje.getTablaDeNiveles()[i - 1] + CANTIDADEXP;
 		}
 	}
 
@@ -691,8 +691,8 @@ public abstract class Personaje extends Peleable implements Serializable {
 			return;
 		}
 		while (this.nivel != MAXIMONIVEL
-				&& (this.experiencia >= Personaje.tablaDeNiveles[this.nivel + 1] + acumuladorExperiencia)) {
-			acumuladorExperiencia += Personaje.tablaDeNiveles[this.nivel + 1];
+				&& (this.experiencia >= Personaje.getTablaDeNiveles()[this.nivel + 1] + acumuladorExperiencia)) {
+			acumuladorExperiencia += Personaje.getTablaDeNiveles()[this.nivel + 1];
 			this.nivel++;
 			this.modificarAtributos();
 			this.saludTope += AUMENTARSALUD;
@@ -710,7 +710,7 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 */
 	public boolean ganarExperiencia(final int exp) {
 		this.experiencia += exp;
-		if (experiencia >= Personaje.tablaDeNiveles[this.nivel + 1]) {
+		if (experiencia >= Personaje.getTablaDeNiveles()[this.nivel + 1]) {
 			subirNivel();
 			return true;
 		}
@@ -823,5 +823,13 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 */
 	public void maximoVida(){
 		super.salud = VIDAINICIAL;
+	}
+
+	public static int[] getTablaDeNiveles() {
+		return tablaDeNiveles;
+	}
+
+	public static void setTablaDeNiveles(int[] tablaDeNiveles) {
+		Personaje.tablaDeNiveles = tablaDeNiveles;
 	}
 }
