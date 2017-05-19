@@ -1,33 +1,35 @@
 package dominio;
 
+import java.util.Random;
+
 /**
  * La clase MyRandom se utiliza para calcular elementos random, sea para las
  * batallas como para la dificultad. <br>
  */
-public class MyRandom {
+public class MyRandom implements RandomGenerator {
 
 	/**
-	 * Probabilidad. <br>
+	 * Valor random general. <br>
 	 */
-	private static final double NEXTDOUBLE = 0.49;
+	private static Random random = new Random();
 
 	/**
-	 * Devuelve un n�mero random. <br>
+	 * Devuelve un número double al azar. <br>
 	 * 
-	 * @return N�mero. <br>
+	 * @return Número double. <br>
 	 */
-	public static double nextDouble() {
-		return NEXTDOUBLE;
+	public double nextDouble() {
+		return random.nextDouble() * random.nextInt(100);
 	}
 
 	/**
-	 * Retorna el valor anterior al dado. <br>
+	 * Devuelve un número entero al azar. <br>
 	 * 
 	 * @param val
 	 *            Valor. <br>
-	 * @return Valor. <br>
+	 * @return Número entero. <br>
 	 */
-	public static int nextInt(final int val) {
-		return val - 1;
+	public int nextInt(final int val) {
+		return random.nextInt(100) * val;
 	}
 }
