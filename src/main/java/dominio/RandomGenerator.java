@@ -4,15 +4,13 @@ package dominio;
  * Interfaz que se encarga de generar los métodos random para las distintas
  * clases, según su necesidad. <br>
  */
-public interface RandomGenerator {
+public abstract class RandomGenerator {
 	/**
 	 * Genera un valor double al azar. <br>
 	 * 
 	 * @return Valor double. <br>
 	 */
-	public static double nextDouble() {
-		return 0;
-	}
+	public abstract double nextDouble();
 
 	/**
 	 * Genera un valor int al azar. <br>
@@ -21,7 +19,5 @@ public interface RandomGenerator {
 	 *            Parametro a multiplicar. <br>
 	 * @return Número entero. <br>
 	 */
-	public static int nextInt(final int val) {
-		return 0;
-	}
+	public abstract int nextInt(final int val);
 }

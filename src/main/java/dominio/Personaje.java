@@ -169,6 +169,7 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 * Habilidades de la raza. <br>
 	 */
 	protected String[] habilidadesRaza = new String[CANTIDADHABILIDADPERSONAJE];
+	private MyRandom MyRandom;
 
 	/**
 	 * Devuelve las habilidades de la raza que puede usar el personaje. <br>
@@ -442,7 +443,7 @@ public abstract class Personaje extends Peleable implements Serializable {
 			return CERO;
 		}
 		if (atacado.getSalud() > CERO) {
-			if (MyRandom.nextDouble() <= this.casta.getProbabilidadGolpeCritico() + this.destreza / DESTREZACRITICO) {
+			if (this.MyRandom.nextDouble() <= this.casta.getProbabilidadGolpeCritico() + this.destreza / DESTREZACRITICO) {
 				return atacado.serAtacado(this.golpeCritico());
 			} else {
 				return atacado.serAtacado(super.getAtaque());

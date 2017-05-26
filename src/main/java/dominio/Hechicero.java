@@ -23,7 +23,7 @@ public class Hechicero extends Casta {
 
 	/**
 	 * Crea un personaje con oficio de hechicero dadas la proabilidad de golpe
-	 * crítico y de evitar danio y el danio crítico del persnaje.
+	 * crÃ­tico y de evitar danio y el danio crÃ­tico del persnaje.
 	 * <p>
 	 * 
 	 * @param probCrit
@@ -93,7 +93,7 @@ public class Hechicero extends Casta {
 	}
 
 	/**
-	 * Realiza la tercer habilidad de la casta del hechizero, robar energía y
+	 * Realiza la tercer habilidad de la casta del hechizero, robar energÃ­a y
 	 * salud. <br>
 	 * 
 	 * @param caster

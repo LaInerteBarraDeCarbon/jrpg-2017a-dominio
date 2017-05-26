@@ -36,6 +36,7 @@ public class NonPlayableCharacter extends Peleable {
 	 * Nivel del NPC. <br>
 	 */
 	private int nivel;
+	private MyRandom MyRandom;
 	/**
 	 * Dificultad del NPC. <br>
 	 */
@@ -57,7 +58,7 @@ public class NonPlayableCharacter extends Peleable {
 		this.nivel = nivel;
 		int dificultad;
 		if (dificultadNPC == DIFICULTADALEATORIA) {
-			dificultad = MyRandom.nextInt(3);
+			dificultad = this.MyRandom.nextInt(3);
 		} else {
 			dificultad = dificultadNPC;
 		}

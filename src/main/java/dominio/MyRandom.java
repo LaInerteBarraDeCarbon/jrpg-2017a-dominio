@@ -6,30 +6,21 @@ import java.util.Random;
  * La clase MyRandom se utiliza para calcular elementos random, sea para las
  * batallas como para la dificultad. <br>
  */
-public class MyRandom implements RandomGenerator {
+public class MyRandom extends RandomGenerator {
 
 	/**
-	 * Valor random general. <br>
+	 * Devuelve un random double. <br>
 	 */
-	private static Random random = new Random();
-
-	/**
-	 * Devuelve un número double al azar. <br>
-	 * 
-	 * @return Número double. <br>
-	 */
-	public static double nextDouble() {
-		return random.nextDouble() * random.nextInt(100);
+	@Override
+	public double nextDouble() {
+		return new Random().nextDouble();
 	}
 
 	/**
-	 * Devuelve un número entero al azar. <br>
-	 * 
-	 * @param val
-	 *            Valor. <br>
-	 * @return Número entero. <br>
+	 * Devuelve un random int. <br>
 	 */
-	public static int nextInt(final int val) {
-		return random.nextInt(100) * val;
+	@Override
+	public int nextInt(final int val) {
+		return new Random().nextInt(val);
 	}
 }

@@ -4,7 +4,7 @@ package dominio;
  * La clase MyRandomStub se utiliza como stub para calcular elementos random,
  * sea para las batallas como para la dificultad. <br>
  */
-public class MyRandomStub implements RandomGenerator {
+public class MyRandomStub extends RandomGenerator {
 
 	/**
 	 * Probabilidad. <br>
