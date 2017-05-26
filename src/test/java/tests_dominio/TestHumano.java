@@ -14,10 +14,8 @@ public class TestHumano {
 	public void testIncentivar() {
 		Humano h = new Humano("Nico", 100, 100, 55, 20, 30, new Hechicero(0.2, 0.3, 1.5), 0, 1, 1);
 		Elfo e = new Elfo("Nico", 100, 100, 25, 20, 30, new Asesino(0.2, 0.3, 1.5), 0, 3, 1);
-		Humano h2 = new Humano("Nico", new Hechicero(0.2, 0.3, 1.5),10);
-		
-		
-		Assert.assertTrue(e.getAtaque() == 37);
+
+		Assert.assertEquals(37, e.getAtaque());
 		h.habilidadRaza1(e);
 		Assert.assertTrue(e.getAtaque() > 37);
 	}
@@ -26,19 +24,14 @@ public class TestHumano {
 	public void testGolpeFatal() {
 		Humano h = new Humano("Nico", 100, 100, 55, 20, 30, new Hechicero(0.2, 0.3, 1.5), 0, 1, 1);
 		Elfo e = new Elfo("Nico", 100, 100, 25, 20, 30, new Asesino(0.2, 0.3, 1.5), 0, 3, 1);
-		Humano h2 = new Humano("Nico", new Hechicero(0.2, 0.3, 1.5),10);
-		
-		Assert.assertTrue(h.getEnergia() == 100);
-		Assert.assertTrue(e.getSalud() == 100);
+
+		Assert.assertEquals(100, h.getEnergia());
+		Assert.assertEquals(100, e.getSalud());
 		if (h.habilidadRaza2(e)) {
-			Assert.assertTrue(e.getSalud() == 70);
-			Assert.assertTrue(h.getEnergia() == 50);
-		} else {
-			Assert.assertTrue(h.getEnergia() == 90);
-			Assert.assertTrue(e.getSalud() == 100);
+			Assert.assertEquals(70, e.getSalud());
+			Assert.assertEquals(98, h.getEnergia());
 		}
-		h.setEnergia(0);
+		h.quitarEnergia(0);
 		h.habilidadRaza2(e);
-		
 	}
 }

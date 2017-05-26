@@ -64,17 +64,17 @@ public class NonPlayableCharacter extends Peleable {
 		switch (dificultad) {
 		case 0:
 			super.setAtaque(10 + (nivel - 1) * 3);// 30%
-			super.setSalud(30 + (nivel - 1) * 15);
+			super.establecerSalud(30 + (nivel - 1) * 15);
 			this.defensa = 2 + (nivel - 1) * 1;
 			break;
 		case 1:
 			super.setAtaque(20 + (nivel - 1) * 6);// 50%
-			super.setSalud(40 + (nivel - 1) * 20);
+			super.establecerSalud(40 + (nivel - 1) * 20);
 			this.defensa = 5 + (nivel - 1) * 2;
 			break;
 		case 2:
 			super.setAtaque(30 + (nivel - 1) * 10);// 50%
-			super.setSalud(50 + (nivel - 1) * 25);
+			super.establecerSalud(50 + (nivel - 1) * 25);
 			this.defensa = 4 + (nivel - 1) * 4;
 			break;
 		}
@@ -153,7 +153,7 @@ public class NonPlayableCharacter extends Peleable {
 		if (MyRandom.nextDouble() >= PROBESQUIVAR) {
 			danio -= this.getDefensa() / DIVISORDEFENSA;
 			if (danio > CERO) {
-				super.setSalud(super.getSalud() - danio);
+				super.establecerSalud(super.getSalud() - danio);
 				return danio;
 			}
 			return CERO;

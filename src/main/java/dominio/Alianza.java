@@ -30,15 +30,6 @@ public class Alianza {
 	}
 
 	/**
-	 * Devuelve los aliados almacenados en la lista. <br>
-	 * 
-	 * @return Lista de los aliados. <br>
-	 */
-	public LinkedList<Personaje> getAliados() {
-		return aliados;
-	}
-
-	/**
 	 * Esta funcion devuelve el nombre de aliado. <br>
 	 * 
 	 * @return Nombre de la alianza. <br>
@@ -63,7 +54,30 @@ public class Alianza {
 	 * @param pj
 	 *            Personaje que integra la alianza. <br>
 	 */
-	public void aniadirPersonaje(final Personaje pj) {
+	public void añadirPersonaje(final Personaje pj) {
 		aliados.add(pj);
+	}
+
+	/**
+	 * Devuelve una lista con los personajes de la alianza. <br>
+	 * 
+	 * @return Lista de la alianza. <br>
+	 */
+	public final LinkedList<Personaje> getAliados() {
+		return Alianza.copiaListaPersonaje(aliados);
+	}
+
+	/**
+	 * Genera una copia de la lista de la alianza de los personajes. <br>
+	 * 
+	 * @param lista
+	 *            Alianza. <br>
+	 * @return Copia de la lista. <br>
+	 */
+	private static LinkedList<Personaje> copiaListaPersonaje(LinkedList<Personaje> lista) {
+		LinkedList<Personaje> listaRetorno = new LinkedList<>();
+		for (int i = 0; i < lista.size(); i++)
+			listaRetorno.add(lista.get(i));
+		return listaRetorno;
 	}
 }

@@ -110,11 +110,15 @@ public abstract class Peleable {
 	public void setNombre(final String nombre) {
 		this.nombre = nombre;
 	}
-	
-	public abstract void maximaSalud();
-	
-	public void CurarSalud(int salud){
-		this.salud = salud;
+
+	/**
+	 * Establece la vida de un personaje. <br>
+	 * 
+	 * @param vida
+	 *            Vida. <br>
+	 */
+	public void establecerSalud(final int vida) {
+		this.salud = vida;
 	}
-	
+
 }

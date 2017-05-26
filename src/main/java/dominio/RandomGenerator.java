@@ -10,7 +10,9 @@ public interface RandomGenerator {
 	 * 
 	 * @return Valor double. <br>
 	 */
-	public double nextDouble();
+	public static double nextDouble() {
+		return 0;
+	}
 
 	/**
 	 * Genera un valor int al azar. <br>
@@ -19,5 +21,7 @@ public interface RandomGenerator {
 	 *            Parametro a multiplicar. <br>
 	 * @return Número entero. <br>
 	 */
-	public int nextInt(final int val);
+	public static int nextInt(final int val) {
+		return 0;
+	}
 }

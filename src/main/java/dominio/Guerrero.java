@@ -15,7 +15,7 @@ public class Guerrero extends Casta {
 
 	/**
 	 * Crea un personaje con oficio de guerrero dadas la proabilidad de golpe
-	 * crítico y de evitar danio y el danio crítico del persnaje.
+	 * crï¿½tico y de evitar danio y el danio crï¿½tico del persnaje.
 	 * <p>
 	 * 
 	 * @param probCrit
@@ -76,7 +76,7 @@ public class Guerrero extends Casta {
 	public boolean habilidad2(final Personaje caster, final Peleable atacado) {
 		if (caster.getEnergia() > ENERGIAMINIMA) {
 			caster.quitarEnergia(ENERGIAMINIMA);
-			caster.setDefensa(caster.getDefensa() + caster.getMagia());
+			caster.estableceDefensa(caster.getDefensa() + caster.getMagia());
 			return true;
 		}
 		return false;
@@ -97,13 +97,12 @@ public class Guerrero extends Casta {
 			caster.quitarEnergia(ENERGIAMINIMA);
 			if (atacado instanceof Personaje) {
 				int defensaOriginal = ((Personaje) atacado).getDefensa();
-				((Personaje) atacado).setDefensa(CERO);
+				((Personaje) atacado).estableceDefensa(CERO);
 				if (atacado.serAtacado(caster.getAtaque()) > CERO) {
-					((Personaje) atacado).setDefensa(defensaOriginal);
+					((Personaje) atacado).estableceDefensa(defensaOriginal);
 					return true;
 				}
 			}
-
 		}
 		return false;
 	}

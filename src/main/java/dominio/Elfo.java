@@ -29,8 +29,8 @@ public class Elfo extends Personaje {
 	 */
 	public Elfo(final String nombre, final Casta casta, final int id) {
 		super(nombre, casta, id, AUMENTARVIDA, AUMENTARENERGIA);
-		super.maximaSalud();
-		super.maximaEnergia();
+		super.establecerSalud(super.getSaludTope());
+		super.establecerEnergia(super.getEnergiaTope());
 		this.cargarElfo();
 	}
 
@@ -83,8 +83,8 @@ public class Elfo extends Personaje {
 	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
 	public boolean habilidadRaza1(final Peleable atacado) {
-		if (this.getEnergia() > MINIMOENERGIA) {
-			this.setEnergia(this.getEnergia() - MINIMOENERGIA);
+		if (super.getEnergia() > MINIMOENERGIA) {
+			this.quitarEnergia(MINIMOENERGIA);
 			if (atacado.serAtacado(this.getFuerza() + this.getNivel() * MINIMOENERGIA) > CERO) {
 				return true;
 			}
@@ -100,8 +100,8 @@ public class Elfo extends Personaje {
 	 * @return true de lograrlo, false de lo contrario. <br>
 	 */
 	public boolean habilidadRaza2(final Peleable atacado) {
-		if (this.getEnergia() > MINIMOENERGIA) {
-			this.setEnergia(this.getEnergia() - MINIMOENERGIA);
+		if (super.getEnergia() > MINIMOENERGIA) {
+			this.quitarEnergia(MINIMOENERGIA);
 			if (atacado.serAtacado((int) (this.getMagia())) > CERO) {
 				return true;
 			}

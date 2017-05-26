@@ -23,7 +23,7 @@ public class Asesino extends Casta {
 
 	/**
 	 * Crea un personaje con oficio de asesino dadas la proabilidad de golpe
-	 * cr�tico y de evitar daño y el daño cr�tico del persnaje.
+	 * crítico y de evitar daño y el daño crítico del persnaje.
 	 * <p>
 	 * 
 	 * @param probCrit
@@ -53,7 +53,7 @@ public class Asesino extends Casta {
 	}
 
 	/**
-	 * Realiza la primer habilidad de la casta del asesino, golpe cr�tico. <br>
+	 * Realiza la primer habilidad de la casta del asesino, golpe crítico. <br>
 	 * 
 	 * @param caster
 	 *            Personaje que lanza la habilidad. <br>
@@ -64,7 +64,7 @@ public class Asesino extends Casta {
 	public boolean habilidad1(final Personaje caster, final Peleable atacado) {
 		if (caster.getEnergia() > ENERGIAMINIMA) {
 			caster.quitarEnergia(ENERGIAMINIMA);
-			if (atacado.serAtacado((int) (caster.getAtaque() * caster.getCasta().getDanioCritico())) > CERO) {
+			if (atacado.serAtacado((int) (caster.getAtaque() * caster.getCasta().getDañoCritico())) > CERO) {
 				return true;
 			}
 		}
@@ -72,7 +72,7 @@ public class Asesino extends Casta {
 	}
 
 	/**
-	 * Realiza la segunda habilidad de la casta del asesino, aumentar evasi�n.
+	 * Realiza la segunda habilidad de la casta del asesino, aumentar evasión.
 	 * <br>
 	 * 
 	 * @param caster
@@ -84,10 +84,10 @@ public class Asesino extends Casta {
 	public boolean habilidad2(final Personaje caster, final Peleable atacado) {
 		if (caster.getEnergia() > ENERGIAMINIMA) {
 			caster.quitarEnergia(ENERGIAMINIMA);
-			if (this.getProbabilidadEvitarDanio() + AUMENTAREVASION < MAXIMOEVASION) {
-				super.setProbabilidadEvitarDanio(super.getProbabilidadEvitarDanio() + AUMENTAREVASION);
+			if (this.getProbabilidadEvitarDaño() + AUMENTAREVASION < MAXIMOEVASION) {
+				super.setProbabilidadEvitarDaño(super.getProbabilidadEvitarDaño() + AUMENTAREVASION);
 			} else {
-				super.setProbabilidadEvitarDanio(MAXIMOEVASION);
+				super.setProbabilidadEvitarDaño(MAXIMOEVASION);
 			}
 			return true;
 		}

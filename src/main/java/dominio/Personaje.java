@@ -1,6 +1,7 @@
 package dominio;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 /**
  * La clase Personaje crea personajes con sus respectivas raza y casta. Se
@@ -264,7 +265,7 @@ public abstract class Personaje extends Peleable implements Serializable {
 			final int inteligencia, final Casta casta, final int experiencia, final int nivel, final int idPersonaje) {
 
 		super.setNombre(nombre);
-		super.setSalud(salud);
+		super.establecerSalud(salud);
 		this.energia = energia;
 		this.fuerza = fuerza;
 		this.destreza = destreza;
@@ -434,7 +435,7 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 * 
 	 * @param atacado
 	 *            Personaje atacado. <br>
-	 * @return danio realizado. <br>
+	 * @return daño realizado. <br>
 	 */
 	public int atacar(final Peleable atacado) {
 		if (!this.estaVivo()) {
@@ -451,12 +452,12 @@ public abstract class Personaje extends Peleable implements Serializable {
 	}
 
 	/**
-	 * Calcula el danio de un golpe critico. <br>
+	 * Calcula el daño de un golpe critico. <br>
 	 * 
-	 * @return danio del golpe critico. <br>
+	 * @return daño del golpe critico. <br>
 	 */
 	public int golpeCritico() {
-		return (int) (super.getAtaque() * this.getCasta().getDanioCritico());
+		return (int) (super.getAtaque() * this.getCasta().getDañoCritico());
 	}
 
 	/**
@@ -500,11 +501,11 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 * Devuelve los puntos de salud a punto maximo. <br>
 	 */
 	public void restablecerSalud() {
-		CurarSalud(this.saludTope);
+		super.establecerSalud(this.saludTope);
 	}
 
 	/**
-	 * Devuelve los puntos de energia a su punto m�ximo. <br>
+	 * Devuelve los puntos de energia a su punto máximo. <br>
 	 */
 	public void restablecerEnergia() {
 		this.energia = this.energiaTope;
@@ -520,23 +521,23 @@ public abstract class Personaje extends Peleable implements Serializable {
 	}
 
 	/**
-	 * Indica el danio recibido. <br>
+	 * Indica el daño recibido. <br>
 	 * 
-	 * @param danio
-	 *            danio recibido. <br>
-	 * @return danio recibido. <br>
+	 * @param daño
+	 *            daño recibido. <br>
+	 * @return daño recibido. <br>
 	 */
-	public int serAtacado(int danio) {
-		if (MyRandom.nextDouble() >= this.getCasta().getProbabilidadEvitarDanio()) {
-			danio -= this.defensa;
-			if (danio > CERO) {
-				if (super.getSalud() <= danio) {
-					danio = super.getSalud();
-					super.setSalud(CERO);
+	public int serAtacado(int daño) {
+		if (MyRandom.nextDouble() >= this.getCasta().getProbabilidadEvitarDaño()) {
+			daño -= this.defensa;
+			if (daño > CERO) {
+				if (super.getSalud() <= daño) {
+					daño = super.getSalud();
+					super.establecerSalud(CERO);
 				} else {
-					super.setSalud(super.getSalud() - danio);
+					super.establecerSalud(super.getSalud() - daño);
 				}
-				return danio;
+				return daño;
 			}
 			return CERO;
 		}
@@ -544,25 +545,25 @@ public abstract class Personaje extends Peleable implements Serializable {
 	}
 
 	/**
-	 * Indica el danio realizado al personaje. De ser mayor el ataque a la vida,
+	 * Indica el daño realizado al personaje. De ser mayor el ataque a la vida,
 	 * lo mata. <br>
 	 * 
-	 * @param danio
-	 *            danio recibido. <br>
-	 * @return danio realizado. <br>
+	 * @param daño
+	 *            daño recibido. <br>
+	 * @return daño realizado. <br>
 	 */
-	public int serRobadoSalud(int danio) {
-		danio -= this.defensa;
-		if (danio <= CERO) {
+	public int serRobadoSalud(int daño) {
+		daño -= this.defensa;
+		if (daño <= CERO) {
 			return CERO;
 		}
-		if ((super.getSalud() - danio) >= CERO) {
-			super.setSalud(super.getSalud() - danio);
+		if ((super.getSalud() - daño) >= CERO) {
+			super.establecerSalud(super.getSalud() - daño);
 		} else {
-			danio = super.getSalud();
-			super.setSalud(CERO);
+			daño = super.getSalud();
+			super.establecerSalud(CERO);
 		}
-		return danio;
+		return daño;
 	}
 
 	/**
@@ -572,18 +573,18 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 *            daño recibido. <br>
 	 * @return daño realizado. <br>
 	 */
-	public int serDesernegizado(int danio) {
-		danio -= this.defensa;
-		if (danio <= CERO) {
+	public int serDesernegizado(int daño) {
+		daño -= this.defensa;
+		if (daño <= CERO) {
 			return CERO;
 		}
-		if ((energia - danio) >= CERO) {
-			energia -= danio;
+		if ((energia - daño) >= CERO) {
+			energia -= daño;
 		} else {
-			danio = energia;
+			daño = energia;
 			energia = CERO;
 		}
-		return danio;
+		return daño;
 	}
 
 	/**
@@ -594,9 +595,9 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 */
 	public void serCurado(final int salud) {
 		if ((super.getSalud() + salud) <= this.saludTope) {
-			super.setSalud(super.getSalud() + salud);
+			super.establecerSalud(super.getSalud() + salud);
 		} else {
-			super.setSalud(this.saludTope);
+			super.establecerSalud(this.saludTope);
 		}
 	}
 
@@ -622,7 +623,7 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 */
 	public void crearAlianza(final String nombreAlianza) {
 		this.clan = new Alianza(nombreAlianza);
-		this.clan.aniadirPersonaje(this);
+		this.clan.añadirPersonaje(this);
 	}
 
 	/**
@@ -647,12 +648,12 @@ public abstract class Personaje extends Peleable implements Serializable {
 		if (this.clan == null) {
 			Alianza a = new Alianza("Alianza 1");
 			this.clan = a;
-			a.aniadirPersonaje(this);
+			a.añadirPersonaje(this);
 		}
 
 		if (nuevoAliado.clan == null) {
 			nuevoAliado.clan = this.clan;
-			this.clan.aniadirPersonaje(nuevoAliado);
+			this.clan.añadirPersonaje(nuevoAliado);
 			return true;
 		} else {
 			return false;
@@ -799,48 +800,63 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 */
 	public abstract boolean habilidadRaza2(Peleable atacado);
 
-	/////////////////////////////////////////////////////////////////////
-
 	/**
-	 * Quita energia al personaje. <br>
+	 * Devuelve la tabla de niveles. <br>
 	 * 
-	 * @param energia
-	 *            Energia. <br>
+	 * @return Tabla de niveles. <br>
 	 */
-	public void quitarEnergia(final int energia) {
-		this.energia -= energia;
-	}
-	
-	/**
-	 * Quita energia al personaje Humano al usar la Habilidad de Raza 2.
-	 * 
-	 * @param energia
-	 * 				Energia<br>
-	 */
-	public void quitarEnergiaHumanoHabilidad2(final int energia) {
-		this.energia = this.energia / energia;
-	}
-	
-	/**
-	 * Establece el maximo de vida de un personaje. <br>
-	 */
-	public void maximoEnergia(){
-		this.energiaTope = ENERGIAINICIAL;
-	}
-	
-	/**
-	 * Establece el maximo de vida de un personaje. <br>
-	 * @return 
-	 */
-	public void MaximaSalud(){
-		this.salud = saludTope;
-	}
-
 	public static int[] getTablaDeNiveles() {
 		return tablaDeNiveles;
 	}
 
+	/**
+	 * Modifica los atributos del personaje. <br>
+	 * 
+	 * @param atributos
+	 *            Atributos a modificar. <br>
+	 */
+	public void modificarAtributos(HashMap<String, Integer> atributos) {
+		establecerSalud(atributos.get("salud" + this.getIdPersonaje()));
+		this.energia = (atributos.get("energia" + this.getIdPersonaje()));
+	}
+
+	/**
+	 * Establece la tabla de niveles de los personajes. <br>
+	 * 
+	 * @param tablaDeNiveles
+	 *            Tabla de niveles. <br>
+	 */
 	public static void setTablaDeNiveles(int[] tablaDeNiveles) {
 		Personaje.tablaDeNiveles = tablaDeNiveles;
+	}
+
+	/**
+	 * Quita energía al personaje. <br>
+	 * 
+	 * @param energia
+	 *            Energía. <br>
+	 */
+	public void quitarEnergia(final int energia) {
+		this.energia -= energia;
+	}
+
+	/**
+	 * Establece la energía de un personaje. <br>
+	 * 
+	 * @param energia
+	 *            Energia. <br>
+	 */
+	public void establecerEnergia(final int energia) {
+		this.energia = energia;
+	}
+
+	/**
+	 * Establece la defensa del personaje. <br>
+	 * 
+	 * @param defensa
+	 *            Defensa. <br>
+	 */
+	public void estableceDefensa(int defensa) {
+		this.defensa = defensa;
 	}
 }

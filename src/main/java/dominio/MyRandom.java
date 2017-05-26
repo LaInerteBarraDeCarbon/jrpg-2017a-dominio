@@ -18,7 +18,7 @@ public class MyRandom implements RandomGenerator {
 	 * 
 	 * @return Número double. <br>
 	 */
-	public double nextDouble() {
+	public static double nextDouble() {
 		return random.nextDouble() * random.nextInt(100);
 	}
 
@@ -29,7 +29,7 @@ public class MyRandom implements RandomGenerator {
 	 *            Valor. <br>
 	 * @return Número entero. <br>
 	 */
-	public int nextInt(final int val) {
+	public static int nextInt(final int val) {
 		return random.nextInt(100) * val;
 	}
 }

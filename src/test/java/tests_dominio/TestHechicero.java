@@ -14,19 +14,17 @@ public class TestHechicero {
 	public void testCurar() {
 		Humano h = new Humano("Nico", 100, 100, 55, 20, 30, new Hechicero(0.2, 0.3, 1.5), 0, 1, 1);
 		Elfo e = new Elfo("Nico", 100, 100, 25, 20, 30, new Asesino(0.2, 0.3, 1.5), 0, 3, 1);
-		Humano h2 = new Humano("Pedro", 100, 100, 55, 20, 30, new Hechicero(), 0, 1, 1);
-		
-		//Assert.assertTrue(e.getSalud() == 100);
+		Assert.assertTrue(e.getSalud() == 100);
 		e.getSalud();
-		e.setSalud(65);
-		//Assert.assertTrue(e.getSalud() == 65);
+		e.establecerSalud(65);
+		Assert.assertTrue(e.getSalud() == 65);
 		e.getSalud();
 		h.habilidadCasta2(e);
-		//Assert.assertTrue(e.getSalud() > 65);
+		Assert.assertTrue(e.getSalud() > 65);
 		e.getSalud();
-		h.setEnergia(0);
+		h.quitarEnergia(0);
 		h.habilidadCasta2(e);
-		//Assert.assertTrue(e.getSalud() >65);
+		Assert.assertTrue(e.getSalud() > 65);
 		e.getSalud();
 	}
 
@@ -48,8 +46,8 @@ public class TestHechicero {
 		Elfo e = new Elfo("Nico", 100, 100, 25, 20, 30, new Asesino(0.2, 0.3, 1.5), 0, 3, 1);
 
 		Assert.assertTrue(e.getSalud() == 100);
-		h.setSalud(50);
-		h.setEnergia(50);
+		h.establecerSalud(50);
+		h.quitarEnergia(50);
 		if (h.habilidadCasta3(e)) {
 			Assert.assertTrue(e.getSalud() < 100);
 			Assert.assertTrue(h.getEnergia() > 50);
