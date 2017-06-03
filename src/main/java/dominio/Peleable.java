@@ -1,5 +1,8 @@
 package dominio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Esta clase proporciona los metodos para la batalla, como el nombre de los
  * personajes, su salud, el danio de ataque que realizan, entre otros. <br>
@@ -22,6 +25,7 @@ public abstract class Peleable {
 	 * Fuerza del personaje. <br>
 	 */
 	private int ataque;
+	private List<Inventario> inventario = new ArrayList<Inventario>();
 
 	/**
 	 * Indica el danio recibido. <br>
@@ -121,4 +125,13 @@ public abstract class Peleable {
 		this.salud = vida;
 	}
 
+	/**
+	 * Añade un item al inventario. <br>
+	 * 
+	 * @param item
+	 *            Item. <br>
+	 */
+	public void añadirItem(final Inventario item) {
+		this.inventario.add(item);
+	}
 }
