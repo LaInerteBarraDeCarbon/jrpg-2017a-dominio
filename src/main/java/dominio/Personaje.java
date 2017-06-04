@@ -163,7 +163,7 @@ public abstract class Personaje extends Peleable implements Serializable {
 	/**
 	 * Tabla de nivel del personaje. <br>
 	 */
-	private static int[] tablaDeNiveles;
+	public static int[] tablaDeNiveles;
 
 	/**
 	 * Habilidades de la raza. <br>

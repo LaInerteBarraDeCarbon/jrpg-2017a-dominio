@@ -1,9 +1,13 @@
 package dominio;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
+
 /**
- * Clase que se encarga de
+ * Clase que se encarga de los ítems en el inventario. <br>
  */
 public class Inventario {
 	/**
@@ -35,25 +39,9 @@ public class Inventario {
 	 */
 	private final int bonusInteligencia;
 	/**
-	 * Modificador gradual de salud. <br>
+	 * Foto del item. <br>
 	 */
-	private final double modificadorSalud;
-	/**
-	 * Modificador gradual de energía. <br>
-	 */
-	private final double modificadorEnergia;
-	/**
-	 * Modificador gradual de fuerza. <br>
-	 */
-	private final double modificadorFuerza;
-	/**
-	 * Modificador gradual de destreza. <br>
-	 */
-	private final double modificadorDestreza;
-	/**
-	 * Modificador gradual de inteligencia. <br>
-	 */
-	private final double modificadorInteligencia;
+	private final String foto;
 
 	/**
 	 * Construye un objeto inventario con sus modificadores correspondientes.
@@ -73,23 +61,13 @@ public class Inventario {
 	 *            Modificador discreto de destreza. <br>
 	 * @param bonusMagia
 	 *            Modificador discreto de inteligencia. <br>
-	 * @param porcSalud
-	 *            Modificador gradual de salud. <br>
-	 * @param porcEnergia
-	 *            Modificador gradual de energía. <br>
-	 * @param porcAtaque
-	 *            Modificador gradual de fuerza. <br>
-	 * @param porcDefensa
-	 *            Modificador gradual de defensa. <br>
-	 * @param porcMagia
-	 *            Modificador gradual de inteligencia. <br>
+	 * @param foto
+	 *            Foto del item. <br>
 	 * @throws IOException
 	 *             Error al abrir archivo. <br>
 	 */
 	public Inventario(final int id, final String nombre, final int bonusSalud, final int bonusEnergia,
-			final int bonusAtaque, final int bonusDefensa, final int bonusMagia, final double porcSalud,
-			final double porcEnergia, final double porcAtaque, final double porcDefensa, final double porcMagia)
-			throws IOException {
+			final int bonusAtaque, final int bonusDefensa, final int bonusMagia, final String foto) throws IOException {
 		this.idItem = id;
 		this.nombre = nombre;
 		this.bonusSalud = bonusSalud;
@@ -97,11 +75,7 @@ public class Inventario {
 		this.bonusFuerza = bonusAtaque;
 		this.bonusDestreza = bonusDefensa;
 		this.bonusInteligencia = bonusMagia;
-		this.modificadorSalud = porcSalud;
-		this.modificadorEnergia = porcEnergia;
-		this.modificadorFuerza = porcAtaque;
-		this.modificadorDestreza = porcDefensa;
-		this.modificadorInteligencia = porcMagia;
+		this.foto = foto;
 	}
 
 	/**
@@ -168,47 +142,13 @@ public class Inventario {
 	}
 
 	/**
-	 * Devuelve el modificador de salud del item. <br>
+	 * Devuelve el ícono de la foto. <br>
 	 * 
-	 * @return Modificador salud. <br>
+	 * @return Ícono. <br>
+	 * @throws IOException
+	 *             Error al abrir el archivo. <br>
 	 */
-	public double getModificadorSalud() {
-		return modificadorSalud;
-	}
-
-	/**
-	 * Devuelve el modificador de energía del item. <br>
-	 * 
-	 * @return Modificador energía. <br>
-	 */
-	public double getModificadorEnergia() {
-		return modificadorEnergia;
-	}
-
-	/**
-	 * Devuelve el modificador de fuerza del item. <br>
-	 * 
-	 * @return Modificador fuerza. <br>
-	 */
-	public double getModificadorFuerza() {
-		return modificadorFuerza;
-	}
-
-	/**
-	 * Devuelve el modificador de destreza del item. <br>
-	 * 
-	 * @return Modificador destreza. <br>
-	 */
-	public double getModificadorDestreza() {
-		return modificadorDestreza;
-	}
-
-	/**
-	 * Devuelve el modificador de inteligencia del item. <br>
-	 * 
-	 * @return Modificador inteligencia. <br>
-	 */
-	public double getModificadorInteligencia() {
-		return modificadorInteligencia;
+	public BufferedImage getFoto() throws IOException {
+		return ImageIO.read(new File("recursos/" + foto));
 	}
 }
