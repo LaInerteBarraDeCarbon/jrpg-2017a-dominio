@@ -36,7 +36,7 @@ public class Humano extends Personaje {
 	public Humano(final String nombre, final Casta casta, final int id) {
 		super(nombre, casta, id, AUMENTOSALUD, AUMENTOENERGIA);
 		super.establecerSalud(super.getSaludTope());
-		super.establecerEnergia(this.getEnergiaTope());
+		super.setEnergia(this.getEnergiaTope());
 		this.cargarHumano();
 	}
 

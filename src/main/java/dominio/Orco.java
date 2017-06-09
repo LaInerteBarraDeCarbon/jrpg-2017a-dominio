@@ -34,7 +34,7 @@ public class Orco extends Personaje {
 	public Orco(final String nombre, final Casta casta, final int id) {
 		super(nombre, casta, id, AUMENTOSALUD, AUMENTOENERGIA);
 		super.establecerSalud(this.getSaludTope());
-		super.establecerEnergia(this.getEnergiaTope());
+		super.setEnergia(this.getEnergiaTope());
 		this.cargarOrco();
 	}
 

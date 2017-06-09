@@ -30,7 +30,7 @@ public class Elfo extends Personaje {
 	public Elfo(final String nombre, final Casta casta, final int id) {
 		super(nombre, casta, id, AUMENTARVIDA, AUMENTARENERGIA);
 		super.establecerSalud(super.getSaludTope());
-		super.establecerEnergia(super.getEnergiaTope());
+		super.setEnergia(super.getEnergiaTope());
 		this.cargarElfo();
 	}
 

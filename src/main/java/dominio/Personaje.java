@@ -169,7 +169,10 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 * Habilidades de la raza. <br>
 	 */
 	protected String[] habilidadesRaza = new String[CANTIDADHABILIDADPERSONAJE];
-	private MyRandom MyRandom;
+	/**
+	 * Administrador de los randoms. <br>
+	 */
+	private RandomGenerator random;
 
 	/**
 	 * Devuelve las habilidades de la raza que puede usar el personaje. <br>
@@ -443,13 +446,23 @@ public abstract class Personaje extends Peleable implements Serializable {
 			return CERO;
 		}
 		if (atacado.getSalud() > CERO) {
-			if (this.MyRandom.nextDouble() <= this.casta.getProbabilidadGolpeCritico() + this.destreza / DESTREZACRITICO) {
+			if (this.getRandom().nextDouble() <= this.casta.getProbabilidadGolpeCritico()
+					+ this.destreza / DESTREZACRITICO) {
 				return atacado.serAtacado(this.golpeCritico());
 			} else {
 				return atacado.serAtacado(super.getAtaque());
 			}
 		}
 		return CERO;
+	}
+
+	/**
+	 * Devuelve un número random. <br>
+	 * 
+	 * @return Random. <br>
+	 */
+	public final RandomGenerator getRandom() {
+		return random;
 	}
 
 	/**
@@ -529,21 +542,22 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 * @return daño recibido. <br>
 	 */
 	public int serAtacado(int daño) {
-		if (MyRandom.nextDouble() >= this.getCasta().getProbabilidadEvitarDaño()) {
-			daño -= this.defensa;
-			if (daño > CERO) {
-				if (super.getSalud() <= daño) {
-					daño = super.getSalud();
-					super.establecerSalud(CERO);
-				} else {
-					super.establecerSalud(super.getSalud() - daño);
-				}
-				return daño;
+		// if (this.getRandom().nextDouble() >=
+		// this.getCasta().getProbabilidadEvitarDaño()) {
+		daño -= this.defensa;
+		if (daño > CERO) {
+			if (super.getSalud() <= daño) {
+				daño = super.getSalud();
+				super.establecerSalud(CERO);
+			} else {
+				super.establecerSalud(super.getSalud() - daño);
 			}
-			return CERO;
+			return daño;
 		}
 		return CERO;
 	}
+	// return CERO;
+	// }
 
 	/**
 	 * Indica el daño realizado al personaje. De ser mayor el ataque a la vida,
@@ -817,8 +831,9 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 *            Atributos a modificar. <br>
 	 */
 	public void modificarAtributos(HashMap<String, Integer> atributos) {
-		establecerSalud(atributos.get("salud" + this.getIdPersonaje()));
-		this.energia = (atributos.get("energia" + this.getIdPersonaje()));
+		super.setAtaque(this.calcularPuntosDeAtaque());
+		this.aumentarDefensa(this.destreza);
+		this.magia = this.calcularPuntosDeMagia();
 	}
 
 	/**
@@ -838,7 +853,11 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 *            Energía. <br>
 	 */
 	public void quitarEnergia(final int energia) {
-		this.energia -= energia;
+		if (this.energia > energia) {
+			this.energia -= energia;
+		} else {
+			this.energia = CERO;
+		}
 	}
 
 	/**
@@ -847,17 +866,50 @@ public abstract class Personaje extends Peleable implements Serializable {
 	 * @param energia
 	 *            Energia. <br>
 	 */
-	public void establecerEnergia(final int energia) {
+	public void setEnergia(final int energia) {
 		this.energia = energia;
+	}
+
+	/**
+	 * Reduce la salud del personaje. <br>
+	 * 
+	 * @param salud
+	 *            Vida a quitar. <br>
+	 */
+	public final void reducirSalud(final int salud) {
+		super.establecerSalud(super.getSalud() - salud);
+	}
+
+	/**
+	 * Actualiza la salud y la energía del personaje en batalla.
+	 * 
+	 * @param map
+	 *            contenedor de los atributos a actualizar.
+	 */
+	public final void actualizarAtributos(final HashMap<String, Number> map) {
+		super.establecerSalud(map.get("salud").intValue());
+		energia = map.get("energia").intValue();
+		defensa = map.get("defensa").intValue();
+		casta.setProbabilidadEvitarDaño(map.get("probEvitarDanio").doubleValue());
+	}
+
+	/**
+	 * Aumenta la defensa del personaje. <br>
+	 * 
+	 * @param bonus
+	 *            Bonus de defensa. <br>
+	 */
+	public final void aumentarDefensa(final int bonus) {
+		defensa += bonus;
 	}
 
 	/**
 	 * Establece la defensa del personaje. <br>
 	 * 
 	 * @param defensa
-	 *            Defensa. <br>
+	 *            Nueva defensa. <br>
 	 */
-	public void estableceDefensa(int defensa) {
+	public void estableceDefensa(final int defensa) {
 		this.defensa = defensa;
 	}
 }

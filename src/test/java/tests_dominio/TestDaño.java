@@ -79,7 +79,7 @@ public class TestDaño {
 		Humano h = new Humano("Octi", 16, 0, 25, 10, 30, new Hechicero(0.2, 0, 1.5), 0, 1, 1);
 		Orco o = new Orco("Nico", 0, 200, 15, 0, 30, new Guerrero(0.2, 0, 1.5), 0, 1, 1);
 		o.setAtaque(230);
-		o.establecerEnergia(100);
+		o.setEnergia(100);
 		h.atacar(o);
 		o.atacar(h);
 		o.atacar(h);

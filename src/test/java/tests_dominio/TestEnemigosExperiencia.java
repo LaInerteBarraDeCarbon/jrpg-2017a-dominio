@@ -89,7 +89,7 @@ public class TestEnemigosExperiencia {
 	@Test
 	public void testSetEnergiaTope() {
 		Humano h = new Humano("Nicolas", new Guerrero(), 1);
-		h.establecerEnergia(500);
+		h.setEnergia(500);
 	}
 
 	@Test
